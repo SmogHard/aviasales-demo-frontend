@@ -20,84 +20,99 @@ const Title = styled.h2`
 `;
 
 const P = styled.p`
-  color: ${props => props.color};
-  padding-top: ${props => props.paddingtop};
-  padding-bottom: ${props => props.paddingbot};
-  padding-left: ${props => props.paddingleft};
-  font-size: ${props => props.fontsize};
-  margin: ${props => props.margin};
+  color: #ffffff;
+  padding-left: 8px;
+  font-size: 14px;
+`;
+
+const OsName = P.extend`
+  margin: 0px;
+  line-height: 25px;
 `;
 
 const Img = styled.img``;
 
-const Wrapper = styled.div``;
-
 const Rate = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
-const AppWrap = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 const Apps = styled.div`
-  margin-left: 12px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
   }
 `;
-const AppsBox = styled.div`
+
+const App = styled.button`
+  cursor: pointer;
+  border: 0;
+  background: transparent;
   display: flex;
   align-items: center;
   @media (min-width: 768px) {
-    border-left: ${props => (props.border ? "1px solid #ffffff" : "")};
-    border-right: ${props => (props.border ? "1px solid #ffffff" : "")};
     padding: 0px 16px;
+
+    &:first-child {
+      padding-left: 0px;
+    }
   }
+`;
+
+const AppWithBorder = App.extend`
+  @media (min-width: 768px) {
+    border-left: 1px solid #ffffff50;
+    border-right: 1px solid #ffffff50;
+  }
+`;
+
+const Offer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export default function() {
   return (
     <Section>
       <div className="container">
-        <Wrapper>
-          <Title>Скачай мобильное приложение Aviasales.ru</Title>
-          <Rate>
-            <Img src={raiting} alt="Рейтнг" />{" "}
-            <P color="#ffffff" fontsize="14px" paddingleft="8px">
-              Более 103 000 оценок
-            </P>
-          </Rate>
-          <AppWrap>
-            <Img src={iphone} alt="Iphone" />
-            <Apps>
-              <AppsBox>
-                <Img src={apple} alt="Рейтнг" />{" "}
-                <P color="#ffffff" fontsize="14px" paddingleft="8px">
-                  iPhone или iPad
-                </P>
-              </AppsBox>
-              <AppsBox border>
-                <Img src={android} alt="Рейтнг" />{" "}
-                <P color="#ffffff" fontsize="14px" paddingleft="8px">
-                  Android
-                </P>
-              </AppsBox>
-              <AppsBox>
-                <Img src={windows} alt="Рейтнг" />{" "}
-                <P color="#ffffff" fontsize="14px" paddingleft="8px">
-                  Windows Phone
-                </P>
-              </AppsBox>
-            </Apps>
-          </AppWrap>
-        </Wrapper>
+        <div className="row">
+          <div className="col-xl-offset-1 col-xl-10">
+            <Wrapper>
+              <Img src={iphone} alt="Iphone" />
+              <Offer>
+                <Title>Скачай мобильное приложение Aviasales.ru</Title>
+                <Rate>
+                  <Img src={raiting} alt="Рейтинг" />{" "}
+                  <P>Более 103 000 оценок</P>
+                </Rate>
+                <Apps>
+                  <App>
+                    <Img src={apple} alt="Рейтинг" />
+                    <OsName>iPhone или iPad</OsName>
+                  </App>
+                  <AppWithBorder>
+                    <Img src={android} alt="Рейтинг" /> <OsName>Android</OsName>
+                  </AppWithBorder>
+                  <App>
+                    <Img src={windows} alt="Рейтинг" />
+                    <OsName>Windows Phone</OsName>
+                  </App>
+                </Apps>
+              </Offer>
+            </Wrapper>
+          </div>
+        </div>
       </div>
     </Section>
   );

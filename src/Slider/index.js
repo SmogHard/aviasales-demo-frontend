@@ -73,52 +73,49 @@ const SliderImg = styled.div`
 
 const Img = styled.img``;
 
-const WrapperContainer = styled.div`
-  @media (min-width: 768px) {
-    margin-left: 8.3333%;
-    margin-right: 8.3333%;
-  }
-`;
-
 export default function() {
   return (
     <Section>
       <div className="container">
-        <Wrapper>
-          <Title>
-            Дешевые авиабилеты от крупнейших авиакомпаний и агентств
-          </Title>
-          <Slider>
-            <ButtonArrow>
-              <Img src={arrowleft} />
-            </ButtonArrow>
-            <WrapperContainer>
-              <SliderCompany>
-                <SliderImg>
-                  <Img src={aeroflot} />
-                </SliderImg>
-                <SliderImg>
-                  <Img src={s7} />
-                </SliderImg>
-                <SliderImg>
-                  <Img src={onetrip} />
-                </SliderImg>
-                <SliderImg>
-                  <Img src={korean} />
-                </SliderImg>
-                <SliderImg>
-                  <Img src={el} />
-                </SliderImg>
-              </SliderCompany>
-            </WrapperContainer>
-            <ButtonArrow>
-              <Img src={arrowright} />
-            </ButtonArrow>
-          </Slider>
-          <DotsWrap>
-            <Dot /> <Dot /> <Dot />
-          </DotsWrap>
-        </Wrapper>
+        <div className="row">
+          <div className="col-xl-offset-1 col-xl-10">
+            <Wrapper>
+              <Title>
+                Дешевые авиабилеты от крупнейших авиакомпаний и агентств
+              </Title>
+              <Slider>
+                <ButtonArrow>
+                  <Img src={arrowleft} />
+                </ButtonArrow>
+                <div className="col-xs-offset-1 col-xs-10">
+                  <SliderCompany>
+                    <SliderImg>
+                      <Img src={aeroflot} />
+                    </SliderImg>
+                    <SliderImg>
+                      <Img src={s7} />
+                    </SliderImg>
+                    <SliderImg>
+                      <Img src={onetrip} />
+                    </SliderImg>
+                    <SliderImg>
+                      <Img src={korean} />
+                    </SliderImg>
+                    <SliderImg>
+                      <Img src={el} />
+                    </SliderImg>
+                  </SliderCompany>
+                </div>
+                <ButtonArrow>
+                  <Img src={arrowright} />
+                </ButtonArrow>
+              </Slider>
+              <DotsWrap>
+                <Dot /> <Dot /> <Dot />
+              </DotsWrap>
+            </Wrapper>
+          </div>
+        </div>
       </div>
     </Section>
   );

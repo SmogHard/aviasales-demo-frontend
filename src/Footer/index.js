@@ -24,15 +24,7 @@ const Title = styled.h4`
   margin-bottom: 5px;
 `;
 
-const P = styled.p`
-  color: ${props => props.color};
-  padding-top: ${props => props.paddingtop};
-  padding-bottom: ${props => props.paddingbot};
-  padding-left: ${props => props.paddingleft};
-  padding-right: ${props => props.paddingright};
-  font-size: ${props => props.fontsize};
-  margin: ${props => props.margin};
-`;
+const P = styled.p``;
 
 const Wrapper = styled.div`
   text-align: left;
@@ -40,7 +32,7 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #e0e6e8;
 `;
 
-const LinksList = styled.div``;
+const List = styled.div``;
 
 const Li = styled.li`
   font-weight: 600;
@@ -61,18 +53,18 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-const SocialWrap = styled.div`
+const SocialIcon = styled.div`
   display: flex;
   align-items: center;
   margin-right: 12px;
 `;
 
-const SocialBox = styled.div`
+const Socials = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
 
-const AppsBox = styled.div`
+const Apps = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,20 +75,23 @@ const AppsBox = styled.div`
 `;
 
 const Img = styled.img`
-  margin-bottom: ${props => props.marginbot};
   margin-right: 4px;
+`;
+
+const Image = Img.extend`
+  margin-bottom: 8px;
 `;
 
 const Nav = styled.div`
   text-align: left;
 `;
 
-const NavLi = styled.li`
+const NavName = styled.li`
   display: inline-block;
   margin-right: 6px;
 `;
 
-const FlexBox = styled.div`
+const AboutUs = styled.div`
   padding-top: 24px;
   display: flex;
   flex-direction: column;
@@ -108,7 +103,7 @@ const FlexBox = styled.div`
   }
 `;
 
-const WrapFlex = styled.div`
+const Links = styled.div`
   @media (min-width: 768px) {
     text-align: left;
   }
@@ -127,8 +122,7 @@ export default function() {
         <Wrapper>
           <div className="row">
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Страны</Title>
                 <Ul>
                   <li>
@@ -153,11 +147,10 @@ export default function() {
                     <Link href="#">Все страны →</Link>
                   </Li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Авиакомпании</Title>
                 <Ul>
                   <li>
@@ -182,11 +175,10 @@ export default function() {
                     <Link href="#">Все страны →</Link>
                   </Li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Аэропорты</Title>
                 <Ul>
                   <li>
@@ -211,11 +203,10 @@ export default function() {
                     <Link href="#">Все страны →</Link>
                   </Li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Страны</Title>
                 <Ul>
                   <li>
@@ -240,11 +231,10 @@ export default function() {
                     <Link href="#">Все страны →</Link>
                   </Li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Направления</Title>
                 <Ul>
                   <li>
@@ -266,11 +256,10 @@ export default function() {
                     <Link href="#">MOW - BKK</Link>
                   </li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
             <div className="col-xs-6 col-sm-3 col-md-2">
-              <LinksList>
-                {" "}
+              <List>
                 <Title>Сервисы</Title>
                 <Ul>
                   <li>
@@ -295,78 +284,88 @@ export default function() {
                     <Link href="#">Помощь</Link>
                   </li>
                 </Ul>
-              </LinksList>
+              </List>
             </div>
           </div>
         </Wrapper>
-        <FlexBox>
-          <WrapFlex>
+        <AboutUs>
+          <Links>
             <Nav>
               <Ul>
-                <NavLi>
+                <NavName>
                   <Link href="#">О компании</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">Партнёрская программа</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">Реклама</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">Вакансии</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">Помощь</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">Правила</Link>
-                </NavLi>
-                <NavLi>
+                </NavName>
+                <NavName>
                   <Link href="#">White Label авиабилеты</Link>
-                </NavLi>
+                </NavName>
               </Ul>
             </Nav>
-            <SocialBox>
-              <SocialWrap>
+            <Socials>
+              <SocialIcon>
                 <Img src={vk} />
-                <P>Вконтакте</P>
-              </SocialWrap>
-              <SocialWrap>
+                <P>
+                  <Link href="#">Вконтакте</Link>
+                </P>
+              </SocialIcon>
+              <SocialIcon>
                 <Img src={facebook} />
-                <P>Фейсбук</P>
-              </SocialWrap>
-              <SocialWrap>
+                <P>
+                  <Link href="#">Фейсбук</Link>
+                </P>
+              </SocialIcon>
+              <SocialIcon>
                 <Img src={insta} />
-                <P>Инстаграмм</P>
-              </SocialWrap>
-              <SocialWrap>
+                <P>
+                  <Link href="#">Инстаграмм</Link>
+                </P>
+              </SocialIcon>
+              <SocialIcon>
                 <Img src={twitter} />
-                <P>Твиттер</P>
-              </SocialWrap>
-              <SocialWrap>
+                <P>
+                  <Link href="#">Твиттер</Link>
+                </P>
+              </SocialIcon>
+              <SocialIcon>
                 <Img src={viber} />
-                <P>Вайбер </P>
-              </SocialWrap>
-            </SocialBox>
+                <P>
+                  <Link href="#">Вайбер</Link>
+                </P>
+              </SocialIcon>
+            </Socials>
             <P>
               <Link href="#">Поиск и бронирование отелей</Link>
             </P>
-          </WrapFlex>
-          <WrapFlex>
-            <AppsBox>
+          </Links>
+          <Links>
+            <Apps>
               <Button>
-                <Img marginbot="8px" src={appstore} />
+                <Image src={appstore} />
               </Button>
               <Button>
-                <Img marginbot="8px" src={googleplay} />
+                <Image src={googleplay} />
               </Button>
               <Button>
-                <Img marginbot="8px" src={winstore} />
+                <Image src={winstore} />
               </Button>
-            </AppsBox>
+            </Apps>
             <P>© 2007–2018, Aviasales — дешевые авиабилеты</P>
-          </WrapFlex>
-        </FlexBox>
+          </Links>
+        </AboutUs>
       </div>
     </Footer>
   );

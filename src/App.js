@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import Header from "./Header/index.js";
-import Directions from "./Directions/index.js";
-import Prices from "./Prices/index.js";
-import Promotions from "./Promotions/index.js";
-import Faq from "./Faq/index.js";
-import Download from "./Download/index.js";
-import Footer from "./Footer/index.js";
-import Slider from "./Slider/index.js";
-import Subscribe from "./Subscribe/index.js";
+import Header from "./Header";
+import Directions from "./Directions";
+import Prices from "./Prices";
+import Promotions from "./Promotions";
+import Faq from "./Faq";
+import Download from "./Download";
+import Footer from "./Footer";
+import Slider from "./Slider";
+import Subscribe from "./Subscribe";
 import "./App.css";
 
 class App extends Component {
