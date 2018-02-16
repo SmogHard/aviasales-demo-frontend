@@ -76,7 +76,9 @@ const Img = styled.img``;
 const Input = styled.input`
   padding: 6px 9px 6px 13px;
   line-height: 20px;
-  width: 100%;
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
