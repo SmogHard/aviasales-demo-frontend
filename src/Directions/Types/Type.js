@@ -44,6 +44,8 @@ const Img = styled.img`
   }
   padding: 13px;
   border-radius: 50%;
+  width: 48px;
+  height: 48px;
 `;
 
 const IconTitle = styled.p`
