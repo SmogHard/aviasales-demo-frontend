@@ -17,7 +17,7 @@ const Directions = styled.div`
   flex-wrap: wrap;
 `;
 
-const Button = styled.button`
+const Direction = styled.button`
   cursor: pointer;
   margin-bottom: 21px;
   justify-content: center;
@@ -35,13 +35,13 @@ const Button = styled.button`
   justify-content: start;
 `;
 
-const Img = styled.img`
+const Icon = styled.img`
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(74, 74, 74, 0.1);
-  ${Button}:hover & {
+  ${Direction}:hover & {
     box-shadow: 0px 4px 16px rgba(74, 74, 74, 0.1);
   }
-  ${Button}:focus & {
+  ${Direction}:focus & {
     box-shadow: 0px 4px 16px rgba(74, 74, 74, 0.1);
   }
   padding: 13px;
@@ -50,17 +50,17 @@ const Img = styled.img`
   height: 48px;
 `;
 
-const IconTitle = styled.p`
+const Name = styled.p`
   font-size: 12px;
   line-height: 20px;
   margin-bottom: 2px;
   text-transform: uppercase;
   border-bottom: 1px solid transparent;
-  ${Button}:hover & {
+  ${Direction}:hover & {
     border-bottom: 1px solid #00ace2;
     color: #5c5c5c;
   }
-  ${Button}:focus & {
+  ${Direction}:focus & {
     border-bottom: 1px solid #00ace2;
     color: #5c5c5c;
   }
@@ -71,42 +71,42 @@ export default function() {
     <div className="row center-xs">
       <div className="col-xl-9">
         <Directions>
-          <Button>
-            <Img alt="Мир" src={world} />
-            <IconTitle>
+          <Direction>
+            <Icon alt="Мир" src={world} />
+            <Name>
               Куда<br />угодно
-            </IconTitle>
-          </Button>
-          <Button>
-            <Img alt="Пальма" src={holiday} />
-            <IconTitle>
+            </Name>
+          </Direction>
+          <Direction>
+            <Icon alt="Пальма" src={holiday} />
+            <Name>
               Солнце<br />и море
-            </IconTitle>
-          </Button>
-          <Button>
-            <Img alt="Корзина" src={shoping} />
-            <IconTitle>
+            </Name>
+          </Direction>
+          <Direction>
+            <Icon alt="Корзина" src={shoping} />
+            <Name>
               Шопинг,<br />город
-            </IconTitle>
-          </Button>
-          <Button>
-            <Img alt="История" src={history} />
-            <IconTitle>
+            </Name>
+          </Direction>
+          <Direction>
+            <Icon alt="История" src={history} />
+            <Name>
               Культура<br />и история
-            </IconTitle>
-          </Button>
-          <Button>
-            <Img alt="Коктейль" src={coctail} />
-            <IconTitle>
+            </Name>
+          </Direction>
+          <Direction>
+            <Icon alt="Коктейль" src={coctail} />
+            <Name>
               Ночная<br />жизнь
-            </IconTitle>
-          </Button>
-          <Button>
-            <Img alt="Коляска" src={children} />
-            <IconTitle>
+            </Name>
+          </Direction>
+          <Direction>
+            <Icon alt="Коляска" src={children} />
+            <Name>
               Отдых<br />с детьми
-            </IconTitle>
-          </Button>
+            </Name>
+          </Direction>
         </Directions>
       </div>
     </div>

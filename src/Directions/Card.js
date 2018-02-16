@@ -15,7 +15,7 @@ const Card = styled.div`
   }
 `;
 
-const CardImage = styled.img`
+const CityImage = styled.img`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   height: 176px;
@@ -25,7 +25,7 @@ const CardImage = styled.img`
   }
 `;
 
-const CardBlock = styled.div`
+const Wrapper = styled.div`
   background: #ffffff;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -94,7 +94,7 @@ const Link = styled.a`
   }
 `;
 
-const Img = styled.img`
+const Flag = styled.img`
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -110,10 +110,10 @@ const Place = styled.div`
 export default props => {
   return (
     <Card>
-      <CardImage src={props.img} alt="Город" />
-      <CardBlock>
+      <CityImage src={props.img} alt="Город" />
+      <Wrapper>
         <TextPlace>
-          <Img src={props.flag} alt="Флаг" />
+          <Flag src={props.flag} alt="Флаг" />
           <Place>
             <CityName>{props.city}</CityName>
             <P>{props.country}</P>
@@ -125,7 +125,7 @@ export default props => {
           </LinkText>
           <P>{props.date}</P>
         </TextPriceAndDate>
-      </CardBlock>
+      </Wrapper>
     </Card>
   );
 };
