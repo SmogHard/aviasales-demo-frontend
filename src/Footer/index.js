@@ -53,7 +53,7 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-const SocialIcon = styled.div`
+const Icon = styled.div`
   display: flex;
   align-items: center;
   margin-right: 12px;
@@ -86,7 +86,7 @@ const Nav = styled.div`
   text-align: left;
 `;
 
-const NavName = styled.li`
+const Name = styled.li`
   display: inline-block;
   margin-right: 6px;
 `;
@@ -292,60 +292,60 @@ export default function() {
           <Links>
             <Nav>
               <Ul>
-                <NavName>
+                <Name>
                   <Link href="#">О компании</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">Партнёрская программа</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">Реклама</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">Вакансии</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">Помощь</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">Правила</Link>
-                </NavName>
-                <NavName>
+                </Name>
+                <Name>
                   <Link href="#">White Label авиабилеты</Link>
-                </NavName>
+                </Name>
               </Ul>
             </Nav>
             <Socials>
-              <SocialIcon>
+              <Icon>
                 <Img src={vk} />
                 <P>
                   <Link href="#">Вконтакте</Link>
                 </P>
-              </SocialIcon>
-              <SocialIcon>
+              </Icon>
+              <Icon>
                 <Img src={facebook} />
                 <P>
                   <Link href="#">Фейсбук</Link>
                 </P>
-              </SocialIcon>
-              <SocialIcon>
+              </Icon>
+              <Icon>
                 <Img src={insta} />
                 <P>
                   <Link href="#">Инстаграмм</Link>
                 </P>
-              </SocialIcon>
-              <SocialIcon>
+              </Icon>
+              <Icon>
                 <Img src={twitter} />
                 <P>
                   <Link href="#">Твиттер</Link>
                 </P>
-              </SocialIcon>
-              <SocialIcon>
+              </Icon>
+              <Icon>
                 <Img src={viber} />
                 <P>
                   <Link href="#">Вайбер</Link>
                 </P>
-              </SocialIcon>
+              </Icon>
             </Socials>
             <P>
               <Link href="#">Поиск и бронирование отелей</Link>
