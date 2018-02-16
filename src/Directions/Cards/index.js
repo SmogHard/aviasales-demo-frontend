@@ -1,11 +1,11 @@
 import React from "react";
 import Card from "./Card";
-import krasnodar from "./krasnodar.png";
-import minvody from "./minvod.png";
-import sochi from "./sochi.png";
-import simferopol from "./simpheropol.png";
-import barselona from "./barselona.png";
-import saintp from "./saintp.png";
+import krasnodar from "./krasnodar.jpg";
+import minvody from "./minvod.jpg";
+import sochi from "./sochi.jpg";
+import simferopol from "./simpheropol.jpg";
+import barselona from "./barselona.jpg";
+import saintp from "./saintp.jpg";
 import flag_ru from "./flagru.png";
 import flag_es from "./flages.png";
 
