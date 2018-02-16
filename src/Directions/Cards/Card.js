@@ -99,6 +99,7 @@ const Img = styled.img`
   height: 30px;
   border-radius: 50%;
   margin-right: 18px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 `;
 
 const Place = styled.div`
