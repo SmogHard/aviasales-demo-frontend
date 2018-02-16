@@ -64,6 +64,10 @@ const ButtonArrow = styled.button`
 const SliderCompany = styled.div`
   display: flex;
   flex-wrap: wrap;
+  padding-left: 100px;
+  @media (min-width: 1200px) {
+    padding-left: 0px;
+  }
 `;
 
 const SliderImg = styled.div`
@@ -87,25 +91,23 @@ export default function() {
                 <ButtonArrow>
                   <Img src={arrowleft} />
                 </ButtonArrow>
-                <div className="col-xs-offset-1 col-xs-10">
-                  <SliderCompany>
-                    <SliderImg>
-                      <Img src={aeroflot} />
-                    </SliderImg>
-                    <SliderImg>
-                      <Img src={s7} />
-                    </SliderImg>
-                    <SliderImg>
-                      <Img src={onetrip} />
-                    </SliderImg>
-                    <SliderImg>
-                      <Img src={korean} />
-                    </SliderImg>
-                    <SliderImg>
-                      <Img src={el} />
-                    </SliderImg>
-                  </SliderCompany>
-                </div>
+                <SliderCompany>
+                  <SliderImg>
+                    <Img src={aeroflot} />
+                  </SliderImg>
+                  <SliderImg>
+                    <Img src={s7} />
+                  </SliderImg>
+                  <SliderImg>
+                    <Img src={onetrip} />
+                  </SliderImg>
+                  <SliderImg>
+                    <Img src={korean} />
+                  </SliderImg>
+                  <SliderImg>
+                    <Img src={el} />
+                  </SliderImg>
+                </SliderCompany>
                 <ButtonArrow>
                   <Img src={arrowright} />
                 </ButtonArrow>
