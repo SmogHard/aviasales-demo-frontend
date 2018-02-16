@@ -37,20 +37,19 @@ const Img = styled.img`
 const TitleLogo = Img.extend`
   margin: 40px 0 24px 0;
 `;
-const Wrapper = styled.div``;
 
 export default function() {
   return (
-    <Wrapper>
+    <div>
       <TitleLogo alt="Лого" src={compass} />
       <TitleWrap>
         <Title>
           Популярные направления перелетов из города
           <Button>
-            Москва <Img alt="Карандаш" src={pen} />
+            Москва <Img alt="Ручка" src={pen} />
           </Button>
         </Title>
       </TitleWrap>
-    </Wrapper>
+    </div>
   );
 }

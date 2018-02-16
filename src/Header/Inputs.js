@@ -22,14 +22,14 @@ const Input = styled.input`
   }
 `;
 
-const Div = styled.div`
+const InputWrapper = styled.div`
   display: flex;
   align-items: center;
   background: #fff;
   margin: 1px;
 `;
 
-const CityFrom = Div.extend`
+const CityFrom = InputWrapper.extend`
   position: relative;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -38,7 +38,7 @@ const CityFrom = Div.extend`
   }
 `;
 
-const CityTo = Div.extend`
+const CityTo = InputWrapper.extend`
   @media (min-width: 768px) {
     border-top-right-radius: 2px;
   }
@@ -47,7 +47,7 @@ const CityTo = Div.extend`
   }
 `;
 
-const DateDepartures = Div.extend`
+const Departures = InputWrapper.extend`
   position: relative;
   @media (min-width: 768px) {
     border-bottom-left-radius: 2px;
@@ -57,11 +57,11 @@ const DateDepartures = Div.extend`
   }
 `;
 
-const DateArrival = Div.extend`
+const Arrival = InputWrapper.extend`
   position: relative;
 `;
 
-const SelectPassenger = Div.extend`
+const SelectPassenger = InputWrapper.extend`
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   @media (min-width: 768px) {
@@ -96,6 +96,7 @@ const ButtonPassenger = styled.button`
   align-items: center;
   position: relative;
   background: transparent;
+  cursor: pointer;
 
   &:after {
     content: "";
@@ -110,11 +111,11 @@ const ButtonPassenger = styled.button`
   }
 `;
 
-const Span = styled.span`
+const Text = styled.span`
   line-height: 20px;
 `;
 
-const OpacityText = Span.extend`
+const OpacityText = Text.extend`
   color: #a0b0b9;
 `;
 
@@ -124,17 +125,13 @@ const Abbreviation = OpacityText.extend`
   top: 18px;
 `;
 
-const DateWrapper = styled.div`
-  display: flex;
-`;
-
-const Wrapper = styled.div`
+const Inputs = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `;
 
-const Box = styled.div`
+const Layout = styled.div`
   flex-basis: 100%;
   @media (min-width: 768px) {
     flex-basis: 50%;
@@ -144,20 +141,21 @@ const Box = styled.div`
   }
 `;
 
-const DateSelect = Box.extend`
+const DateFields = Layout.extend`
+  display: flex;
   @media (min-width: 1200px) {
     flex-basis: 30%;
   }
 `;
 
-const Date = styled.div`
+const DateSelect = styled.div`
   flex-basis: 50%;
 `;
 
 export default function() {
   return (
-    <Wrapper>
-      <Box>
+    <Inputs>
+      <Layout>
         <CityFrom>
           <Input
             type="text"
@@ -170,8 +168,8 @@ export default function() {
             <Img alt="Направление" src={arrow} />
           </ButtonAction>
         </CityFrom>
-      </Box>
-      <Box>
+      </Layout>
+      <Layout>
         <CityTo>
           <Input
             type="text"
@@ -180,48 +178,46 @@ export default function() {
             defaultValue=""
           />
         </CityTo>
-      </Box>
-      <DateSelect>
-        <DateWrapper>
-          <Date>
-            <DateDepartures>
-              <Input
-                date
-                type="text"
-                name="dtfrom"
-                placeholder="Туда"
-                defaultValue=""
-              />
-              <ButtonAction>
-                <Img alt="Календарь" src={calendar} />
-              </ButtonAction>
-            </DateDepartures>
-          </Date>
-          <Date>
-            <DateArrival>
-              <Input
-                date
-                type="text"
-                name="dtto"
-                placeholder="Обратно"
-                defaultValue=""
-              />
-              <ButtonAction>
-                <Img alt="Календарь" src={calendar} />
-              </ButtonAction>
-            </DateArrival>
-          </Date>
-        </DateWrapper>
-      </DateSelect>
-      <Box>
+      </Layout>
+      <DateFields>
+        <DateSelect>
+          <Departures>
+            <Input
+              date
+              type="text"
+              name="dtfrom"
+              placeholder="Туда"
+              defaultValue=""
+            />
+            <ButtonAction>
+              <Img alt="Календарь" src={calendar} />
+            </ButtonAction>
+          </Departures>
+        </DateSelect>
+        <DateSelect>
+          <Arrival>
+            <Input
+              date
+              type="text"
+              name="dtto"
+              placeholder="Обратно"
+              defaultValue=""
+            />
+            <ButtonAction>
+              <Img alt="Календарь" src={calendar} />
+            </ButtonAction>
+          </Arrival>
+        </DateSelect>
+      </DateFields>
+      <Layout>
         <SelectPassenger>
           <ButtonPassenger>
-            <Span>
+            <Text>
               1 пассажир, <OpacityText>эконом</OpacityText>
-            </Span>
+            </Text>
           </ButtonPassenger>
         </SelectPassenger>
-      </Box>
-    </Wrapper>
+      </Layout>
+    </Inputs>
   );
 }

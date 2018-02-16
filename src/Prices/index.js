@@ -13,7 +13,7 @@ const Section = styled.section`
 
 const Img = styled.img``;
 
-const List = styled.div`
+const TicketPrices = styled.div`
   margin-top: 40px;
   padding-bottom: 24px;
   border-bottom: 1px dashed #afbec6;
@@ -38,7 +38,7 @@ const List = styled.div`
   }
 `;
 
-const ListTitle = styled.h2`
+const CityTo = styled.h2`
   text-align: center;
   font-size: 22px;
   line-height: 32px;
@@ -47,12 +47,12 @@ const ListTitle = styled.h2`
   margin-top: 0px;
 `;
 
-const Place = styled.div`
+const Destination = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const PlaceNameWrap = styled.div`
+const Description = styled.div`
   text-align: left;
 `;
 
@@ -78,11 +78,11 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
-const P = styled.p`
+const Text = styled.p`
   line-height: 24px;
 `;
 
-const PlaceName = P.extend`
+const Country = Text.extend`
   font-size: 12px;
   color: #a0b0b9;
   text-transform: uppercase;
@@ -91,7 +91,7 @@ const PlaceName = P.extend`
   margin: 0px;
 `;
 
-const OffersWrap = styled.div`
+const PopularDirections = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -107,113 +107,113 @@ export default function() {
         <div className="row">
           <div className="col-md-offset-1 col-md-10">
             <Title />
-            <OffersWrap>
-              <List>
-                <Place>
+            <PopularDirections>
+              <TicketPrices>
+                <Destination>
                   <Img alt="Россия" src={russian} />
-                  <PlaceNameWrap>
-                    <ListTitle>Симферополь (Крым)</ListTitle>
-                    <PlaceName>КРЫМ</PlaceName>
-                  </PlaceNameWrap>
-                </Place>
+                  <Description>
+                    <CityTo>Симферополь (Крым)</CityTo>
+                    <Country>КРЫМ</Country>
+                  </Description>
+                </Destination>
                 <Offers>
                   <CityFrom>
-                    <P>Из Москвы</P>
-                    <P>Из Санкт-Петербурга</P>
-                    <P>Из Новосибирска</P>
-                    <P>Из Екатеринбурга</P>
-                    <P>Из Челябинска</P>
+                    <Text>Из Москвы</Text>
+                    <Text>Из Санкт-Петербурга</Text>
+                    <Text>Из Новосибирска</Text>
+                    <Text>Из Екатеринбурга</Text>
+                    <Text>Из Челябинска</Text>
                   </CityFrom>
                   <Prices>
-                    <P>
+                    <Text>
                       <Link href="#">от 4 813 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 7 857 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 15 127 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 275 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 148 ₽</Link>
-                    </P>
+                    </Text>
                   </Prices>
                 </Offers>
-              </List>
-              <List>
-                <Place>
+              </TicketPrices>
+              <TicketPrices>
+                <Destination>
                   <Img alt="Россия" src={armenia} />
-                  <PlaceNameWrap>
-                    <ListTitle>Ереван</ListTitle>
-                    <PlaceName>АРМЕНИЯ</PlaceName>
-                  </PlaceNameWrap>
-                </Place>
+                  <Description>
+                    <CityTo>Ереван</CityTo>
+                    <Country>АРМЕНИЯ</Country>
+                  </Description>
+                </Destination>
                 <Offers>
                   <CityFrom>
-                    <P>Из Москвы</P>
-                    <P>Из Санкт-Петербурга</P>
-                    <P>Из Сочи</P>
-                    <P>Из Краснодара</P>
-                    <P>Из Ростова-на-Дону</P>
+                    <Text>Из Москвы</Text>
+                    <Text>Из Санкт-Петербурга</Text>
+                    <Text>Из Сочи</Text>
+                    <Text>Из Краснодара</Text>
+                    <Text>Из Ростова-на-Дону</Text>
                   </CityFrom>
                   <Prices>
-                    <P>
+                    <Text>
                       <Link href="#">от 4 813 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 7 857 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 15 127 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 275 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 148 ₽</Link>
-                    </P>
+                    </Text>
                   </Prices>
                 </Offers>
-              </List>
-              <List>
-                <Place>
+              </TicketPrices>
+              <TicketPrices>
+                <Destination>
                   <Img alt="Россия" src={moldova} />
-                  <PlaceNameWrap>
-                    <ListTitle>Кишинёв</ListTitle>
-                    <PlaceName>Молдавия</PlaceName>
-                  </PlaceNameWrap>
-                </Place>
+                  <Description>
+                    <CityTo>Кишинёв</CityTo>
+                    <Country>Молдавия</Country>
+                  </Description>
+                </Destination>
                 <Offers>
                   <CityFrom>
-                    <P>Из Москвы</P>
-                    <P>Из Санкт-Петербурга</P>
-                    <P>Из Краснодара</P>
-                    <P>Из Сургута</P>
-                    <P>Из Нового Уренгоя</P>
+                    <Text>Из Москвы</Text>
+                    <Text>Из Санкт-Петербурга</Text>
+                    <Text>Из Краснодара</Text>
+                    <Text>Из Сургута</Text>
+                    <Text>Из Нового Уренгоя</Text>
                   </CityFrom>
                   <Prices>
-                    <P>
+                    <Text>
                       <Link href="#">от 4 813 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 7 857 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 15 127 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 275 ₽</Link>
-                    </P>
-                    <P>
+                    </Text>
+                    <Text>
                       <Link href="#">от 9 148 ₽</Link>
-                    </P>
+                    </Text>
                   </Prices>
                 </Offers>
-              </List>
-            </OffersWrap>
+              </TicketPrices>
+            </PopularDirections>
             <Info />
           </div>
         </div>

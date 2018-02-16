@@ -30,12 +30,12 @@ const Title = styled.h2`
     padding-top: 46px;
     text-align: left;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 992px) {
     padding-top: 66px;
   }
 `;
 
-const P = styled.p`
+const Text = styled.p`
   color: #ffffff;
   padding-left: 8px;
   font-size: 14px;
@@ -43,33 +43,30 @@ const P = styled.p`
   margin: 0px;
 `;
 
-const OsName = P.extend`
+const OsName = Text.extend`
   margin: 0px;
   line-height: 25px;
 `;
 
-const Img = styled.img``;
+const Image = styled.img``;
 
-const Stars = Img.extend`
+const Stars = Image.extend`
   margin-bottom: 1px;
 `;
 
-const Iphone = Img.extend`
+const Iphone = Image.extend`
   height: 213px;
   width: 162px;
   position: absolute;
   bottom: 0px;
   left: 0px;
   @media screen and (min-width: 768px) {
-    position: absolute;
     height: 312px;
     width: 237px;
   }
 `;
 
-const Picture = styled.picture``;
-
-const Rate = styled.div`
+const Rating = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,9 +89,10 @@ const Apps = styled.div`
     padding-bottom: 51px;
     padding-top: 40px;
   }
-  @media (min-width: 1000px) {
+  @media (min-width: 992px) {
     padding-top: 43px;
     padding-bottom: 65px;
+  }
 `;
 
 const App = styled.button`
@@ -106,7 +104,6 @@ const App = styled.button`
   padding-bottom: 20px;
   @media (min-width: 768px) {
     padding: 0px 16px;
-
     &:first-child {
       padding-left: 0px;
     }
@@ -120,7 +117,7 @@ const AppWithBorder = App.extend`
   }
 `;
 
-const ImageWrapper = styled.div`
+const MobileAppShow = styled.div`
   height: 100%;
   position: relative;
 `;
@@ -132,32 +129,32 @@ export default function() {
         <div className="row center-xs left-md">
           <div className="col-xs-12 col-md col-md-offset-4">
             <Title>Скачай мобильное приложение Aviasales.ru</Title>
-            <Rate>
+            <Rating>
               <Stars src={raiting} alt="Рейтинг" />
-              <P>Более 103 000 оценок</P>
-            </Rate>
+              <Text>Более 103 000 оценок</Text>
+            </Rating>
           </div>
         </div>
         <div className="row">
           <div className="col-xs-6 col-md-4 col-xl-3 col-xl-offset-1">
-            <ImageWrapper>
-              <Picture>
+            <MobileAppShow>
+              <picture>
                 <source srcSet={iphone_md} media="(min-width: 768px)" />
                 <Iphone src={iphone_xs} alt="Iphone" />
-              </Picture>
-            </ImageWrapper>
+              </picture>
+            </MobileAppShow>
           </div>
           <div className="col-xs-6 col-md-8 col-xl">
             <Apps>
               <App>
-                <Img src={apple} alt="Рейтинг" />
+                <Image src={apple} alt="iOS" />
                 <OsName>iPhone или iPad</OsName>
               </App>
               <AppWithBorder>
-                <Img src={android} alt="Рейтинг" /> <OsName>Android</OsName>
+                <Image src={android} alt="Android" /> <OsName>Android</OsName>
               </AppWithBorder>
               <App>
-                <Img src={windows} alt="Рейтинг" />
+                <Image src={windows} alt="Windows Phone" />
                 <OsName>Windows Phone</OsName>
               </App>
             </Apps>

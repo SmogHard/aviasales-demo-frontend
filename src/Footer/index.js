@@ -26,7 +26,7 @@ const Title = styled.h4`
 
 const P = styled.p``;
 
-const Wrapper = styled.div`
+const Navigation = styled.nav`
   text-align: left;
   padding-bottom: 24px;
   border-bottom: 1px solid #e0e6e8;
@@ -119,7 +119,7 @@ export default function() {
   return (
     <Footer>
       <div className="container">
-        <Wrapper>
+        <Navigation>
           <div className="row">
             <div className="col-xs-6 col-sm-3 col-md-2">
               <List>
@@ -287,7 +287,7 @@ export default function() {
               </List>
             </div>
           </div>
-        </Wrapper>
+        </Navigation>
         <AboutUs>
           <Links>
             <Nav>

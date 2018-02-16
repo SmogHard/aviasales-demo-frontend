@@ -11,20 +11,21 @@ const Section = styled.section`
   position: relative;
   margin-top: 24px;
   text-align: center;
-  &:after {
-    content: "";
-    display: block;
-    background: #fff repeat-x url(${candy}) 50% 0;
-    height: 7px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-  }
   display: none;
   @media (min-width: 768px) {
     display: block;
   }
+`;
+
+const Candy = styled.div`
+  content: "";
+  display: block;
+  background: #fff repeat-x url(${candy}) 50% 0;
+  height: 7px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 `;
 
 const Title = styled.h4`
@@ -40,7 +41,7 @@ const Title = styled.h4`
   }
 `;
 
-const P = styled.p`
+const Info = styled.p`
   font-size: 16px;
   color: #5c5c5c;
   line-height: 22px;
@@ -50,28 +51,26 @@ const P = styled.p`
   }
 `;
 
-const Wrapper = styled.div`
+const Newsletter = styled.div`
   @media (min-width: 1200px) {
     display: flex;
     padding-bottom: 8px;
   }
 `;
 
-const Social = styled.div`
+const Icon = styled.div`
   display: flex;
   margin-left: 3px;
   margin-right: 3px;
 `;
 
-const SocialWrap = styled.div`
+const Social = styled.div`
   display: flex;
   justify-content: center;
   @media (min-width: 1200px) {
     margin-right: 16px;
   }
 `;
-
-const Img = styled.img``;
 
 const Input = styled.input`
   padding: 6px 9px 6px 13px;
@@ -91,7 +90,7 @@ const Button = styled.button`
   padding: 8px 20px 8px 20px;
 `;
 
-const EmailForm = styled.form`
+const Email = styled.form`
   padding-bottom: 61px;
   @media (min-width: 1200px) {
     padding-bottom: 0px;
@@ -99,7 +98,7 @@ const EmailForm = styled.form`
   }
 `;
 
-const FormWrap = styled.div`
+const SubscribeForm = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 24px;
@@ -108,14 +107,15 @@ const FormWrap = styled.div`
   }
 `;
 
-const TextDiscount = styled.div`
+const Offer = styled.div`
+  text-align: center;
   @media (min-width: 1200px) {
     text-align: left;
     flex-basis: 50%;
   }
 `;
 
-const ActionDiscount = styled.div`
+const SocialAndSubscribe = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 1200px) {
@@ -134,37 +134,38 @@ export default function() {
       <div className="container">
         <div className="row">
           <div className="col-md-offset-3 col-md-6 col-xl-offset-1 col-xl-10">
-            <Wrapper>
-              <TextDiscount>
+            <Candy />
+            <Newsletter>
+              <Offer>
                 <Title>Хотите знать всё о скидках на авиабилеты?</Title>
-                <P>
+                <Info>
                   Вы можете подписаться на нашу рассылку через соцсети или по
                   электронной почте.
-                </P>
-              </TextDiscount>
-              <ActionDiscount>
-                <SocialWrap>
-                  <Social>
-                    <Img src={twitter} />
-                  </Social>
-                  <Social>
-                    <Img src={facebook} />
-                  </Social>
-                  <Social>
-                    <Img src={vk} />
-                  </Social>
-                  <Social>
-                    <Img src={rss} />
-                  </Social>
-                </SocialWrap>
-                <FormWrap>
-                  <EmailForm>
+                </Info>
+              </Offer>
+              <SocialAndSubscribe>
+                <Social>
+                  <Icon>
+                    <img src={twitter} alt="Твиттер" />
+                  </Icon>
+                  <Icon>
+                    <img src={facebook} alt="Фэйсбук" />
+                  </Icon>
+                  <Icon>
+                    <img src={vk} alt="Вконтакте" />
+                  </Icon>
+                  <Icon>
+                    <img src={rss} alt="RSS-канал" />
+                  </Icon>
+                </Social>
+                <SubscribeForm>
+                  <Email>
                     <Input placeholder="Ваш email" />
                     <Button>Подписаться</Button>
-                  </EmailForm>
-                </FormWrap>
-              </ActionDiscount>
-            </Wrapper>
+                  </Email>
+                </SubscribeForm>
+              </SocialAndSubscribe>
+            </Newsletter>
           </div>
         </div>
       </div>

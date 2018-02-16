@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import arrowleft from "./arrowleft.png";
-import arrowright from "./arrowright.png";
+import arrowLeft from "./arrowleft.png";
+import arrowRight from "./arrowright.png";
 import aeroflot from "./aeroflot.png";
 import el from "./el.png";
 import korean from "./korean.png";
-import onetrip from "./onetrip.png";
+import oneTrip from "./onetrip.png";
 import s7 from "./s7.png";
 
 const Section = styled.section`
@@ -24,17 +24,17 @@ const Title = styled.h2`
   line-height: 40px;
 `;
 
-const Wrapper = styled.div`
+const Slider = styled.div`
   margin-top: 75px;
 `;
 
-const Slider = styled.div`
+const Carousel = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
 `;
 
-const DotsWrap = styled.div`
+const Pagination = styled.div`
   text-align: center;
 `;
 
@@ -55,13 +55,13 @@ const Dot = styled.label`
   }
 `;
 
-const ButtonArrow = styled.button`
+const Arrow = styled.button`
   cursor: pointer;
   background: transparent;
   border: 0;
 `;
 
-const SliderCompany = styled.div`
+const Airlines = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding-left: 100px;
@@ -70,12 +70,12 @@ const SliderCompany = styled.div`
   }
 `;
 
-const SliderImg = styled.div`
+const Company = styled.div`
   margin-left: 10px;
   margin-right: 10px;
 `;
 
-const Img = styled.img``;
+const Image = styled.img``;
 
 export default function() {
   return (
@@ -83,39 +83,39 @@ export default function() {
       <div className="container">
         <div className="row">
           <div className="col-xl-offset-1 col-xl-10">
-            <Wrapper>
+            <Slider>
               <Title>
                 Дешевые авиабилеты от крупнейших авиакомпаний и агентств
               </Title>
-              <Slider>
-                <ButtonArrow>
-                  <Img src={arrowleft} />
-                </ButtonArrow>
-                <SliderCompany>
-                  <SliderImg>
-                    <Img src={aeroflot} />
-                  </SliderImg>
-                  <SliderImg>
-                    <Img src={s7} />
-                  </SliderImg>
-                  <SliderImg>
-                    <Img src={onetrip} />
-                  </SliderImg>
-                  <SliderImg>
-                    <Img src={korean} />
-                  </SliderImg>
-                  <SliderImg>
-                    <Img src={el} />
-                  </SliderImg>
-                </SliderCompany>
-                <ButtonArrow>
-                  <Img src={arrowright} />
-                </ButtonArrow>
-              </Slider>
-              <DotsWrap>
+              <Carousel>
+                <Arrow>
+                  <Image src={arrowLeft} />
+                </Arrow>
+                <Airlines>
+                  <Company>
+                    <Image src={aeroflot} />
+                  </Company>
+                  <Company>
+                    <Image src={s7} />
+                  </Company>
+                  <Company>
+                    <Image src={oneTrip} />
+                  </Company>
+                  <Company>
+                    <Image src={korean} />
+                  </Company>
+                  <Company>
+                    <Image src={el} />
+                  </Company>
+                </Airlines>
+                <Arrow>
+                  <Image src={arrowRight} />
+                </Arrow>
+              </Carousel>
+              <Pagination>
                 <Dot /> <Dot /> <Dot />
-              </DotsWrap>
-            </Wrapper>
+              </Pagination>
+            </Slider>
           </div>
         </div>
       </div>

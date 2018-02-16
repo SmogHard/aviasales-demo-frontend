@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-const CardWrap = styled.div`
+const Card = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 12px;
 `;
 
-const CardHeader = styled.div`
+const Header = styled.div`
   background: #cd2027;
   color: #ffffff;
   text-align: left;
@@ -49,7 +49,7 @@ const OfferLabel = styled.div`
   text-align: right;
 `;
 
-const Span = styled.span`
+const SmallText = styled.span`
   font-size: 12px;
 `;
 
@@ -63,7 +63,7 @@ const Sign = styled.img`
   flex: 0 0 auto;
 `;
 
-const CardHeaderText = styled.p`
+const Text = styled.p`
   padding-top: 22px;
   padding-bottom: 21px;
   padding-left: 16px;
@@ -97,27 +97,27 @@ const OfferTextPrice = OfferText.extend``;
 
 export default props => {
   return (
-    <CardWrap>
-      <CardHeader>
-        <CardHeaderText> {props.title}</CardHeaderText>
+    <Card>
+      <Header>
+        <Text> {props.title}</Text>
         <Sign alt="" src={props.sign} />
-      </CardHeader>
+      </Header>
       <CardSection>
         <CardOffer>
-          <CompanyImg alt="pobeda" src={props.aviacompany} />
+          <CompanyImg alt="pobeda" src={props.aviaCompany} />
           <OfferLabel>
             <Price>
-              <Span>от </Span> {props.price} ₽
+              <SmallText>от </SmallText> {props.price} ₽
             </Price>
-            <DayLeft> Осталось {props.dayleft} дней</DayLeft>
+            <DayLeft> Осталось {props.dayLeft} дней</DayLeft>
           </OfferLabel>
         </CardOffer>
-        <OfferTextPrice>{props.offertext}</OfferTextPrice>
+        <OfferTextPrice>{props.offerText}</OfferTextPrice>
         <OfferText>
-          Специальное предложение от авиакомпании {props.companyname}
+          Специальное предложение от авиакомпании {props.companyName}
         </OfferText>
         <CardButton>Узнать подробности</CardButton>
       </CardSection>
-    </CardWrap>
+    </Card>
   );
 };

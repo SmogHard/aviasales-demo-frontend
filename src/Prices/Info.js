@@ -15,7 +15,10 @@ const AboutPrice = styled.p`
   line-height: 20px;
   font-size: 14px;
   color: #a0b0b9;
-  margin-bottom: 0px;
+  margin-bottom: 40px;
+  @media (min-width: 768px) {
+    margin-bottom: 0px;
+  }
 `;
 
 export default function() {

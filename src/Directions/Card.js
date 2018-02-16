@@ -25,7 +25,7 @@ const CityImage = styled.img`
   }
 `;
 
-const Wrapper = styled.div`
+const InfoAboutRoute = styled.div`
   background: #ffffff;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
@@ -71,14 +71,14 @@ const LinkText = styled.p`
   }
 `;
 
-const TextPlace = styled.div`
+const Direction = styled.div`
   background: #ffffff;
   text-align: left;
   display: flex;
   align-items: center;
 `;
 
-const TextPriceAndDate = styled.div`
+const PriceAndDate = styled.div`
   background: #ffffff;
   text-align: right;
 `;
@@ -111,21 +111,21 @@ export default props => {
   return (
     <Card>
       <CityImage src={props.img} alt="Город" />
-      <Wrapper>
-        <TextPlace>
+      <InfoAboutRoute>
+        <Direction>
           <Flag src={props.flag} alt="Флаг" />
           <Place>
             <CityName>{props.city}</CityName>
             <P>{props.country}</P>
           </Place>
-        </TextPlace>
-        <TextPriceAndDate>
+        </Direction>
+        <PriceAndDate>
           <LinkText>
             <Link href="#">Найти от {props.price} ₽</Link>
           </LinkText>
           <P>{props.date}</P>
-        </TextPriceAndDate>
-      </Wrapper>
+        </PriceAndDate>
+      </InfoAboutRoute>
     </Card>
   );
 };

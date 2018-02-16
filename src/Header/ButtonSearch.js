@@ -2,18 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import aero from "./aero.svg";
 
-const Box = styled.div`
+const Search = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 16px;
   padding-bottom: 88px;
+  @media (min-width: 768px) {
+    margin-top: 32px;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 48px;
+  }
 `;
 
 const Img = styled.img`
   margin-left: 16px;
 `;
 
-const ButtonSearch = styled.button`
+const Button = styled.button`
   color: #ffffff;
   background: #ff9241;
   font-size: 24px;
@@ -38,10 +44,10 @@ const ButtonSearch = styled.button`
 `;
 export default function() {
   return (
-    <Box>
-      <ButtonSearch>
-        Найти билеты <Img alt="aero" src={aero} />
-      </ButtonSearch>
-    </Box>
+    <Search>
+      <Button>
+        Найти билеты <Img alt="Самолет" src={aero} />
+      </Button>
+    </Search>
   );
 }

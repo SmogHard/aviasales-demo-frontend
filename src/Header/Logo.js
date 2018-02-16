@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import logo from "./logo.png";
 
-const Logo = styled.img``;
+const Img = styled.img``;
 
-const LogoWrap = styled.div`
+const Logo = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
   padding-top: 12px;
 `;
 
-const Span = styled.span`
+const Text = styled.span`
   color: #ffffff;
   margin-left: 12px;
   display: none;
@@ -23,9 +23,9 @@ const Span = styled.span`
 
 export default function() {
   return (
-    <LogoWrap>
-      <Logo alt="logo" src={logo} />
-      <Span xshide>aviasales</Span>
-    </LogoWrap>
+    <Logo>
+      <Img alt="Логотип" src={logo} />
+      <Text>aviasales</Text>
+    </Logo>
   );
 }
