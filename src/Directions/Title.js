@@ -8,12 +8,6 @@ const TitleWrap = styled.div`
   justify-content: center;
 `;
 
-const Img = styled.img``;
-
-const TitleLogo = Img.extend`
-  margin: 40px 0 24px 0;
-`;
-
 const Title = styled.h2`
   text-align: center;
   font-size: 18px;
@@ -28,8 +22,21 @@ const Button = styled.button`
   outline: none;
   cursor: pointer;
   color: #00ace2;
+  &:hover,
+  &:focus {
+    color: #ff9241;
+  }
 `;
 
+const Img = styled.img`
+  ${Button}:hover & {
+    color: #ff9241;
+  }
+`;
+
+const TitleLogo = Img.extend`
+  margin: 40px 0 24px 0;
+`;
 const Wrapper = styled.div``;
 
 export default function() {

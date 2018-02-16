@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import pobeda from "./pobeda.png";
 import luft from "./luft.png";
 import sign from "./sign.png";

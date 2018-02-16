@@ -3,7 +3,7 @@ import Card from "./Card";
 import krasnodar from "./krasnodar.png";
 import minvody from "./minvod.png";
 import sochi from "./sochi.png";
-import simferopol from "./simph.png";
+import simferopol from "./simpheropol.png";
 import barselona from "./barselona.png";
 import saintp from "./saintp.png";
 import flag_ru from "./flagru.png";

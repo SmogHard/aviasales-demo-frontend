@@ -7,12 +7,22 @@ const Card = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 75, 93, 0.12);
   margin-top: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover,
+  &:focus {
+    box-shadow: 2px 8px 14px rgba(0, 75, 93, 0.12);
+  }
 `;
 
 const CardImage = styled.img`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   height: 176px;
+  object-fit: cover;
+  @media (min-width: 768px) {
+    height: 212px;
+  }
 `;
 
 const CardBlock = styled.div`
@@ -62,14 +72,14 @@ const LinkText = styled.p`
 `;
 
 const TextPlace = styled.div`
-  backgroud: #ffffff;
+  background: #ffffff;
   text-align: left;
   display: flex;
   align-items: center;
 `;
 
 const TextPriceAndDate = styled.div`
-  backgroud: #ffffff;
+  background: #ffffff;
   text-align: right;
 `;
 
@@ -78,6 +88,10 @@ const Link = styled.a`
   margin-top: 16px;
   margin-bottom: 16px;
   text-decoration: none;
+  transition: color 0.3s ease;
+  ${Card}:hover & {
+    color: #ff8c00;
+  }
 `;
 
 const Img = styled.img`

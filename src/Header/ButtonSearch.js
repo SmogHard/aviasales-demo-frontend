@@ -31,6 +31,10 @@ const ButtonSearch = styled.button`
   @media (min-width: 768px) {
     width: 50%;
   }
+  &:hover,
+  &:focus {
+    background: #fca15f;
+  }
 `;
 export default function() {
   return (
