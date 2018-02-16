@@ -27,6 +27,7 @@ const Div = styled.div`
 `;
 
 const CityFrom = Div.extend`
+  position: relative;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   @media (min-width: 768px) {
@@ -44,6 +45,7 @@ const CityTo = Div.extend`
 `;
 
 const DateDepartures = Div.extend`
+  position: relative;
   @media (min-width: 768px) {
     border-bottom-left-radius: 2px;
   }
@@ -52,7 +54,9 @@ const DateDepartures = Div.extend`
   }
 `;
 
-const DateArrival = Div.extend``;
+const DateArrival = Div.extend`
+  position: relative;
+`;
 
 const SelectPassenger = Div.extend`
   border-bottom-left-radius: 2px;
@@ -68,21 +72,24 @@ const SelectPassenger = Div.extend`
 const ButtonAction = styled.button`
   background: transparent;
   border: 0;
-  margin-right: 16px;
   outline: none;
   cursor: pointer;
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 18px;
+  right: 16px;
 `;
 
 const ButtonPassenger = styled.button`
   border: none;
   padding-top: 18px;
-  padding-bottom: 20px;
+  padding-bottom: 18px;
   padding-right: 0px;
   padding-left: 16px;
   width: 100%;
   display: flex;
+  line-height: 20px
   align-items: center;
   position: relative;
   background: transparent;
@@ -101,7 +108,17 @@ const ButtonPassenger = styled.button`
 `;
 
 const Span = styled.span`
-  color: #4a4a4a;
+  line-height: 20px;
+`;
+
+const OpacityText = Span.extend`
+  color: #a0b0b9;
+`;
+
+const Abbreviation = OpacityText.extend`
+  position: absolute;
+  right: 43px;
+  top: 18px;
 `;
 
 const DateWrapper = styled.div`
@@ -145,7 +162,7 @@ export default function() {
             placeholder="Укажите город"
             defaultValue="Москва"
           />
-          <Span>MOV</Span>
+          <Abbreviation>MOV</Abbreviation>
           <ButtonAction>
             <Img alt="Направление" src={arrow} />
           </ButtonAction>
@@ -196,9 +213,9 @@ export default function() {
       <Box>
         <SelectPassenger>
           <ButtonPassenger>
-            <span>
-              1 пассажир, <Span>эконом</Span>
-            </span>
+            <Span>
+              1 пассажир, <OpacityText>эконом</OpacityText>
+            </Span>
           </ButtonPassenger>
         </SelectPassenger>
       </Box>
