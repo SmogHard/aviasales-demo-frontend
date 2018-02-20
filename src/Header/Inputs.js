@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import calendar from "./calendar.svg";
 import arrow from "./arrow.svg";
+import ButtonPassenger from "./ButtonPassenger";
+import ButtonPassengerSearch from "./ButtonPassengerSearch";
+import { Route } from "react-router-dom";
 
 const Img = styled.img``;
 
@@ -61,17 +64,6 @@ const Arrival = InputWrapper.extend`
   position: relative;
 `;
 
-const SelectPassenger = InputWrapper.extend`
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-  @media (min-width: 768px) {
-    border-bottom-left-radius: 0px;
-  }
-  @media (min-width: 1200px) {
-    border-top-right-radius: 2px;
-  }
-`;
-
 const ButtonAction = styled.button`
   background: transparent;
   border: 0;
@@ -82,33 +74,6 @@ const ButtonAction = styled.button`
   position: absolute;
   top: 18px;
   right: 16px;
-`;
-
-const ButtonPassenger = styled.button`
-  border: none;
-  padding-top: 18px;
-  padding-bottom: 18px;
-  padding-right: 0px;
-  padding-left: 16px;
-  width: 100%;
-  display: flex;
-  line-height: 20px
-  align-items: center;
-  position: relative;
-  background: transparent;
-  cursor: pointer;
-
-  &:after {
-    content: "";
-    display: block;
-    line-height: 0;
-    height: 0;
-    border: 5px transparent solid;
-    border-top-color: #262626;
-    position: absolute;
-    right: 18px;
-    top: 25px;
-  }
 `;
 
 const Text = styled.span`
@@ -129,6 +94,12 @@ const Inputs = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  @media (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+  @media (min-width: 1200px) {
+    margin-bottom: 48px;
+  }
 `;
 
 const Layout = styled.div`
@@ -210,13 +181,8 @@ export default function() {
         </DateSelect>
       </DateFields>
       <Layout>
-        <SelectPassenger>
-          <ButtonPassenger>
-            <Text>
-              1 пассажир, <OpacityText>эконом</OpacityText>
-            </Text>
-          </ButtonPassenger>
-        </SelectPassenger>
+        <Route path="/" exact component={ButtonPassenger} />
+        <Route path="/search" component={ButtonPassengerSearch} />
       </Layout>
     </Inputs>
   );

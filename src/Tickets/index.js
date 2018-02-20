@@ -7,7 +7,6 @@ const Ticket = styled.div`
   background: #ffffff;
   display: flex;
   border-radius: 4px;
-  margin-top: 56px;
   margin-bottom: 20px;
 `;
 

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import pin from "./pin.svg";
 import air_up from "./air-up.png";
 import air_down from "./air-down.png";
+import dot from "./dot.png";
+import line from "./line.png";
 
 const Wrapper = styled.div`
   display: flex;
@@ -47,6 +49,7 @@ const TotalWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 7px;
 }
 `;
 
@@ -59,6 +62,31 @@ const RoutePath = styled.div`
 `;
 
 const AirIcon = styled.img``;
+
+const Snippet = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Dot = styled.img``;
+
+const Line = styled.img`
+  padding: 2px;
+`;
+
+const AirAbbreviation = styled.p`
+  font-size: 12px;
+  line-height: 18px;
+  color: #9ca5a8;
+  margin: 0px;
+`;
+
+const RouteAirPorts = styled.div`
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default function() {
   return (
@@ -77,6 +105,13 @@ export default function() {
           <Total>всего: 5ч</Total>
           <AirIcon src={air_down} />
         </TotalWrap>
+        <Snippet>
+          <Dot src={dot} /> <Line src={line} /> <Dot src={dot} />
+        </Snippet>
+        <RouteAirPorts>
+          <AirAbbreviation>VKO</AirAbbreviation>
+          <AirAbbreviation>BCN</AirAbbreviation>
+        </RouteAirPorts>
       </RoutePath>
       <To>
         <Clock>

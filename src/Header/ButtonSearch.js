@@ -7,12 +7,6 @@ const Search = styled.div`
   justify-content: center;
   margin-top: 16px;
   padding-bottom: 88px;
-  @media (min-width: 768px) {
-    margin-top: 32px;
-  }
-  @media (min-width: 1200px) {
-    margin-top: 48px;
-  }
 `;
 
 const Img = styled.img`

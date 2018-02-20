@@ -46,6 +46,12 @@ const Trips = styled.div`
   flex-direction: column;
 `;
 
+const Line = styled.div`
+  width: 100%;
+  margin: 12px 0px;
+  border: 0.5px dotted #dddddd;
+`;
+
 export default function() {
   return (
     <Flight>
@@ -58,6 +64,7 @@ export default function() {
       </Header>
       <Trips>
         <Trip />
+        <Line />
         <Trip />
       </Trips>
     </Flight>

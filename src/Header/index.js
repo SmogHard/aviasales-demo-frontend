@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "./Logo";
-import Inputs from "./Inputs";
-import ButtonSearch from "./ButtonSearch";
+import MainPage from "./MainPage";
+import SearchPage from "./SearchPage";
+import { Route } from "react-router-dom";
 
 const Header = styled.header`
   background: linear-gradient(
@@ -14,49 +14,15 @@ const Header = styled.header`
     #02abdb 11.38%,
     #196ebd 100%
   );
-`;
-
-const Title = styled.h1`
-  color: #ffffff;
-  text-align: center;
-  font-size: 20px;
-  line-height: 23px;
-  margin-top: 47px;
-  font-weight: 700;
-  @media (min-width: 768px) {
-    font-size: 32px;
-    line-height: 48px;
-  }
-`;
-
-const TextHiddenXs = styled.p`
-  display: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 20px;
-  line-height: 23px;
-  font-weight: 700;
-  margin-bottom: 40px;
-  @media (min-width: 768px) {
-    display: block;
-  }
+  padding-top: 12px;
 `;
 
 export default function() {
   return (
     <Header>
       <div className="container">
-        <Logo />
-        <Title>Поиск дешевых авиабилетов</Title>
-        <TextHiddenXs>Лучший способо купить авиабилеты дешево</TextHiddenXs>
-        <div className="row">
-          <div className="col-xs-12 col-md-offset-1 col-md-10">
-            <form>
-              <Inputs />
-              <ButtonSearch />
-            </form>
-          </div>
-        </div>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/search" exact component={SearchPage} />
       </div>
     </Header>
   );

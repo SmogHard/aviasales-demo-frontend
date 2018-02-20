@@ -8,7 +8,6 @@ const Logo = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  padding-top: 12px;
 `;
 
 const Text = styled.span`
