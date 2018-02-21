@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import aero from "./aero.svg";
 
 const Search = styled.div`
@@ -14,23 +15,16 @@ const Img = styled.img`
 `;
 
 const Button = styled.button`
-  color: #ffffff;
-  background: #ff9241;
-  font-size: 24px;
-  border: 0px;
-  line-height: 28px;
-  padding-top: 14px;
-  padding-bottom: 13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  border-radius: 2px;
+  border-radius: 4px;
+  font-size: 25px;
   font-weight: 900;
+  background: #ff9241;
+  border: none;
+  color: #ffffff;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
   cursor: pointer;
-  @media (min-width: 768px) {
-    width: 50%;
-  }
   &:hover,
   &:focus {
     background: #fca15f;
@@ -39,9 +33,11 @@ const Button = styled.button`
 export default function() {
   return (
     <Search>
-      <Button>
-        Найти билеты <Img alt="Самолет" src={aero} />
-      </Button>
+      <Link to="/search">
+        <Button>
+          Найти билеты <Img alt="Самолет" src={aero} />
+        </Button>
+      </Link>
     </Search>
   );
 }

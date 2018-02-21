@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import logo from "./logo.png";
 
 const Img = styled.img``;
@@ -23,7 +24,9 @@ const Text = styled.span`
 export default function() {
   return (
     <Logo>
-      <Img alt="Логотип" src={logo} />
+      <Link to="/">
+        <Img alt="Логотип" src={logo} />
+      </Link>
       <Text>aviasales</Text>
     </Logo>
   );

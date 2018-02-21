@@ -1,27 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import avia_russia from "./avia-russia.png";
 import share from "./share.png";
 import Trip from "./Trip";
+import AirlineLogo from "./AirlineLogo";
 
 const Flight = styled.div`
   flex-basis: 66.6666%;
-  padding: 16px;
+  padding-right: 6px;
+  padding-top: 12px;
+  @media (min-width: 768px) {
+    padding: 16px;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
-  justify-content: space-between;
-`;
-
-const Company = styled.img`
-  width: 99px;
-  height: 36px;
+  justify-content: flex-end;
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 const InfoAndShare = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const Type = styled.button`
@@ -42,8 +47,11 @@ const Share = styled.img`
 `;
 
 const Trips = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Line = styled.div`
@@ -52,20 +60,21 @@ const Line = styled.div`
   border: 0.5px dotted #dddddd;
 `;
 
-export default function() {
+export default function(props) {
+  const flight = props.flight;
   return (
     <Flight>
       <Header>
-        <Company src={avia_russia} alt="Авиакомпания Россия" />
+        <AirlineLogo airline={flight.airline} />
         <InfoAndShare>
-          <Type> Чартер </Type>
+          {flight.type ? <Type> {flight.type} </Type> : ""}
           <Share src={share} />
         </InfoAndShare>
       </Header>
       <Trips>
-        <Trip />
+        <Trip data={flight.to} />
         <Line />
-        <Trip />
+        <Trip data={flight.from} />
       </Trips>
     </Flight>
   );

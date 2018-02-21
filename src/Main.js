@@ -6,10 +6,14 @@ import Faq from "./Faq";
 import Download from "./Download";
 import Slider from "./Slider";
 import Subscribe from "./Subscribe";
+import { Helmet } from "react-helmet";
 
 export default function() {
   return (
     <div className="main">
+      <Helmet>
+        <title>Главная</title>
+      </Helmet>
       <Directions />
       <Prices />
       <Slider />

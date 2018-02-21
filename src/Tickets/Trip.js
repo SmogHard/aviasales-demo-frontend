@@ -88,38 +88,39 @@ const RouteAirPorts = styled.div`
   justify-content: space-between;
 `;
 
-export default function() {
+export default function(props) {
+  const trip = props.data;
   return (
     <Wrapper>
       <From>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> 00:05 </Time>
+          <Time> {trip.takeoff} </Time>
         </Clock>
-        <City>Москва</City>
-        <Day>24 фев 2018, Сб</Day>
+        <City>{trip.cityFrom}</City>
+        <Day>{trip.dateFrom}</Day>
       </From>
       <RoutePath>
         <TotalWrap>
           <AirIcon src={air_up} />
-          <Total>всего: 5ч</Total>
+          <Total>{trip.total}</Total>
           <AirIcon src={air_down} />
         </TotalWrap>
         <Snippet>
           <Dot src={dot} /> <Line src={line} /> <Dot src={dot} />
         </Snippet>
         <RouteAirPorts>
-          <AirAbbreviation>VKO</AirAbbreviation>
-          <AirAbbreviation>BCN</AirAbbreviation>
+          <AirAbbreviation>{trip.airportFrom}</AirAbbreviation>
+          <AirAbbreviation>{trip.airportTo}</AirAbbreviation>
         </RouteAirPorts>
       </RoutePath>
       <To>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> 00:05 </Time>
+          <Time> {trip.landing} </Time>
         </Clock>
-        <City>Москва</City>
-        <Day>24 фев 2018, Сб</Day>
+        <City>{trip.cityTo}</City>
+        <Day>{trip.dateTo}</Day>
       </To>
     </Wrapper>
   );

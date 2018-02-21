@@ -5,6 +5,7 @@ import styled from "styled-components";
 import envelope from "./envelope.png";
 import hamburger from "./hamburger.png";
 import avatar from "./avatar.png";
+import HeaderXs from "./HeaderSearchXs";
 
 const Header = styled.div`
   display: flex;
@@ -45,29 +46,47 @@ const ToolBar = styled.div`
   flex-direction: row;
 `;
 
+const SearchPage = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
+const SearchPageXs = styled.div`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
 export default function() {
   return (
     <div>
-      <Header>
-        <Logo />
-        <ToolBar>
-          <IconWrapper>
-            <Icon src={envelope} />
-          </IconWrapper>
-          <IconWrapper>
-            <Icon src={avatar} />
-            <MessageCounter>1</MessageCounter>
-          </IconWrapper>
-          <Icon src={hamburger} />
-        </ToolBar>
-      </Header>
-      <div className="row">
-        <div className="col-xs-12">
-          <form>
-            <Inputs />
-          </form>
+      <SearchPage>
+        <Header>
+          <Logo />
+          <ToolBar>
+            <IconWrapper>
+              <Icon src={envelope} />
+            </IconWrapper>
+            <IconWrapper>
+              <Icon src={avatar} />
+              <MessageCounter>1</MessageCounter>
+            </IconWrapper>
+            <Icon src={hamburger} />
+          </ToolBar>
+        </Header>
+        <div className="row">
+          <div className="col-xs-12">
+            <form>
+              <Inputs />
+            </form>
+          </div>
         </div>
-      </div>
+      </SearchPage>
+      <SearchPageXs>
+        <HeaderXs />
+      </SearchPageXs>
     </div>
   );
 }
