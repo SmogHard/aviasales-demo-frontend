@@ -16,7 +16,7 @@ const ButtonPassenger = styled.button`
   padding-left: 16px;
   width: 100%;
   display: flex;
-  line-height: 20px
+  line-height: 20px;
   align-items: center;
   position: relative;
   background: transparent;

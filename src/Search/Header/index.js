@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import MainPage from "./MainPage";
 import SearchPage from "./SearchPage";
-import { Route } from "react-router-dom";
 
 const Header = styled.header`
   background: linear-gradient(
@@ -21,8 +19,7 @@ export default function() {
   return (
     <Header>
       <div className="container">
-        <Route path="/" exact component={MainPage} />
-        <Route path="/search" exact component={SearchPage} />
+        <SearchPage />
       </div>
     </Header>
   );

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Tickets from "./Tickets";
 import { Helmet } from "react-helmet";
 import settings from "./settings.png";
+import Header from "./Header";
+import Filter from "./Filter";
 
 const Section = styled.section`
   background: #eaeaea;
@@ -73,7 +75,7 @@ const ShowMore = styled.button`
   }
 `;
 
-const Filter = ShowMore.extend`
+const FilterButton = ShowMore.extend`
   display: block;
   width: initial;
   margin: 0 auto;
@@ -88,21 +90,31 @@ const Filter = ShowMore.extend`
 
 export default function() {
   return (
-    <Section>
-      <Helmet>
-        <title>Результаты поиска</title>
-      </Helmet>
-      <div className="container">
-        <Settings>
-          <Button>
-            <Icon src={settings} />
-            <Up>Наверх</Up>
-          </Button>
-        </Settings>
-        <Tickets />
-        <ShowMore> Показать еще 10 билетов! </ShowMore>
-        <Filter>Фильтровать</Filter>
-      </div>
-    </Section>
+    <div>
+      <Header />
+      <Section>
+        <Helmet>
+          <title>Результаты поиска</title>
+        </Helmet>
+        <div className="container">
+          <Settings>
+            <Button>
+              <Icon src={settings} />
+              <Up>Наверх</Up>
+            </Button>
+          </Settings>
+          <div className="row">
+            <div className="col-lg-3">
+              <Filter />
+            </div>
+            <div className="col-xs-12 col-xl-7">
+              <Tickets />
+            </div>
+          </div>
+          <ShowMore> Показать еще 10 билетов! </ShowMore>
+          <FilterButton>Фильтровать</FilterButton>
+        </div>
+      </Section>
+    </div>
   );
 }

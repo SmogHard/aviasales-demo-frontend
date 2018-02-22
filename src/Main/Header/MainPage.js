@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Inputs from "./Inputs";
-import ButtonSearch from "./ButtonSearch";
-import Logo from "./Logo";
+import ButtonSearch from "./../../Common/ButtonSearch";
+import Logo from "./../../Common/Logo";
 
 const Title = styled.h1`
   color: #ffffff;

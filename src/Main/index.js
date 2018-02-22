@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import Directions from "./Directions";
 import Prices from "./Prices";
 import Promotions from "./Promotions";
@@ -14,6 +15,7 @@ export default function() {
       <Helmet>
         <title>Главная</title>
       </Helmet>
+      <Header />
       <Directions />
       <Prices />
       <Slider />

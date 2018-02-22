@@ -1,11 +1,11 @@
 import React from "react";
 import Inputs from "./Inputs";
-import Logo from "./Logo";
+import Logo from "./../../Common/Logo";
 import styled from "styled-components";
 import envelope from "./envelope.png";
 import hamburger from "./hamburger.png";
 import avatar from "./avatar.png";
-import HeaderXs from "./HeaderSearchXs";
+import HeaderSearchMobile from "./HeaderSearchMobile";
 
 const Header = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ export default function() {
         </div>
       </SearchPage>
       <SearchPageXs>
-        <HeaderXs />
+        <HeaderSearchMobile />
       </SearchPageXs>
     </div>
   );
