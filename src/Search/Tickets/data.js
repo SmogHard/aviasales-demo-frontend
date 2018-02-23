@@ -25,7 +25,9 @@ export const data = [
       to: {
         takeoff: "00:05",
         landing: "03:05",
-        total: "5 ч",
+        total: {
+          hour: 4
+        },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -37,7 +39,7 @@ export const data = [
       from: {
         takeoff: "10:35",
         landing: "17:10",
-        total: "4 ч 35 м",
+        total: { hour: 4, minutes: 35 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -65,7 +67,7 @@ export const data = [
       to: {
         takeoff: "07:30",
         landing: "09:50",
-        total: "4 ч 20 м",
+        total: { hour: 4, minutes: 20 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -77,7 +79,7 @@ export const data = [
       from: {
         takeoff: "11:20",
         landing: "17:35",
-        total: "4 ч 15 м",
+        total: { hour: 4, minutes: 15 },
         transfers: "CDG",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -109,7 +111,7 @@ export const data = [
       to: {
         takeoff: "00:15",
         landing: "03:10",
-        total: "4 ч 55 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -121,7 +123,7 @@ export const data = [
       from: {
         takeoff: "10:45",
         landing: "17:15",
-        total: "4 ч 30 м",
+        total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -164,7 +166,7 @@ export const data = [
       to: {
         takeoff: "00:15",
         landing: "03:10",
-        total: "4 ч 55 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -176,7 +178,7 @@ export const data = [
       from: {
         takeoff: "10:45",
         landing: "17:15",
-        total: "4 ч 30 м",
+        total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Барселона",
@@ -205,7 +207,7 @@ export const data = [
       to: {
         takeoff: "00:15",
         landing: "03:10",
-        total: "4 ч 55 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -217,7 +219,7 @@ export const data = [
       from: {
         takeoff: "10:45",
         landing: "17:15",
-        total: "4 ч 30 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Барселона",
@@ -245,7 +247,7 @@ export const data = [
       to: {
         takeoff: "00:15",
         landing: "03:10",
-        total: "4 ч 55 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -257,7 +259,7 @@ export const data = [
       from: {
         takeoff: "10:45",
         landing: "17:15",
-        total: "4 ч 30 м",
+        total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Барселона",
@@ -285,7 +287,7 @@ export const data = [
       to: {
         takeoff: "00:15",
         landing: "03:10",
-        total: "4 ч 55 м",
+        total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Москва",
@@ -297,7 +299,7 @@ export const data = [
       from: {
         takeoff: "10:45",
         landing: "17:15",
-        total: "4 ч 30 м",
+        total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
         dateFrom: "2018-04-12",
         cityFrom: "Барселона",

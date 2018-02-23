@@ -43,7 +43,9 @@ export default function(props) {
       </Time>
       <Total>
         <Icon src={clock} />
-        {flight.total}
+        {flight.total.hour +
+          " ч " +
+          (flight.total.minutes ? flight.total.minutes + " м" : "")}
       </Total>
       <Transfers>{flight.transfers}</Transfers>
     </Flight>

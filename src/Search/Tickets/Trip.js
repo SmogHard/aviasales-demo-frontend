@@ -104,7 +104,10 @@ export default function(props) {
   const dateTo = format(new Date(trip.dateTo), "DD MMM YYYY, dd", {
     locale: ruLocale
   });
-
+  const total =
+    trip.total.hour +
+    " ч " +
+    (trip.total.minutes ? trip.total.minutes + " м" : "");
   return (
     <Wrapper>
       <From>
@@ -118,7 +121,7 @@ export default function(props) {
       <RoutePath>
         <TotalWrap>
           <AirIcon src={air_up} />
-          <Total>{trip.total}</Total>
+          <Total>{total}</Total>
           <AirIcon src={air_down} />
         </TotalWrap>
         <Snippet>
