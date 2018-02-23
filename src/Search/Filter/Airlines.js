@@ -2,42 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import Title from "./TitleFilter";
 import arrow_open from "./arrow-open.svg";
-import checked from "./checked.png";
-import no_check from "./no-check.png";
+import Checkbox from "./Checkbox";
 
 const Airlines = styled.div`
   padding: 16px 16px;
   border-top: 1px solid #dddddd;
-`;
-
-const Checkboxes = styled.div`
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 0;
-  font-size: 12px;
-  color: #4a4a4a;
-`;
-
-const Checkbox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #4a4a4a;
-`;
-
-const Price = styled.p`
-  font-size: 12px;
-  color: #a0b0b9;
-`;
-
-const Check = styled.img``;
-
-const Text = styled.p`
-  padding-left: 6px;
-  margin: 0;
 `;
 
 const CheckboxTitle = styled.p`
@@ -121,17 +90,15 @@ const airlines = [
     price: "47 712 ₽"
   }
 ];
+
+const several = { checked: true, label: "Несколько авиакомпаний" };
+
 export default function() {
   return (
     <Airlines>
       <Title title="Авиакомпании" arrow={arrow_open} amount="42" />
       <Wrapper>
-        <Checkboxes>
-          <Checkbox>
-            <Check src={no_check} />
-            <Text>Несколько авиакомпаний</Text>
-          </Checkbox>
-        </Checkboxes>
+        <Checkbox data={several} />
       </Wrapper>
       <Information>
         Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями,
@@ -139,27 +106,11 @@ export default function() {
       </Information>
       <Wrapper>
         <CheckboxTitle>Альянсы</CheckboxTitle>
-        {alliance.map((item, i) => (
-          <Checkboxes key={i}>
-            <Checkbox>
-              <Check src={item.checked ? checked : no_check} />
-              <Text>{item.label}</Text>
-            </Checkbox>
-            <Price> {item.price}</Price>
-          </Checkboxes>
-        ))}
+        {alliance.map((item, i) => <Checkbox data={item} key={i} />)}
       </Wrapper>
       <Wrapper>
         <CheckboxTitle>Авиакомпании</CheckboxTitle>
-        {airlines.map((item, i) => (
-          <Checkboxes key={i}>
-            <Checkbox>
-              <Check src={item.checked ? checked : no_check} />
-              <Text>{item.label}</Text>
-            </Checkbox>
-            <Price> {item.price}</Price>
-          </Checkboxes>
-        ))}
+        {airlines.map((item, i) => <Checkbox data={item} key={i} />)}
       </Wrapper>
     </Airlines>
   );

@@ -6,27 +6,6 @@ import CityTo from "./../../Common/CityTo";
 import CityFrom from "./../../Common/CityFrom";
 import ButtonSearch from "./ButtonSearch";
 
-const InputWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  background: #fff;
-  margin: 1px;
-`;
-
-const Departures = InputWrapper.extend`
-  position: relative;
-  @media (min-width: 768px) {
-    border-bottom-left-radius: 2px;
-  }
-  @media (min-width: 1200px) {
-    border-bottom-left-radius: 0px;
-  }
-`;
-
-const Arrival = InputWrapper.extend`
-  position: relative;
-`;
-
 const Inputs = styled.div`
   display: flex;
   flex-direction: row;
@@ -54,13 +33,6 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const DateFields = Layout.extend`
-  display: flex;
-  @media (min-width: 1200px) {
-    flex-basis: 30%;
-  }
-`;
-
 const ButtonWrap = styled.div`
   display: flex;
   flex-basis: 45%;
@@ -74,10 +46,6 @@ const ButtonWrapPass = styled.div`
   }
 `;
 
-const DateSelect = styled.div`
-  flex-basis: 50%;
-`;
-
 export default function() {
   return (
     <Inputs>
@@ -87,18 +55,7 @@ export default function() {
       <Layout>
         <CityTo />
       </Layout>
-      <DateFields>
-        <DateSelect>
-          <Departures>
-            <DatePicker name="dtto" direction="Туда" />
-          </Departures>
-        </DateSelect>
-        <DateSelect>
-          <Arrival>
-            <DatePicker name="dtfrom" direction="Обратно" />
-          </Arrival>
-        </DateSelect>
-      </DateFields>
+      <DatePicker />
       <Wrapper>
         <ButtonWrapPass>
           <ButtonPassenger />

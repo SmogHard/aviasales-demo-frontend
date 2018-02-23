@@ -78,9 +78,7 @@ export default function() {
         </Header>
         <div className="row">
           <div className="col-xs-12">
-            <form>
-              <Inputs />
-            </form>
+            <Inputs />
           </div>
         </div>
       </SearchPage>
