@@ -5,13 +5,12 @@ import facebook from "./facebook.png";
 import insta from "./insta.png";
 import twitter from "./twitter.png";
 import viber from "./viber.png";
-import googleplay from "./googleplay.png";
-import winstore from "./winstore.png";
-import appstore from "./appstore.png";
+import googleplay from "./googleplay.svg";
+import winstore from "./winstore.svg";
+import appstore from "./appstore.svg";
 
 const Footer = styled.footer`
   background: #ffffff;
-  margin-top: 24px;
   text-align: center;
 `;
 
@@ -21,7 +20,11 @@ const Title = styled.h4`
   color: #5a5a5a;
   line-height: 16px;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 16px;
+  margin-top: 32px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const P = styled.p``;
@@ -34,9 +37,9 @@ const Navigation = styled.nav`
 
 const List = styled.div``;
 
-const Li = styled.li`
+const LiWithArrow = styled.li`
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 15px;
   white-space: nowrap;
 `;
 
@@ -56,7 +59,7 @@ const Link = styled.a`
 const Icon = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 12px;
+  margin-right: 28px;
 `;
 
 const Socials = styled.div`
@@ -88,7 +91,7 @@ const Nav = styled.div`
 
 const Name = styled.li`
   display: inline-block;
-  margin-right: 6px;
+  margin-right: 10px;
 `;
 
 const AboutUs = styled.div`
@@ -115,6 +118,10 @@ const Button = styled.button`
   background: transparent;
 `;
 
+const Li = styled.li`
+  margin-top: 12px;
+`;
+
 export default function() {
   return (
     <Footer>
@@ -125,27 +132,27 @@ export default function() {
               <List>
                 <Title>Страны</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Россия</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Таиланд</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Черногория</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Кипр</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Болгария</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <Link href="#">Россия</Link>
                   </Li>
+                  <Li>
+                    <Link href="#">Таиланд</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Черногория</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Кипр</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Болгария</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Грузия</Link>
+                  </Li>
+                  <LiWithArrow>
+                    <Link href="#">Все страны →</Link>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -153,27 +160,27 @@ export default function() {
               <List>
                 <Title>Авиакомпании</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Air Berlin</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Air France</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Alitalia</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Emirates</Link>
-                  </li>
-                  <li>
-                    <Link href="#">KLM</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <Link href="#">Air Berlin</Link>
                   </Li>
+                  <Li>
+                    <Link href="#">Air France</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Alitalia</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Emirates</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">KLM</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Грузия</Link>
+                  </Li>
+                  <LiWithArrow>
+                    <Link href="#">Все страны →</Link>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -181,27 +188,27 @@ export default function() {
               <List>
                 <Title>Аэропорты</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Шереметьево</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Курумоч</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Домодедово</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Толмачево</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Владивосток</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Гамбург</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <Link href="#">Шереметьево</Link>
                   </Li>
+                  <Li>
+                    <Link href="#">Курумоч</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Домодедово</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Толмачево</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Владивосток</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Гамбург</Link>
+                  </Li>
+                  <LiWithArrow>
+                    <Link href="#">Все страны →</Link>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -209,27 +216,27 @@ export default function() {
               <List>
                 <Title>Страны</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Россия</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Таиланд</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Черногория</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Кипр</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Болгария</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <Link href="#">Россия</Link>
                   </Li>
+                  <Li>
+                    <Link href="#">Таиланд</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Черногория</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Кипр</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Болгария</Link>
+                  </Li>
+                  <Li>
+                    <Link href="#">Грузия</Link>
+                  </Li>
+                  <LiWithArrow>
+                    <Link href="#">Все страны →</Link>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -237,24 +244,24 @@ export default function() {
               <List>
                 <Title>Направления</Title>
                 <Ul>
-                  <li>
+                  <Li>
                     <Link href="#">MOW - SIP</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">MOW - AER</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">MOW - TIV</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">MOW - MRV</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">LED -MOW</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">MOW - BKK</Link>
-                  </li>
+                  </Li>
                 </Ul>
               </List>
             </div>
@@ -262,27 +269,27 @@ export default function() {
               <List>
                 <Title>Сервисы</Title>
                 <Ul>
-                  <li>
+                  <Li>
                     <Link href="#">Горящие авиабилеты</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Календарь низких цен</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Карта низких цен</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Спецпредложения</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Таблица цен</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Блог</Link>
-                  </li>
-                  <li>
+                  </Li>
+                  <Li>
                     <Link href="#">Помощь</Link>
-                  </li>
+                  </Li>
                 </Ul>
               </List>
             </div>
