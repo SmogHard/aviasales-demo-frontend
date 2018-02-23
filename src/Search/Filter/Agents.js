@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 export default function() {
   return (
     <Wrapper>
-      <Title title="Агенства" arrow={arrow_close} />
+      <Title title="Агенства" arrow={arrow_close} amount="14" />
     </Wrapper>
   );
 }

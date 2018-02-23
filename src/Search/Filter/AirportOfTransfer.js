@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 export default function() {
   return (
     <Wrapper>
-      <Title title="Аэропорт пересадки" arrow={arrow_close} />
+      <Title title="Аэропорт пересадки" arrow={arrow_close} amount="45" />
     </Wrapper>
   );
 }

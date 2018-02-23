@@ -28,29 +28,39 @@ const Common = Header.extend`
   display: none;
 `;
 
+const Icon = styled.span`
+  padding-left: 8px;
+`;
+
 const emoji = {
   lowcost: (
     <Coster>
       Самый дешевый
-      <span role="img" aria-label="wow">
-        🤑
-      </span>
+      <Icon>
+        <span role="img" aria-label="wow">
+          🤑
+        </span>
+      </Icon>
     </Coster>
   ),
   faster: (
     <Faster>
       Самый быстрый
-      <span role="img" aria-label="flash">
-        ⚡️
-      </span>
+      <Icon>
+        <span role="img" aria-label="flash">
+          ⚡️
+        </span>
+      </Icon>
     </Faster>
   ),
   best: (
     <Best>
       Самый лучший
-      <span role="img" aria-label="love">
-        😍
-      </span>
+      <Icon>
+        <span role="img" aria-label="love">
+          😍
+        </span>
+      </Icon>
     </Best>
   ),
   common: <Common> </Common>

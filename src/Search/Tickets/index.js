@@ -7,6 +7,7 @@ import air_to from "./air-to.svg";
 import air_from from "./air-from.svg";
 import Header from "./Header";
 import { data } from "./data";
+import arrow from "./arrow-open.svg";
 
 const Ticket = styled.div`
   background: #ffffff;
@@ -25,6 +26,18 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
+const More = styled.button`
+  display: none;
+  border: 0;
+  cursor: pointer;
+  padding: 1px 4px;
+  background: #edf5f7;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;
+
 export default function(props) {
   return (
     <div>
@@ -34,6 +47,9 @@ export default function(props) {
           <Wrapper>
             <PriceAndInfo info={result.info} />
             <Flight flight={result.flight} />
+            <More>
+              <img src={arrow} alt="Стрелка" />
+            </More>
           </Wrapper>
           <Path>
             <FlightXs flight={result.flight.to} icon={air_to} />

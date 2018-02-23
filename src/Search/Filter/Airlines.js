@@ -40,9 +40,44 @@ const Text = styled.p`
   margin: 0;
 `;
 
+const CheckboxTitle = styled.p`
+  margin: 0px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #323333;
+  padding-bottom: 8px;
+`;
+
 const Wrapper = styled.div`
   padding-top: 16px;
 `;
+
+const Information = styled.p`
+  font-size: 12px;
+`;
+
+const alliance = [
+  {
+    checked: true,
+    label: "Все",
+    price: ""
+  },
+  {
+    checked: true,
+    label: "One World",
+    price: "7 712 ₽"
+  },
+  {
+    checked: true,
+    label: "Star Alliance",
+    price: "11 712 ₽"
+  },
+  {
+    checked: true,
+    label: "Sky Dream",
+    price: "23 712 ₽"
+  }
+];
 
 const airlines = [
   {
@@ -89,8 +124,33 @@ const airlines = [
 export default function() {
   return (
     <Airlines>
-      <Title title="Авиакомпании" arrow={arrow_open} />
+      <Title title="Авиакомпании" arrow={arrow_open} amount="42" />
       <Wrapper>
+        <Checkboxes>
+          <Checkbox>
+            <Check src={no_check} />
+            <Text>Несколько авиакомпаний</Text>
+          </Checkbox>
+        </Checkboxes>
+      </Wrapper>
+      <Information>
+        Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями,
+        включая выбранную
+      </Information>
+      <Wrapper>
+        <CheckboxTitle>Альянсы</CheckboxTitle>
+        {alliance.map((item, i) => (
+          <Checkboxes key={i}>
+            <Checkbox>
+              <Check src={item.checked ? checked : no_check} />
+              <Text>{item.label}</Text>
+            </Checkbox>
+            <Price> {item.price}</Price>
+          </Checkboxes>
+        ))}
+      </Wrapper>
+      <Wrapper>
+        <CheckboxTitle>Авиакомпании</CheckboxTitle>
         {airlines.map((item, i) => (
           <Checkboxes key={i}>
             <Checkbox>

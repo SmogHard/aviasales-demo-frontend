@@ -5,6 +5,8 @@ import air_up from "./air-up.png";
 import air_down from "./air-down.png";
 import dot from "./dot.png";
 import line from "./line.png";
+import { format } from "date-fns";
+import ruLocale from "date-fns/locale/ru";
 
 const Wrapper = styled.div`
   display: flex;
@@ -94,6 +96,15 @@ const RouteAirPorts = styled.div`
 
 export default function(props) {
   const trip = props.data;
+
+  const dateFrom = format(new Date(trip.dateFrom), "DD MMM YYYY, dd", {
+    locale: ruLocale
+  });
+
+  const dateTo = format(new Date(trip.dateTo), "DD MMM YYYY, dd", {
+    locale: ruLocale
+  });
+
   return (
     <Wrapper>
       <From>
@@ -102,7 +113,7 @@ export default function(props) {
           <Time> {trip.takeoff} </Time>
         </Clock>
         <City>{trip.cityFrom}</City>
-        <Day>{trip.dateFrom}</Day>
+        <Day>{dateFrom}</Day>
       </From>
       <RoutePath>
         <TotalWrap>
@@ -124,7 +135,7 @@ export default function(props) {
           <Time> {trip.landing} </Time>
         </Clock>
         <City>{trip.cityTo}</City>
-        <Day>{trip.dateTo}</Day>
+        <Day>{dateTo}</Day>
       </To>
     </Wrapper>
   );

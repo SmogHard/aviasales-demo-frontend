@@ -1,20 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FormattedNumber } from "react-intl";
-
-const Baggage = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    display: flex;
-    justify-content: center;
-  }
-`;
-
-const Icon = styled.img`
-  margin: 4px;
-  padding-top: 10px;
-  padding-bottom: 15px;
-`;
+import Baggage from "./Baggage";
 
 const Button = styled.button`
   border: 0;
@@ -95,12 +82,36 @@ const Offer = styled.p`
   }
 `;
 
+const Prices = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const OtherOffer = styled.div`
+  display: flex;
+  padding: 4px 24px;
+  justify-content: space-between;
+`;
+
+const Link = styled.a`
+  margin: 0px;
+  font-size: 12px;
+  color: #59bce5;
+  cursor: pointer;
+`;
+
+const More = Link.extend`
+  padding-top: 8px;
+  padding-bottom: 16px;
+  text-align: center;
+`;
+
+const Other = styled.div``;
 export default function(props) {
+  let formatter = [{ style: "decimal" }];
   return (
     <Buy>
-      <Baggage>
-        <Icon src={props.info.baggage} />
-      </Baggage>
+      <Baggage baggage={props.info.baggage} />
       <Button>
         <TextWrapper>
           <Offer>
@@ -109,23 +120,50 @@ export default function(props) {
               за{" "}
               <FormattedNumber
                 value={props.info.price}
-                style="decimal"
+                style={formatter.style}
                 minimumFractionDigits={0}
                 maximumFractionDigits={0}
-              />₽
+              />{" "}
+              ₽
             </Price>
           </Offer>
           <PriceXs>
             <FormattedNumber
               value={props.info.price}
-              style="decimal"
+              style={formatter.style}
               minimumFractionDigits={0}
               maximumFractionDigits={0}
-            />₽
+            />{" "}
+            ₽
           </PriceXs>
         </TextWrapper>
       </Button>
       <Proposal>на {props.info.proposal}</Proposal>
+      {props.info.more && (
+        <Other>
+          <Prices>
+            <OtherOffer>
+              <Link>{props.info.more[0].company}</Link>
+              <Link>{props.info.more[0].price} ₽</Link>
+            </OtherOffer>
+          </Prices>
+          <Prices>
+            <OtherOffer>
+              <Link>{props.info.more[1].company}</Link>
+              <Link>{props.info.more[1].price} ₽</Link>
+            </OtherOffer>
+          </Prices>
+          <Prices>
+            <OtherOffer>
+              <Link>{props.info.more[2].company}</Link>
+              <Link>{props.info.more[2].price} ₽</Link>
+            </OtherOffer>
+          </Prices>
+          <Prices>
+            <More>+ еще 3 предложения</More>
+          </Prices>
+        </Other>
+      )}
     </Buy>
   );
 }

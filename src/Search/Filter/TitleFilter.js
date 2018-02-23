@@ -16,7 +16,10 @@ const Arrow = styled.img`
   margin-right: 6px;
 `;
 
-const Amount = styled.span``;
+const Amount = styled.span`
+  color: #a0b0b9;
+  padding-left: 8px;
+`;
 
 export default function(props) {
   return (
