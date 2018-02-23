@@ -2,19 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Button = styled.button`
+const ButtonSearch = styled(Link)`
   flex-basis: 50%;
-
   font-size: 18px;
-  line-height: 24px;
+  text-decoration: none;
+  line-height: 23px;
   font-weight: 900;
   background: #ff9241;
   border: none;
   color: #ffffff;
   padding: 16px;
-  width: 100%;
+  min-width: 100%;
   margin-top: 1px;
-
+  margin-bottom: 1px;
+  text-align: center;
   box-sizing: border-box;
   cursor: pointer;
   &:hover,
@@ -22,16 +23,11 @@ const Button = styled.button`
     background: #fca15f;
   }
 
-  @media (min-width: 992px) {
-    padding-left: 30px;
+  @media (min-width: 1200px) {
     border-radius: 4px;
   }
 `;
 
 export default function() {
-  return (
-    <Link to="/search">
-      <Button>Найти билеты</Button>
-    </Link>
-  );
+  return <ButtonSearch to="/search">Найти билеты</ButtonSearch>;
 }

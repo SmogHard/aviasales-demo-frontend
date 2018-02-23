@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { FormattedNumber } from "react-intl";
 
 const Baggage = styled.div`
   display: none;
@@ -20,6 +21,7 @@ const Button = styled.button`
   border-radius: 4px;
   background: transparent;
   height: 100%;
+  cursor: pointer;
   @media (min-width: 768px) {
     background: #ff6d00;
     margin-left: 24px;
@@ -102,9 +104,25 @@ export default function(props) {
       <Button>
         <TextWrapper>
           <Offer>
-            Купить <br /> <Price> за {props.info.price}</Price>
+            Купить <br />
+            <Price>
+              за{" "}
+              <FormattedNumber
+                value={props.info.price}
+                style="decimal"
+                minimumFractionDigits={0}
+                maximumFractionDigits={0}
+              />₽
+            </Price>
           </Offer>
-          <PriceXs>{props.info.price} ₽</PriceXs>
+          <PriceXs>
+            <FormattedNumber
+              value={props.info.price}
+              style="decimal"
+              minimumFractionDigits={0}
+              maximumFractionDigits={0}
+            />₽
+          </PriceXs>
         </TextWrapper>
       </Button>
       <Proposal>на {props.info.proposal}</Proposal>

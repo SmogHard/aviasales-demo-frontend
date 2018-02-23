@@ -4,7 +4,7 @@ import arrow_close from "./arrow-close.svg";
 import Title from "./TitleFilter";
 
 const Wrapper = styled.div`
-  padding: 16px 0px;
+  padding: 16px 16px;
   border-top: 1px solid #dddddd;
 `;
 

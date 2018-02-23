@@ -62,10 +62,11 @@ const DateFields = Layout.extend`
 `;
 
 const ButtonWrap = styled.div`
+  display: flex;
   flex-basis: 45%;
 `;
 
-const ButtonWrapPass = ButtonWrap.extend`
+const ButtonWrapPass = styled.div`
   flex-basis: 55%;
   margin-right: 1px;
   @media (min-width: 1200px) {

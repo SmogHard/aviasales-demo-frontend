@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import clock from "./clock.png";
+import clock from "./clock.svg";
 
 const Flight = styled.div`
   padding-top: 10px;
@@ -25,14 +25,6 @@ const Transfers = styled.div`
   flex-basis: 20%;
 `;
 
-const transfer = data => {
-  if (!data) {
-    return "Прямой";
-  } else {
-    return data;
-  }
-};
-
 const Total = styled.div`
   flex-basis: 30%;
 `;
@@ -42,18 +34,18 @@ const Time = styled.div`
 `;
 
 export default function(props) {
-  const flight = props.flight;
+  const { flight, icon } = props;
   return (
     <Flight>
       <Time>
-        <Icon src={props.icon} />
+        <Icon src={icon} />
         {flight.takeoff} - {flight.landing}{" "}
       </Time>
       <Total>
         <Icon src={clock} />
         {flight.total}
       </Total>
-      <Transfers>{transfer(flight.transfers)}</Transfers>
+      <Transfers>{flight.transfers}</Transfers>
     </Flight>
   );
 }

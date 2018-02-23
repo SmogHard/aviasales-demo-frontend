@@ -67,7 +67,7 @@ export default function(props) {
       <Header>
         <AirlineLogo airline={flight.airline} />
         <InfoAndShare>
-          {flight.type ? <Type> {flight.type} </Type> : ""}
+          {flight.type && <Type> {flight.type} </Type>}
           <Share src={share} />
         </InfoAndShare>
       </Header>

@@ -6,11 +6,14 @@ import "./index.css";
 import "flexboxgrid2";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
+import { IntlProvider } from "react-intl";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <IntlProvider locale="en">
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </IntlProvider>,
   document.getElementById("root")
 );
 registerServiceWorker();

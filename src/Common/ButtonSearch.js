@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import aero from "./aero.svg";
+import { Link } from "react-router-dom";
 
 const Search = styled.div`
   display: flex;
@@ -13,8 +14,9 @@ const Img = styled.img`
   margin-left: 23px;
 `;
 
-const Button = styled.button`
+const Submit = styled(Link)`
   border-radius: 4px;
+  text-decoration: none;
   font-size: 28px;
   line-height: 33px;
   font-weight: 900;
@@ -39,12 +41,13 @@ const Button = styled.button`
     flex-basis: 33%;
   }
 `;
+
 export default function() {
   return (
     <Search>
-      <Button>
+      <Submit to="/search">
         Найти билеты <Img alt="Самолет" src={aero} />
-      </Button>
+      </Submit>
     </Search>
   );
 }

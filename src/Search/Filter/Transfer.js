@@ -7,13 +7,13 @@ import no_check from "./no-check.png";
 import Title from "./TitleFilter";
 
 const Transfer = styled.div`
-  padding: 6px 8px;
+  padding: 16px 16px;
 `;
 
 const Clear = styled.img`
   position: absolute;
   right: 0;
-  top: -10px;
+  top: -5px;
 `;
 
 const Checkbox = styled.div`
@@ -38,6 +38,7 @@ const Text = styled.p`
 
 const Header = styled.div`
   position: relative;
+  margin-bottom: 16px;
 `;
 
 const Checkboxes = styled.div`

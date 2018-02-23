@@ -9,6 +9,7 @@ import AirportOfTransfer from "./AirportOfTransfer";
 import Agents from "./Agents";
 import TravelTime from "./TravelTime";
 import Airlines from "./Airlines";
+import FilterOff from "./FilterOff";
 
 const Wrapper = styled.div`
   display: none;
@@ -30,6 +31,7 @@ export default function() {
       <Airports />
       <AirportOfTransfer />
       <Agents />
+      <FilterOff />
     </Wrapper>
   );
 }

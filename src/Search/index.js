@@ -14,15 +14,15 @@ const Section = styled.section`
     padding-bottom: 0px;
   }
 
-  @media (min-width: 992px) {
-    padding: 16px;
+  @media (min-width: 1200px) {
+    padding: 40px;
   }
 `;
 
 const Settings = styled.div`
   display: flex;
   justify-content: center;
-  @media (min-width: 992px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 `;
@@ -109,10 +109,10 @@ export default function() {
             </div>
             <div className="col-xs-12 col-xl-7">
               <Tickets />
+              <ShowMore> Показать еще 10 билетов! </ShowMore>
+              <FilterButton>Фильтровать</FilterButton>
             </div>
           </div>
-          <ShowMore> Показать еще 10 билетов! </ShowMore>
-          <FilterButton>Фильтровать</FilterButton>
         </div>
       </Section>
     </div>

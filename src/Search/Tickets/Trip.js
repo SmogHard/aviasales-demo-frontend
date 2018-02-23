@@ -73,6 +73,10 @@ const Dot = styled.img``;
 
 const Line = styled.img`
   padding: 2px;
+  width: 100%;
+  @media (min-width: 1200px) {
+    width: initial;
+  }
 `;
 
 const AirAbbreviation = styled.p`

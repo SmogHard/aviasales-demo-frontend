@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/" exact component={Main} />
-        <Route path="/search" exact component={Search} />
+        <Route exact path="/" component={Main} />
+        <Route path="/search" component={Search} />
         <Footer />
       </div>
     );

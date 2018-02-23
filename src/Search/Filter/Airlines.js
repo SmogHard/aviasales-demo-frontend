@@ -5,8 +5,8 @@ import arrow_open from "./arrow-open.svg";
 import checked from "./checked.png";
 import no_check from "./no-check.png";
 
-const Wrapper = styled.div`
-  padding: 16px 0px;
+const Airlines = styled.div`
+  padding: 16px 16px;
   border-top: 1px solid #dddddd;
 `;
 
@@ -40,6 +40,10 @@ const Text = styled.p`
   margin: 0;
 `;
 
+const Wrapper = styled.div`
+  padding-top: 16px;
+`;
+
 const airlines = [
   {
     checked: true,
@@ -52,49 +56,51 @@ const airlines = [
     price: "7 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "Air Algerie",
     price: "11 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "Alitalia",
     price: "23 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "Bulgaria Air",
     price: "47 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "Belle Air",
     price: "47 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "Air Moldova",
     price: "47 712 ₽"
   },
   {
-    checked: false,
+    checked: true,
     label: "British",
     price: "47 712 ₽"
   }
 ];
 export default function() {
   return (
-    <Wrapper>
+    <Airlines>
       <Title title="Авиакомпании" arrow={arrow_open} />
-      {airlines.map((item, i) => (
-        <Checkboxes key={i}>
-          <Checkbox>
-            <Check src={item.checked ? checked : no_check} />
-            <Text>{item.label}</Text>
-          </Checkbox>
-          <Price> {item.price}</Price>
-        </Checkboxes>
-      ))}
-    </Wrapper>
+      <Wrapper>
+        {airlines.map((item, i) => (
+          <Checkboxes key={i}>
+            <Checkbox>
+              <Check src={item.checked ? checked : no_check} />
+              <Text>{item.label}</Text>
+            </Checkbox>
+            <Price> {item.price}</Price>
+          </Checkboxes>
+        ))}
+      </Wrapper>
+    </Airlines>
   );
 }
