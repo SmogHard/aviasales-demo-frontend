@@ -68,7 +68,12 @@ const PriceForSuiteCase = styled.p`
 `;
 
 const TicketLeft = styled.p`
+  display: none;
   margin: 0px;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 const BagWrap = styled.div`

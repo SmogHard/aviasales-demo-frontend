@@ -106,7 +106,13 @@ const More = Link.extend`
   text-align: center;
 `;
 
-const Other = styled.div``;
+const Other = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+  }
+`;
+
 export default function(props) {
   let formatter = [{ style: "decimal" }];
   return (
