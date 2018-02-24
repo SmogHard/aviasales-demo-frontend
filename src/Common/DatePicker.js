@@ -29,6 +29,14 @@ const Input = styled.input`
   ::placeholder {
     color: #a0b0b9;
   }
+
+  @media (min-width: 768px) {
+    width: 70%;
+    text-overflow: ellipsis;
+  }
+  @media (min-width: 1200px) {
+    width: 100%;
+  }
 `;
 
 const InputWrapper = styled.div`
@@ -153,41 +161,45 @@ function dateFormat(day) {
 
 export default class DatePicker extends Component {
   state = {
-    from: "",
-    to: "",
-    isDateToOpen: false,
-    isDateFromOpen: false
+    from: undefined,
+    to: undefined,
+    isOpen: false
   };
 
   showDateTo = () => {
-    this.setState({ isDateToOpen: !this.state.isDateToOpen });
+    this.setState({ isOpenTo: !this.state.isDateToOpen });
   };
-
   showDateFrom = () => {
-    this.setState({ isDateFromOpen: !this.state.isDateToOpen });
-  };
-
-  setDateTo = (day, { selected }) => {
-    this.setState({
-      to: selected ? undefined : day,
-      isDateToOpen: false,
-      isDateFromOpen: false
-    });
-  };
-
-  setDateFrom = (day, { selected }) => {
-    this.setState({
-      from: selected ? undefined : day,
-      isDateToOpen: false,
-      isDateFromOpen: false
-    });
+    this.setState({ isOpenFrom: !this.state.isDateToOpen });
   };
 
   onClickOutside = () => {
     this.setState({
-      isDateToOpen: false,
-      isDateFromOpen: false
+      isOpenTo: false,
+      isOpenFrom: false
     });
+  };
+
+  setDayTo = day => {
+    this.setState({
+      to: day,
+      isOpenTo: false,
+      isOpenFrom: true
+    });
+    if (this.state.to !== undefined || this.state.from !== undefined) {
+      this.setState({ isOpenTo: false, isOpenFrom: false });
+    }
+  };
+
+  setDayFrom = day => {
+    this.setState({
+      from: day,
+      isOpenTo: true,
+      isOpenFrom: false
+    });
+    if (this.state.to !== undefined || this.state.from !== undefined) {
+      this.setState({ isOpenTo: false, isOpenFrom: false });
+    }
   };
 
   renderDay(day) {
@@ -196,17 +208,21 @@ export default class DatePicker extends Component {
       fontSize: 18,
       fontWeight: 700,
       height: 20,
-      width: 35
+      width: 35,
+      paddingTop: "4px"
     };
     const priceStyle = {
       fontSize: "10px",
+      paddingTop: "2px",
       textAlign: "center",
       color: "#00C455"
     };
     const cellStyle = {};
     return (
-      <div style={cellStyle}>
-        <div style={dateStyle}>{date}</div>
+      <div>
+        <div style={cellStyle}>
+          <div style={dateStyle}>{date}</div>
+        </div>
         {prices[date] &&
           prices[date].map((price, i) => (
             <div key={i} style={priceStyle}>
@@ -217,16 +233,18 @@ export default class DatePicker extends Component {
     );
   }
   render() {
+    const { from, to } = this.state;
+    const modifiers = { start: from, end: to };
     return (
       <DateFields>
-        <DateSelect onClick={this.showDateTo}>
+        <DateSelect onClick={this.showDateFrom}>
           <Departures>
             <Input
               date
               type="text"
               name="ddto"
               placeholder="Туда"
-              value={dateFormat(this.state.to)}
+              value={dateFormat(from)}
               readOnly
             />
             <ButtonAction>
@@ -234,14 +252,14 @@ export default class DatePicker extends Component {
             </ButtonAction>
           </Departures>
         </DateSelect>
-        <DateSelect onClick={this.showDateFrom}>
+        <DateSelect onClick={this.showDateTo}>
           <Arrival>
             <Input
               date
               type="text"
               name="ddfrom"
               placeholder="Обратно"
-              value={dateFormat(this.state.from)}
+              value={dateFormat(to)}
               readOnly
             />
             <ButtonAction>
@@ -249,12 +267,13 @@ export default class DatePicker extends Component {
             </ButtonAction>
           </Arrival>
         </DateSelect>
-        {this.state.isDateToOpen && (
+        {this.state.isOpenFrom && (
           <PickerWithOutside onClickOutside={this.onClickOutside}>
             <DayPicker
-              selectedDays={[new Date(this.state.to)]}
-              disabledDays={[{ after: new Date(this.state.from) }]}
-              onDayClick={this.setDateTo}
+              disabledDays={{ before: new Date() }}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={this.setDayFrom}
               locale={"ru"}
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -268,12 +287,13 @@ export default class DatePicker extends Component {
             </CheckOneDirection>
           </PickerWithOutside>
         )}
-        {this.state.isDateFromOpen && (
+        {this.state.isOpenTo && (
           <PickerWithOutside onClickOutside={this.onClickOutside}>
             <DayPicker
-              selectedDays={[new Date(this.state.from)]}
-              disabledDays={[{ before: new Date(this.state.to) }]}
-              onDayClick={this.setDateFrom}
+              disabledDays={{ before: new Date() }}
+              selectedDays={[from, { from, to }]}
+              modifiers={modifiers}
+              onDayClick={this.setDayTo}
               locale={"ru"}
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -281,7 +301,6 @@ export default class DatePicker extends Component {
               firstDayOfWeek={1}
               labels={LABELS}
               renderDay={this.renderDay}
-              onClickOutside={this.onClickOutside}
             />
             <CheckOneDirection>
               <Checkbox label="Показать цены в одну сторону" />

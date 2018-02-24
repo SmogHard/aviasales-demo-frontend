@@ -53,14 +53,12 @@ export default function() {
       <TextHiddenXs>Лучший способо купить авиабилеты дешево</TextHiddenXs>
       <div className="row">
         <div className="col-xs-12 col-md-offset-1 col-md-10">
-          <form>
-            <Inputs />
-            <Search>
-              <Wrapper>
-                <ButtonSearch />
-              </Wrapper>
-            </Search>
-          </form>
+          <Inputs />
+          <Search>
+            <Wrapper>
+              <ButtonSearch />
+            </Wrapper>
+          </Search>
         </div>
       </div>
     </div>

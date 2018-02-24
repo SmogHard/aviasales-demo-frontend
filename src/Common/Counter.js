@@ -25,16 +25,16 @@ const Plus = styled.div`
 
 const Operator = styled.img``;
 
-const Wrapper = styled.div`
+const Passenger = styled.div`
   display: flex;
   align-items: center;
   margin-top: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   justify-content: space-between;
 `;
 
 const Text = styled.span`
-  padding-right: 24px;
+  padding-right: 12px;
   padding-left: 16px;
   font-size: 14px;
 `;
@@ -44,6 +44,12 @@ const Count = styled.p`
   border-left: 1px solid #dbdbdb;
   margin: 0px;
   padding: 8px;
+`;
+
+const WithoutSeat = styled.p`
+  color: #a0b0b9;
+  font-size: 12px;
+  margin: 0;
 `;
 
 export default class DropDown extends Component {
@@ -61,8 +67,11 @@ export default class DropDown extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Text>{this.props.text}</Text>
+      <Passenger>
+        <Text>
+          {this.props.text}
+          {this.props.noSeat && <WithoutSeat>Без места</WithoutSeat>}
+        </Text>
         <Counter>
           <Minus onClick={this.deductCount}>
             <Operator src={minus} />
@@ -72,7 +81,7 @@ export default class DropDown extends Component {
             <Operator src={plus} />
           </Plus>
         </Counter>
-      </Wrapper>
+      </Passenger>
     );
   }
 }

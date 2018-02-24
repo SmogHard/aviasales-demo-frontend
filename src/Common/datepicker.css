@@ -10,26 +10,109 @@
 
 .DayPicker-Day {
   padding: 0.3rem;
+  padding-top: 0px;
+  height: 40px;
+  width: 45px;
+}
+
+@media (min-width: 768px) {
+  .DayPicker-Day {
+    padding: 0.2rem;
+    padding-top: 0px;
+    height: 40px;
+    width: 43px;
+  }
+}
+
+@media (min-width: 992px) {
+  .DayPicker-Day {
+    padding: 0.3rem;
+    padding-top: 0px;
+    height: 40px;
+    width: 45px;
+  }
 }
 
 .DayPicker:not(.DayPicker--interactionDisabled)
   .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #f0f8ff;
-}
-
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  position: relative;
-  color: #4f4f4f;
-  background-color: #b7dcfc;
-  border-radius: 0px;
+  background-color: #ffffff;
+  background-image: url("./datepick.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 0;
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-  background-color: #b7dcfc;
+  background-color: #ffffff;
+  background-image: url("./datepick.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 0;
 }
 
 .DayPicker:not(.DayPicker--interactionDisabled)
-  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #f0f8ff;
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
   border-radius: 0px;
+  background-image: url("./datepick.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: #f4f4f4;
+  background-image: url("./datepick.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  color: #020202;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start) {
+  background-color: #f4f4f4;
+  background-image: url("./datepick-reverse.png");
+  background-size: contain;
+  border-radius: 0;
+  background-repeat: no-repeat;
+  color: #020202;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
+  background-color: #f4f4f4;
+  background-image: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  color: #020202;
+}
+
+.DayPicker-Month {
+  display: flex;
+  flex-direction: column;
+}
+
+.DayPicker-Weekdays {
+  display: flex;
+  justify-content: center;
+}
+
+.DayPicker-WeekdaysRow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.DayPicker-Body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.DayPicker-Week {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.DayPicker-Weekday {
+  height: 45px;
+  width: 45px;
 }
