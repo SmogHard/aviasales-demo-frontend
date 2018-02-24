@@ -4,7 +4,7 @@ import ButtonPassenger from "./../../Common/ButtonPassenger";
 import DatePicker from "./../../Common/DatePicker";
 import CityTo from "./../../Common/CityTo";
 import CityFrom from "./../../Common/CityFrom";
-import ButtonSearch from "./ButtonSearch";
+import ButtonSearch from "./../../Common/ButtonSearch";
 
 const Inputs = styled.div`
   display: flex;
@@ -46,6 +46,13 @@ const ButtonWrapPass = styled.div`
   }
 `;
 
+const DateLayout = styled.div`
+  flex-basis: 50%;
+  @media (min-width: 1200px) {
+    flex-basis: 30%;
+  }
+`;
+
 export default function() {
   return (
     <Inputs>
@@ -55,7 +62,9 @@ export default function() {
       <Layout>
         <CityTo />
       </Layout>
-      <DatePicker />
+      <DateLayout>
+        <DatePicker />
+      </DateLayout>
       <Wrapper>
         <ButtonWrapPass>
           <ButtonPassenger />

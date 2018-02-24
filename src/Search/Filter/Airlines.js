@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Title from "./TitleFilter";
 import arrow_open from "./arrow-open.svg";
-import Checkbox from "./Checkbox";
+import Checkbox from "./../../Common/Checkbox";
 
 const Airlines = styled.div`
   padding: 16px 16px;

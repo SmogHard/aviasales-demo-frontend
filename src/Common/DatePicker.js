@@ -4,6 +4,8 @@ import calendar from "./calendar.svg";
 import DayPicker from "react-day-picker";
 import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
+import { withClickOutside } from "react-clickoutside";
+import Checkbox from "./SpecialCheckbox";
 import "react-day-picker/lib/style.css";
 import "./datepicker.css";
 
@@ -50,8 +52,21 @@ const DateFields = Layout.extend`
   position: relative;
   display: flex;
   @media (min-width: 1200px) {
-    flex-basis: 30%;
+    flex-basis: 100%;
   }
+`;
+
+const Picker = styled.div`
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 8px rgba(74, 74, 74, 0.2),
+    0px 2px 4px rgba(74, 74, 74, 0.2);
+  border-radius: 2px;
 `;
 
 const Departures = InputWrapper.extend`
@@ -80,7 +95,13 @@ const ButtonAction = styled.button`
   right: 16px;
 `;
 
+const CheckOneDirection = styled.div`
+  padding: 18px 26px;
+`;
+
 const WEEKDAYS_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+
+const PickerWithOutside = withClickOutside()(Picker);
 
 const MONTHS = [
   "Январь",
@@ -120,47 +141,51 @@ const prices = {
 };
 
 function dateFormat(day) {
-  return format(new Date(day), "DD MMM YYYY, dd", {
-    locale: ruLocale
-  });
+  return day
+    ? format(new Date(day), "DD MMMM, dd", {
+        locale: ruLocale
+      })
+    : "";
 }
 
 export default class DatePicker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      from: dateFormat(new Date()),
-      to: dateFormat(new Date()),
-      isDateTo: false,
-      isDateFrom: false
-    };
-    this.setDateTo = this.setDateTo.bind(this);
-    this.setDateFrom = this.setDateFrom.bind(this);
-  }
+  state = {
+    from: "",
+    to: "",
+    isDateToOpen: false,
+    isDateFromOpen: false
+  };
 
   showDateTo = () => {
-    this.setState({ isDateTo: !this.state.isDateTo });
+    this.setState({ isDateToOpen: !this.state.isDateToOpen });
   };
 
   showDateFrom = () => {
-    this.setState({ isDateFrom: !this.state.isDateTo });
+    this.setState({ isDateFromOpen: !this.state.isDateToOpen });
   };
 
-  setDateTo(day, { selected }) {
+  setDateTo = (day, { selected }) => {
     this.setState({
-      to: selected ? undefined : dateFormat(day),
-      isDateTo: false,
-      isDateFrom: false
+      to: selected ? undefined : day,
+      isDateToOpen: false,
+      isDateFromOpen: false
     });
-  }
+  };
 
-  setDateFrom(day, { selected }) {
+  setDateFrom = (day, { selected }) => {
     this.setState({
-      from: selected ? undefined : dateFormat(day),
-      isDateTo: false,
-      isDateFrom: false
+      from: selected ? undefined : day,
+      isDateToOpen: false,
+      isDateFromOpen: false
     });
-  }
+  };
+
+  onClickOutside = () => {
+    this.setState({
+      isDateToOpen: false,
+      isDateFromOpen: false
+    });
+  };
 
   renderDay(day) {
     const date = day.getDate();
@@ -198,7 +223,7 @@ export default class DatePicker extends Component {
               type="text"
               name="ddto"
               placeholder="Туда"
-              value={this.state.to}
+              value={dateFormat(this.state.to)}
               readOnly
             />
             <ButtonAction>
@@ -213,7 +238,7 @@ export default class DatePicker extends Component {
               type="text"
               name="ddfrom"
               placeholder="Обратно"
-              value={this.state.from}
+              value={dateFormat(this.state.from)}
               readOnly
             />
             <ButtonAction>
@@ -221,31 +246,44 @@ export default class DatePicker extends Component {
             </ButtonAction>
           </Arrival>
         </DateSelect>
-        {this.state.isDateTo && (
-          <DayPicker
-            selectedDays={this.state.selectedDay}
-            onDayClick={this.setDateTo}
-            locale={"ru"}
-            months={MONTHS}
-            weekdaysLong={WEEKDAYS_LONG}
-            weekdaysShort={WEEKDAYS_SHORT}
-            firstDayOfWeek={1}
-            labels={LABELS}
-            renderDay={this.renderDay}
-          />
+        {this.state.isDateToOpen && (
+          <PickerWithOutside onClickOutside={this.onClickOutside}>
+            <DayPicker
+              selectedDays={[new Date(this.state.to)]}
+              disabledDays={[{ after: new Date(this.state.from) }]}
+              onDayClick={this.setDateTo}
+              locale={"ru"}
+              months={MONTHS}
+              weekdaysLong={WEEKDAYS_LONG}
+              weekdaysShort={WEEKDAYS_SHORT}
+              firstDayOfWeek={1}
+              labels={LABELS}
+              renderDay={this.renderDay}
+            />
+            <CheckOneDirection>
+              <Checkbox label="Показать цены в одну сторону" />
+            </CheckOneDirection>
+          </PickerWithOutside>
         )}
-        {this.state.isDateFrom && (
-          <DayPicker
-            selectedDays={this.state.selectedDay}
-            onDayClick={this.setDateFrom}
-            locale={"ru"}
-            months={MONTHS}
-            weekdaysLong={WEEKDAYS_LONG}
-            weekdaysShort={WEEKDAYS_SHORT}
-            firstDayOfWeek={1}
-            labels={LABELS}
-            renderDay={this.renderDay}
-          />
+        {this.state.isDateFromOpen && (
+          <PickerWithOutside onClickOutside={this.onClickOutside}>
+            <DayPicker
+              selectedDays={[new Date(this.state.from)]}
+              disabledDays={[{ before: new Date(this.state.to) }]}
+              onDayClick={this.setDateFrom}
+              locale={"ru"}
+              months={MONTHS}
+              weekdaysLong={WEEKDAYS_LONG}
+              weekdaysShort={WEEKDAYS_SHORT}
+              firstDayOfWeek={1}
+              labels={LABELS}
+              renderDay={this.renderDay}
+              onClickOutside={this.onClickOutside}
+            />
+            <CheckOneDirection>
+              <Checkbox label="Показать цены в одну сторону" />
+            </CheckOneDirection>
+          </PickerWithOutside>
         )}
       </DateFields>
     );

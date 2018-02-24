@@ -23,7 +23,17 @@ const Layout = styled.div`
     flex-basis: 50%;
   }
   @media (min-width: 1200px) {
-    flex-basis: 23.3333%;
+    flex-basis: 20.6666%;
+  }
+`;
+
+const DateLayout = styled.div`
+  flex-basis: 100%;
+  @media (min-width: 768px) {
+    flex-basis: 50%;
+  }
+  @media (min-width: 1200px) {
+    flex-basis: 38%;
   }
 `;
 
@@ -36,7 +46,9 @@ export default function() {
       <Layout>
         <CityTo />
       </Layout>
-      <DatePicker />
+      <DateLayout>
+        <DatePicker />
+      </DateLayout>
       <Layout>
         <ButtonPassenger />
       </Layout>

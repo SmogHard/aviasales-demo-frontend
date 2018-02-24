@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import arrow_open from "./arrow-open.svg";
 import clear from "./clear.svg";
-import Checkbox from "./Checkbox";
+import Checkbox from "./../../Common/Checkbox";
 import Title from "./TitleFilter";
 
 const Transfer = styled.div`

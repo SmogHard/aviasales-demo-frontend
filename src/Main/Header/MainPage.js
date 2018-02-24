@@ -17,6 +17,13 @@ const Title = styled.h1`
   }
 `;
 
+const Search = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding-bottom: 88px;
+  flex-basis: 50%;
+`;
 const TextHiddenXs = styled.p`
   display: none;
   color: #ffffff;
@@ -30,6 +37,14 @@ const TextHiddenXs = styled.p`
   }
 `;
 
+const Wrapper = styled.div`
+  flex-basis: 100%;
+
+  @media (min-width: 768px) {
+    flex-basis: 50%;
+  }
+`;
+
 export default function() {
   return (
     <div>
@@ -40,7 +55,11 @@ export default function() {
         <div className="col-xs-12 col-md-offset-1 col-md-10">
           <form>
             <Inputs />
-            <ButtonSearch />
+            <Search>
+              <Wrapper>
+                <ButtonSearch />
+              </Wrapper>
+            </Search>
           </form>
         </div>
       </div>

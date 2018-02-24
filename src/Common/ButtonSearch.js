@@ -1,20 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import aero from "./aero.svg";
-import { Link } from "react-router-dom";
-
-const Search = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
-  padding-bottom: 88px;
-`;
+import { Link, Route } from "react-router-dom";
 
 const Img = styled.img`
   margin-left: 23px;
 `;
 
-const Submit = styled(Link)`
+const SubmitMain = styled(Link)`
   border-radius: 4px;
   text-decoration: none;
   font-size: 28px;
@@ -42,12 +35,41 @@ const Submit = styled(Link)`
   }
 `;
 
+const SubmitSearch = SubmitMain.extend`
+  flex-basis: 50%;
+  font-size: 18px;
+  text-decoration: none;
+  line-height: 24px;
+  min-width: 100%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  text-align: center;
+  @media (min-width: 1200px) {
+    border-radius: 4px;
+  }
+`;
+
+const ButtonMain = () => {
+  return (
+    <SubmitMain to="/search">
+      Найти билеты <Img alt="Самолет" src={aero} />
+    </SubmitMain>
+  );
+};
+
+const ButtonSearch = () => {
+  return <SubmitSearch to="/search">Найти билеты</SubmitSearch>;
+};
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
+
 export default function() {
   return (
-    <Search>
-      <Submit to="/search">
-        Найти билеты <Img alt="Самолет" src={aero} />
-      </Submit>
-    </Search>
+    <Wrapper>
+      <Route exact path="/" render={ButtonMain} />
+      <Route exact path="/search" render={ButtonSearch} />
+    </Wrapper>
   );
 }

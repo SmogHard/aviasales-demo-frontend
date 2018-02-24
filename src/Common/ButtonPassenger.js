@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
+import Counter from "./Counter";
+import { withClickOutside } from "react-clickoutside";
 
 const InputWrapper = styled.div`
   display: flex;
@@ -44,6 +46,7 @@ const OpacityText = Text.extend`
 `;
 
 const SelectPassenger = InputWrapper.extend`
+  position: relative;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   @media (min-width: 768px) {
@@ -53,14 +56,51 @@ const SelectPassenger = InputWrapper.extend`
     border-top-right-radius: 2px;
   }
 `;
-export default function() {
-  return (
-    <SelectPassenger>
-      <ButtonPassenger>
-        <Text>
-          1 пассажир, <OpacityText>эконом</OpacityText>
-        </Text>
-      </ButtonPassenger>
-    </SelectPassenger>
-  );
+
+const Options = styled.div`
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 57px;
+  left: 0;
+  background: #ffffff;
+  box-shadow: -2px 1px 2px rgba(74, 74, 74, 0.2),
+    0px 1px 4px rgba(74, 74, 74, 0.2);
+`;
+
+const OptionsWithOutsideClick = withClickOutside()(Options);
+
+export default class DropDown extends Component {
+  state = {
+    isOpen: false
+  };
+
+  onToogle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    console.log(this.state.isOpen);
+  };
+
+  onClickOutside = () => {
+    this.setState({ isOpen: true });
+  };
+
+  render() {
+    return (
+      <SelectPassenger>
+        <ButtonPassenger onClick={this.onToogle}>
+          <Text>
+            1 пассажир, <OpacityText>эконом</OpacityText>
+          </Text>
+        </ButtonPassenger>
+        {this.state.isOpen && (
+          <OptionsWithOutsideClick onClickOutside={this.onClickOutside}>
+            <Counter />
+            <Counter />
+            <Counter />
+          </OptionsWithOutsideClick>
+        )}
+      </SelectPassenger>
+    );
+  }
 }
