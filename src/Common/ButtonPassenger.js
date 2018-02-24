@@ -78,26 +78,25 @@ export default class DropDown extends Component {
 
   onToogle = () => {
     this.setState({ isOpen: !this.state.isOpen });
-    console.log(this.state.isOpen);
   };
 
   onClickOutside = () => {
-    this.setState({ isOpen: true });
+    this.setState({ isOpen: !this.state.isOpen });
   };
 
   render() {
     return (
       <SelectPassenger>
-        <ButtonPassenger onClick={this.onToogle}>
+        <ButtonPassenger type="button" onClick={this.onToogle}>
           <Text>
             1 пассажир, <OpacityText>эконом</OpacityText>
           </Text>
         </ButtonPassenger>
         {this.state.isOpen && (
           <OptionsWithOutsideClick onClickOutside={this.onClickOutside}>
-            <Counter />
-            <Counter />
-            <Counter />
+            <Counter text="Взрослые" count="1" />
+            <Counter text="Детские" count="0" />
+            <Counter text="Пожилые" count="0" />
           </OptionsWithOutsideClick>
         )}
       </SelectPassenger>

@@ -30,16 +30,13 @@ const Wrapper = styled.div`
   align-items: center;
   margin-top: 8px;
   margin-bottom: 16px;
+  justify-content: space-between;
 `;
 
 const Text = styled.span`
   padding-right: 24px;
   padding-left: 16px;
   font-size: 14px;
-
-  @media (min-width: 1200px) {
-    padding-right: 42px;
-  }
 `;
 
 const Count = styled.p`
@@ -65,7 +62,7 @@ export default class DropDown extends Component {
   render() {
     return (
       <Wrapper>
-        <Text> Взрослые </Text>
+        <Text>{this.props.text}</Text>
         <Counter>
           <Minus onClick={this.deductCount}>
             <Operator src={minus} />

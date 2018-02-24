@@ -64,9 +64,12 @@ const Picker = styled.div`
   z-index: 9;
   top: 0;
   left: 0;
+  width: 100%;
   box-shadow: 0px 0px 8px rgba(74, 74, 74, 0.2),
     0px 2px 4px rgba(74, 74, 74, 0.2);
   border-radius: 2px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Departures = InputWrapper.extend`
@@ -192,8 +195,8 @@ export default class DatePicker extends Component {
     const dateStyle = {
       fontSize: 18,
       fontWeight: 700,
-      width: 40,
-      height: 20
+      height: 20,
+      width: 35
     };
     const priceStyle = {
       fontSize: "10px",
