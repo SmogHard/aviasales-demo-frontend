@@ -6,7 +6,6 @@ import list from "./list.png";
 
 const Section = styled.section`
   background: #ffffff;
-  margin-top: 24px;
 `;
 
 const Article = styled.article`
@@ -16,6 +15,8 @@ const Article = styled.article`
 const Title = styled.h4`
   font-size: 13px;
   margin-left: 24px;
+  margin-top: 24px;
+  margin-bottom: 16px;
   padding-top: 3px;
 `;
 
@@ -32,6 +33,11 @@ const More = styled.span`
   color: #00ace2;
 `;
 
+const Text = styled.p`
+  font-size: 14px;
+  line-height: 24px;
+`;
+
 export default function() {
   return (
     <Section>
@@ -41,7 +47,7 @@ export default function() {
             <Article>
               <Image src={plane} alt="Самолет" />
               <Title>КАК КУПИТЬ ДЕШЕВЫЕ АВИАБИЛЕТЫ?</Title>
-              <p>
+              <Text>
                 Aviasales.ru — это метапоисковик авиабилетов. Мы ищем билеты на
                 самолет по сотням авиакомпаний и находим за считанные минуты
                 самые дешевые авиабилеты. Чтобы купить авиабилет дешево,
@@ -53,12 +59,12 @@ export default function() {
                 Европу, Азию и на другие континенты. Мы написали для вас простую
                 инструкцию о том, как пользоваться поиском и экономить на
                 перелетах от 1000 до 20 000 руб в год. <More>Подробнее</More>
-              </p>
+              </Text>
             </Article>
             <Article>
               <Image src={mail} alt="Письмо" />
               <Title>ЭЛЕКТРОННЫЙ АВИАБИЛЕТ</Title>
-              <p>
+              <Text>
                 Электронный авиабилет — это, по сути, обычный билет на самолет,
                 но только в менее привычном для путешественника виде. Вся
                 информация об авиаперелете (данные пассажира, маршрут
@@ -74,19 +80,19 @@ export default function() {
                 билет. Следует отметить, что электронный билет, приобретенный
                 онлайн, стоит дешевле своего бумажного аналога.
                 <More> Подробнее</More>
-              </p>
+              </Text>
             </Article>
             <Article>
               <Image src={list} alt="Список" />
               <Title>20 СОВЕТОВ АВИАПУТЕШЕСТВЕННИКАМ</Title>
-              <p>
+              <Text>
                 Есть масса путеводителей по странам, но ни одного о том, как
                 провести время в самолете. Для того, чтобы сделать ваш перелет
                 максимально комфортным, мы написали 20 советов о подготовке к
                 путешествию. Ведь настоящее путешествие начинается со слов
                 «Добро пожаловать на борт нашего самолета»!
                 <More> Подробнее</More>
-              </p>
+              </Text>
             </Article>
           </div>
         </div>

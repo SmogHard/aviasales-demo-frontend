@@ -43,6 +43,10 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
     flex-basis: 50%;
   }
+
+  @media (min-width: 1200px) {
+    flex-basis: 35%;
+  }
 `;
 
 export default function() {
