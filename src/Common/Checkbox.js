@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import checked from "./checked.png";
-import no_check from "./no-check.png";
+import unchecked from "./unchecked.png";
 
 const Price = styled.p`
   font-size: 12px;
@@ -27,7 +27,7 @@ const Check = styled.span`
   left: 0px;
   transition: all 0.3s;
   background-repeat: no-repeat;
-  background-image: url(${no_check});
+  background-image: url(${unchecked});
   :after {
     content: "";
     position: absolute;
@@ -44,10 +44,12 @@ const Label = styled.label`
   cursor: pointer;
   font-size: 22px;
   user-select: none;
+
   & ${Check}:after {
-  left:0;
-  top: 0;
-   }
+    left:0;
+    top: 0;
+  }
+
   & ${Checkbox}:checked ~ ${Check}:after {
     display:block;
     background-repeat: no-repeat;
@@ -55,7 +57,6 @@ const Label = styled.label`
     width: 18px;
     height: 18px;
   }
-
 `;
 
 export default function(props) {

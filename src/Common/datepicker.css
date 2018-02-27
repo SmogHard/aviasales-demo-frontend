@@ -33,56 +33,101 @@
   }
 }
 
-.DayPicker:not(.DayPicker--interactionDisabled)
-  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-  background-color: #ffffff;
-  background-image: url("./datepick.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+.DayPicker-Day {
+  position: relative;
+}
+
+.DayPicker-Day:not(.DayPicker-Day--outside):not(.DayPicker-Day--disabled):hover::after {
   border-radius: 0;
-}
-
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-  background-color: #ffffff;
-  background-image: url("./datepick.png");
+  content: "";
+  display: block;
+  background: url("./datepick.svg");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-size: contain;
-  border-radius: 0;
+  width: 100%;
+  height: calc(100% + 13px);
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  z-index: -2;
+  background-position: left center;
 }
 
-.DayPicker:not(.DayPicker--interactionDisabled)
-  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover {
-  border-radius: 0px;
-  background-image: url("./datepick.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  background-color: #f4f4f4;
-  background-image: url("./datepick.png");
-  background-size: contain;
+.DayPicker-Day--start {
+  background-color: transparent;
   background-repeat: no-repeat;
   border-radius: 0;
   color: #020202;
 }
 
-.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start) {
-  background-color: #f4f4f4;
-  background-image: url("./datepick-reverse.png");
-  background-size: contain;
-  border-radius: 0;
+.DayPicker-Day--start:not(.DayPicker-Day--outside)::after {
+  content: "";
+  display: block;
+  background: url("./datepick.svg");
+  background-size: 100% 100%;
   background-repeat: no-repeat;
+  width: 100%;
+  height: calc(100% + 13px);
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  z-index: -2;
+  background-position: left center;
+}
+
+.DayPicker-Day--end {
+  position: relative;
+  background-color: transparent;
+  background: none;
+  border-radius: 0;
   color: #020202;
+}
+
+.DayPicker-Day--end:not(.DayPicker-Day--outside)::after {
+  content: "";
+  display: block;
+  background: url("./datepick.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: calc(100% + 13px);
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  z-index: -2;
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+  background-position: center center;
 }
 
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):not(.DayPicker-Day--start):not(.DayPicker-Day--end) {
   background-color: #f4f4f4;
-  background-image: none;
-  background-size: contain;
-  background-repeat: no-repeat;
   border-radius: 0;
   color: #020202;
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled)
+  .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+  background-color: transparent;
+}
+
+.DayPicker-Day--selected {
+  position: relative;
+}
+
+.DayPicker-Day--selected:hover {
+  content: "";
+  display: block;
+  background: url("./datepick.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: calc(100% + 13px);
+  position: absolute;
+  top: -7px;
+  left: 0px;
+  z-index: -1;
+  background-position: left center;
 }
 
 .DayPicker-Month {
@@ -115,4 +160,27 @@
 .DayPicker-Weekday {
   height: 45px;
   width: 45px;
+}
+
+.Day {
+  font-size: 18px;
+  font-weight: 700;
+  height: 20px;
+  width: 35px;
+  padding-top: 4px;
+  z-index: 10;
+}
+
+.Price {
+  font-size: 10px;
+  padding-top: 2px;
+  text-align: center;
+  color: #00c455;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  background-color: #f4f4f4;
+  z-index: -3;
+  border-radius: 0;
+  color: #000000;
 }

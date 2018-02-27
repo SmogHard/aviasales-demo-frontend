@@ -88,11 +88,15 @@ export default class DropDown extends Component {
   };
 
   onToogle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState(prevState => ({
+      isOpen: !prevState.isOpen
+    }));
   };
 
   onClickOutside = () => {
-    this.setState({ isOpen: false });
+    this.setState(prevState => ({
+      isOpen: false
+    }));
   };
 
   render() {

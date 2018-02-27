@@ -29,10 +29,10 @@ export const data = [
           hour: 4
         },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -41,10 +41,10 @@ export const data = [
         landing: "17:10",
         total: { hour: 4, minutes: 35 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       }
@@ -69,10 +69,10 @@ export const data = [
         landing: "09:50",
         total: { hour: 4, minutes: 20 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -81,10 +81,10 @@ export const data = [
         landing: "17:35",
         total: { hour: 4, minutes: 15 },
         transfers: "CDG",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       }
@@ -113,10 +113,10 @@ export const data = [
         landing: "03:10",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -125,10 +125,10 @@ export const data = [
         landing: "17:15",
         total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       }
@@ -168,10 +168,10 @@ export const data = [
         landing: "03:10",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -180,10 +180,10 @@ export const data = [
         landing: "17:15",
         total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Барселона",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Москва",
         airportTo: "PJ"
       }
@@ -209,10 +209,10 @@ export const data = [
         landing: "03:10",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -221,10 +221,10 @@ export const data = [
         landing: "17:15",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Барселона",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Москва",
         airportTo: "PJ"
       }
@@ -249,10 +249,10 @@ export const data = [
         landing: "03:10",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -261,10 +261,10 @@ export const data = [
         landing: "17:15",
         total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Барселона",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Москва",
         airportTo: "PJ"
       }
@@ -289,10 +289,10 @@ export const data = [
         landing: "03:10",
         total: { hour: 4, minutes: 55 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Москва",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Барселона",
         airportTo: "PJ"
       },
@@ -301,10 +301,10 @@ export const data = [
         landing: "17:15",
         total: { hour: 4, minutes: 30 },
         transfers: "Прямой",
-        dateFrom: "2018-04-12",
+        dateFrom: 1519754902000,
         cityFrom: "Барселона",
         airportFrom: "LND",
-        dateTo: "2018-04-12",
+        dateTo: 1519754902000,
         cityTo: "Москва",
         airportTo: "PJ"
       }
