@@ -178,8 +178,8 @@ function dateFormat(day) {
 
 export default class DatePicker extends Component {
   state = {
-    from: undefined,
-    to: undefined,
+    from: null,
+    to: null,
     isOpenTo: false,
     isOpenFrom: false
   };
@@ -233,18 +233,20 @@ export default class DatePicker extends Component {
 
   render() {
     const { from, to } = this.state;
+
     const modifiers = { start: from, end: to };
+
     return (
       <DateFields>
         <DateSelect onClick={this.showDateFrom}>
           <Departures>
             <Input
+              date
               type="text"
               name="ddto"
               placeholder="Туда"
-              value={from ? dateFormat(from) : undefined}
+              value={from ? dateFormat(from) : ""}
               readOnly
-              onChange={this.handleChangeTo}
             />
             <ButtonAction>
               <Img alt="Календарь" src={calendar} />
@@ -254,12 +256,12 @@ export default class DatePicker extends Component {
         <DateSelect onClick={this.showDateTo}>
           <Arrival>
             <Input
+              date
               type="text"
               name="ddfrom"
               placeholder="Обратно"
-              value={to ? dateFormat(to) : undefined}
+              value={to ? dateFormat(to) : ""}
               readOnly
-              onChange={this.handleChangeFrom}
             />
             <ButtonAction>
               <Img alt="Календарь" src={calendar} />
