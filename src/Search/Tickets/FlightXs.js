@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import clock from "./clock.svg";
+import { formatTimeOfFlight } from "./Trip";
+import { format } from "date-fns";
 
 const Flight = styled.div`
   padding-top: 10px;
@@ -35,19 +37,22 @@ const Time = styled.div`
 
 export default function(props) {
   const { flight, icon } = props;
+
+  const takeOff = format(new Date(flight.dateFrom), "HH:MM");
+
+  const landing = format(new Date(flight.dateTo), "HH:MM");
+
   return (
     <Flight>
       <Time>
         <Icon src={icon} />
-        {flight.takeoff} - {flight.landing}{" "}
+        {takeOff} - {landing}
       </Time>
       <Total>
         <Icon src={clock} />
-        {flight.total.hour +
-          " ч " +
-          (flight.total.minutes ? flight.total.minutes + " м" : "")}
+        {formatTimeOfFlight(flight.timeOfFlight)}
       </Total>
-      <Transfers>{flight.transfers}</Transfers>
+      <Transfers>{flight.transfer ? flight.transfer : "Прямой"}</Transfers>
     </Flight>
   );
 }

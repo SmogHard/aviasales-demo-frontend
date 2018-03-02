@@ -110,6 +110,23 @@ const CheckOneDirection = styled.div`
   padding: 18px 26px;
 `;
 
+const Day = styled.div`
+  font-size: 18px;
+  font-weight: 700;
+  height: 20px;
+  width: 35px;
+  padding-top: 4px;
+  z-index: 10;
+`;
+
+const Price = styled.p`
+  margin: 0;
+  font-size: 10px;
+  padding-top: 2px;
+  text-align: center;
+  color: #00c455;
+`;
+
 const WEEKDAYS_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
 const PickerWithOutside = withClickOutside()(Picker);
@@ -152,11 +169,11 @@ const prices = {
 };
 
 function dateFormat(day) {
-  return day
-    ? format(new Date(day), "DD MMMM, dd", {
-        locale: ruLocale
-      })
-    : null;
+  if (day) {
+    return format(new Date(day), "DD MMMM, dd", {
+      locale: ruLocale
+    });
+  }
 }
 
 export default class DatePicker extends Component {
@@ -168,38 +185,38 @@ export default class DatePicker extends Component {
   };
 
   showDateTo = () => {
-    this.setState(prevState => ({
+    this.setState({
       isOpenTo: true,
       isOpenFrom: false
-    }));
+    });
   };
 
   showDateFrom = () => {
-    this.setState(prevState => ({
+    this.setState({
       isOpenTo: false,
       isOpenFrom: true
-    }));
+    });
   };
 
   onClickOutside = () => {
-    this.setState(prevState => ({
+    this.setState({
       isOpenTo: false,
       isOpenFrom: false
-    }));
+    });
   };
 
   setDayTo = day => {
-    this.setState(prevState => ({
+    this.setState({
       to: day,
       isOpenTo: false
-    }));
+    });
   };
 
   setDayFrom = day => {
-    this.setState(prevState => ({
+    this.setState({
       from: day,
       isOpenFrom: false
-    }));
+    });
   };
 
   renderDay(day) {
@@ -207,13 +224,9 @@ export default class DatePicker extends Component {
 
     return (
       <div>
-        <div className="Day">{date}</div>
+        <Day>{date}</Day>
         {prices[date] &&
-          prices[date].map((price, i) => (
-            <div key={i} className="Price">
-              {price}
-            </div>
-          ))}
+          prices[date].map((price, i) => <Price key={i}>{price}</Price>)}
       </div>
     );
   }

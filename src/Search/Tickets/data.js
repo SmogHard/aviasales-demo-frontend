@@ -13,8 +13,8 @@ export const data = [
       price: 7712,
       baggage: [
         {
-          suitcase: "15",
-          handbag: "10"
+          suitcase: 15,
+          handbag: 10
         }
       ],
       proposal: "Clickavia",
@@ -23,29 +23,23 @@ export const data = [
     flight: {
       airline: [russia_air],
       to: {
-        takeoff: "00:05",
-        landing: "03:05",
-        total: {
-          hour: 4
-        },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 240,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:35",
-        landing: "17:10",
-        total: { hour: 4, minutes: 35 },
-        transfers: "Прямой",
+        timeOfFlight: 275,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       }
     }
@@ -55,7 +49,7 @@ export const data = [
       price: 9269,
       baggage: [
         {
-          handbag: "10"
+          handbag: 10
         }
       ],
       proposal: "Biletix",
@@ -63,29 +57,25 @@ export const data = [
     },
     flight: {
       airline: [fly],
-      type: "Чартер",
+      type: "Charter",
       to: {
-        takeoff: "07:30",
-        landing: "09:50",
-        total: { hour: 4, minutes: 20 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 275,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "11:20",
-        landing: "17:35",
-        total: { hour: 4, minutes: 15 },
-        transfers: "CDG",
+        timeOfFlight: 275,
+        transfer: "CDG",
         dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       }
     }
@@ -95,12 +85,12 @@ export const data = [
       price: 8029,
       baggage: [
         {
-          handbag: "10"
+          handbag: 10
         },
         {
-          handbag: "10",
-          suitcase: "10",
-          price: "127"
+          handbag: 10,
+          suitcase: 10,
+          price: 127
         }
       ],
       proposal: "Билетик Аэро",
@@ -109,27 +99,23 @@ export const data = [
     flight: {
       airline: [nord_wg],
       to: {
-        takeoff: "00:15",
-        landing: "03:10",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 275,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:45",
-        landing: "17:15",
-        total: { hour: 4, minutes: 30 },
-        transfers: "Прямой",
+        timeOfFlight: 275,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       }
     }
@@ -139,9 +125,9 @@ export const data = [
       price: 8164,
       baggage: [
         {
-          suitcase: "15",
-          handbag: "10",
-          left: "Осталось 4 билета"
+          suitcase: 15,
+          handbag: 10,
+          left: 4
         }
       ],
       proposal: "Clickavia",
@@ -149,43 +135,39 @@ export const data = [
       more: [
         {
           company: "Aviabilet",
-          price: "8 432"
+          price: 8432
         },
         {
           company: "Poleteli",
-          price: "8 339"
+          price: 8339
         },
         {
           company: "Clickavia",
-          price: "8 738"
+          price: 8738
         }
       ]
     },
     flight: {
       airline: [nord_air],
       to: {
-        takeoff: "00:15",
-        landing: "03:10",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 275,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:45",
-        landing: "17:15",
-        total: { hour: 4, minutes: 30 },
-        transfers: "Прямой",
+        timeOfFlight: 275,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Барселона",
+        cityFrom: "Barselona",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Москва",
-        airportTo: "PJ"
+        cityTo: "Moscow",
+        airportTo: "MOW"
       }
     }
   },
@@ -194,8 +176,8 @@ export const data = [
       price: 8240,
       baggage: [
         {
-          suitcase: "15",
-          handbag: "10"
+          suitcase: 15,
+          handbag: 10
         }
       ],
       proposal: "Aviakassa",
@@ -205,28 +187,24 @@ export const data = [
       airline: [red_wings],
       type: "Чартер",
       to: {
-        takeoff: "00:15",
-        landing: "03:10",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 275,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:45",
-        landing: "17:15",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
+        timeOfFlight: 280,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Барселона",
+        cityFrom: "Barselona",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Москва",
-        airportTo: "PJ"
+        cityTo: "Moscow",
+        airportTo: "MOW"
       }
     }
   },
@@ -235,8 +213,8 @@ export const data = [
       price: 9108,
       baggage: [
         {
-          suitcase: "15",
-          handbag: "10"
+          suitcase: 15,
+          handbag: 10
         }
       ],
       proposal: "Clickavia",
@@ -245,28 +223,24 @@ export const data = [
     flight: {
       airline: [red_wings_sqr, russia_air_sqr],
       to: {
-        takeoff: "00:15",
-        landing: "03:10",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 265,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:45",
-        landing: "17:15",
-        total: { hour: 4, minutes: 30 },
-        transfers: "Прямой",
+        timeOfFlight: 255,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Барселона",
+        cityFrom: "Barselona",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Москва",
-        airportTo: "PJ"
+        cityTo: "Moscow",
+        airportTo: "MOW"
       }
     }
   },
@@ -275,8 +249,8 @@ export const data = [
       price: 9485,
       baggage: [
         {
-          suitcase: "15",
-          handbag: "10"
+          suitcase: 15,
+          handbag: 10
         }
       ],
       proposal: "Clickavia",
@@ -285,28 +259,24 @@ export const data = [
     flight: {
       airline: [russia_air_sqr, blue_air_sqr],
       to: {
-        takeoff: "00:15",
-        landing: "03:10",
-        total: { hour: 4, minutes: 55 },
-        transfers: "Прямой",
-        dateFrom: 1519754902000,
-        cityFrom: "Москва",
+        timeOfFlight: 277,
+        transfer: "",
+        dateFrom: 1519430700000,
+        cityFrom: "Moscow",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Барселона",
+        cityTo: "Barselona",
         airportTo: "PJ"
       },
       from: {
-        takeoff: "10:45",
-        landing: "17:15",
-        total: { hour: 4, minutes: 30 },
-        transfers: "Прямой",
+        timeOfFlight: 340,
+        transfer: "",
         dateFrom: 1519754902000,
-        cityFrom: "Барселона",
+        cityFrom: "Barselona",
         airportFrom: "LND",
         dateTo: 1519754902000,
-        cityTo: "Москва",
-        airportTo: "PJ"
+        cityTo: "Moscow",
+        airportTo: "MOW"
       }
     }
   }

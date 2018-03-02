@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import pin from "./pin.svg";
-import air_up from "./air-up.png";
-import air_down from "./air-down.png";
-import dot from "./dot.png";
+import air_up from "./air-up.svg";
+import air_down from "./air-down.svg";
+import dot from "./dot.svg";
 import line from "./line.png";
 import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
+import { localization } from "./../../Common/localization";
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ const Time = styled.p`
 
 const Clock = styled.div`
   display: flex;
+  padding-bottom: 4px;
 `;
 
 const From = styled.div`
@@ -32,6 +34,7 @@ const From = styled.div`
 
 const To = From.extend`
   justify-content: flex-end;
+  text-align: right;
 `;
 
 const Day = styled.p`
@@ -60,6 +63,7 @@ const RoutePath = styled.div`
   flex-direction: column;
   flex-basis: 60%;
   padding-right: 16px;
+  padding-top: 8px;
   padding-left: 16px;
 `;
 
@@ -89,10 +93,14 @@ const AirAbbreviation = styled.p`
 `;
 
 const RouteAirPorts = styled.div`
-  padding-top: 15px;
+  padding-top: 18px;
   display: flex;
   justify-content: space-between;
 `;
+
+export const formatTimeOfFlight = minutes => {
+  return ((minutes / 60) | 0) + " ч " + minutes % 60 + " м";
+};
 
 export default function(props) {
   const trip = props.data;
@@ -104,24 +112,25 @@ export default function(props) {
   const dateTo = format(new Date(trip.dateTo), "DD MMM YYYY, dd", {
     locale: ruLocale
   });
-  const total =
-    trip.total.hour +
-    " ч " +
-    (trip.total.minutes ? trip.total.minutes + " м" : "");
+
+  const takeOff = format(new Date(trip.dateFrom), "HH:MM");
+
+  const landing = format(new Date(trip.dateTo), "HH:MM");
+
   return (
     <Wrapper>
       <From>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> {trip.takeoff} </Time>
+          <Time> {takeOff} </Time>
         </Clock>
-        <City>{trip.cityFrom}</City>
+        <City>{localization["city"][trip.cityFrom]}</City>
         <Day>{dateFrom}</Day>
       </From>
       <RoutePath>
         <TotalWrap>
           <AirIcon src={air_up} />
-          <Total>{total}</Total>
+          <Total> Всего: {formatTimeOfFlight(trip.timeOfFlight)}</Total>
           <AirIcon src={air_down} />
         </TotalWrap>
         <Snippet>
@@ -135,9 +144,9 @@ export default function(props) {
       <To>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> {trip.landing} </Time>
+          <Time> {landing} </Time>
         </Clock>
-        <City>{trip.cityTo}</City>
+        <City>{localization["city"][trip.cityTo]}</City>
         <Day>{dateTo}</Day>
       </To>
     </Wrapper>

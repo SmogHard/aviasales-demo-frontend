@@ -162,22 +162,6 @@
   width: 45px;
 }
 
-.Day {
-  font-size: 18px;
-  font-weight: 700;
-  height: 20px;
-  width: 35px;
-  padding-top: 4px;
-  z-index: 10;
-}
-
-.Price {
-  font-size: 10px;
-  padding-top: 2px;
-  text-align: center;
-  color: #00c455;
-}
-
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
   background-color: #f4f4f4;
   z-index: -3;

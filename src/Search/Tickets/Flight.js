@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import share from "./share.png";
+import share from "./share.svg";
 import Trip from "./Trip";
 import AirlineLogo from "./AirlineLogo";
+import { localization } from "./../../Common/localization";
 
 const Flight = styled.div`
   flex-basis: 66.6666%;
@@ -15,6 +16,7 @@ const Flight = styled.div`
 
 const Header = styled.div`
   display: flex;
+  margin-bottom: 12px;
   justify-content: flex-end;
   @media (min-width: 768px) {
     justify-content: space-between;
@@ -41,7 +43,6 @@ const Type = styled.button`
 `;
 
 const Share = styled.img`
-  margin-right: 10px;
   width: 17px;
   height: 14px;
 `;
@@ -56,7 +57,7 @@ const Trips = styled.div`
 
 const Line = styled.div`
   width: 100%;
-  margin: 12px 0px;
+  margin: 24px 0px;
   border: 0.5px dotted #dddddd;
 `;
 
@@ -67,7 +68,7 @@ export default function(props) {
       <Header>
         <AirlineLogo airline={flight.airline} />
         <InfoAndShare>
-          {flight.type && <Type> {flight.type} </Type>}
+          {flight.type && <Type> {localization["common"][flight.type]} </Type>}
           <Share src={share} />
         </InfoAndShare>
       </Header>

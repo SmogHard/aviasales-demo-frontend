@@ -94,9 +94,9 @@ export default class DropDown extends Component {
   };
 
   onClickOutside = () => {
-    this.setState(prevState => ({
+    this.setState({
       isOpen: false
-    }));
+    });
   };
 
   render() {

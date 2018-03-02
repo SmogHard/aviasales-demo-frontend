@@ -100,7 +100,9 @@ export default function(props) {
             <Weight>{baggage[0].suitcase}</Weight>
           </IconWrap>
         </Baggage>
-        <TicketLeft>{baggage[0].left}</TicketLeft>
+        <TicketLeft>
+          {baggage[0].left ? "Осталось " + baggage[0].left + " билета" : null}
+        </TicketLeft>
       </BagWrap>
     );
   } else {
