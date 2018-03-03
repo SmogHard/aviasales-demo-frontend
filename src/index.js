@@ -7,12 +7,12 @@ import "flexboxgrid2";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { IntlProvider, addLocaleData } from "react-intl";
-import ru from "react-intl/locale-data/fr";
+import ru from "react-intl/locale-data/ru";
 
 addLocaleData(ru);
 
 ReactDOM.render(
-  <IntlProvider locale="fr">
+  <IntlProvider locale="ru">
     <BrowserRouter>
       <App />
     </BrowserRouter>

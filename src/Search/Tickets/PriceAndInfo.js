@@ -114,7 +114,7 @@ const Other = styled.div`
 `;
 
 export default function(props) {
-  let formatter = [{ style: "decimal" }];
+  let formatter = [{ style: "currency" }];
   return (
     <Buy>
       <Baggage baggage={props.info.baggage} />
@@ -127,6 +127,7 @@ export default function(props) {
               <FormattedNumber
                 value={props.info.price}
                 style={formatter.style}
+                currency={"RUB"}
                 minimumFractionDigits={0}
                 maximumFractionDigits={0}
               />{" "}
@@ -137,6 +138,7 @@ export default function(props) {
             <FormattedNumber
               value={props.info.price}
               style={formatter.style}
+              currency={"RUB"}
               minimumFractionDigits={0}
               maximumFractionDigits={0}
             />{" "}
