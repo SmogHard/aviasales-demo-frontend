@@ -15,6 +15,9 @@ const Title = styled.h1`
     font-size: 32px;
     line-height: 48px;
   }
+  @media (min-width: 1200px) {
+    margin-top: 218px;
+  }
 `;
 
 const Search = styled.div`

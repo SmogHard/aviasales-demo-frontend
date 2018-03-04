@@ -39,7 +39,7 @@ const DatePax = Text.extend`
 
 const Currency = styled.button`
   background: none;
-  border: 2px white solid;
+  border: 1px white solid;
   cursor: pointer;
   color: white;
   padding: 8px 12px;

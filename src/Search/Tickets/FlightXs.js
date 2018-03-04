@@ -38,15 +38,15 @@ const Time = styled.div`
 export default function(props) {
   const { flight, icon } = props;
 
-  const takeOff = format(new Date(flight.dateFrom), "HH:MM");
+  const takeOffAt = format(new Date(flight.dateFrom), "HH:MM");
 
-  const landing = format(new Date(flight.dateTo), "HH:MM");
+  const landingAt = format(new Date(flight.dateTo), "HH:MM");
 
   return (
     <Flight>
       <Time>
         <Icon src={icon} />
-        {takeOff} - {landing}
+        {takeOffAt} - {landingAt}
       </Time>
       <Total>
         <Icon src={clock} />

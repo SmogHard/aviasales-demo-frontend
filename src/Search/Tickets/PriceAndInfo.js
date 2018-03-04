@@ -114,10 +114,10 @@ const Other = styled.div`
 `;
 
 export default function(props) {
-  let formatter = [{ style: "currency" }];
+  const formatter = [{ style: "currency" }];
   return (
     <Buy>
-      <Baggage baggage={props.info.baggage} />
+      <Baggage info={props.info} />
       <Button>
         <TextWrapper>
           <Offer>
@@ -149,50 +149,23 @@ export default function(props) {
       <Proposal>на {props.info.proposal}</Proposal>
       {props.info.more && (
         <Other>
-          <Prices>
-            <OtherOffer>
-              <Link>{props.info.more[0].company}</Link>
-              <Link>
-                {" "}
-                <FormattedNumber
-                  value={props.info.more[0].price}
-                  style={formatter.style}
-                  minimumFractionDigits={0}
-                  maximumFractionDigits={0}
-                />{" "}
-                ₽
-              </Link>
-            </OtherOffer>
-          </Prices>
-          <Prices>
-            <OtherOffer>
-              <Link>{props.info.more[1].company}</Link>
-              <Link>
-                {" "}
-                <FormattedNumber
-                  value={props.info.more[1].price}
-                  style={formatter.style}
-                  minimumFractionDigits={0}
-                  maximumFractionDigits={0}
-                />{" "}
-                ₽
-              </Link>
-            </OtherOffer>
-          </Prices>
-          <Prices>
-            <OtherOffer>
-              <Link>{props.info.more[2].company}</Link>
-              <Link>
-                <FormattedNumber
-                  value={props.info.more[2].price}
-                  style={formatter.style}
-                  minimumFractionDigits={0}
-                  maximumFractionDigits={0}
-                />{" "}
-                ₽
-              </Link>
-            </OtherOffer>
-          </Prices>
+          {props.info.more.map((more, index) => (
+            <Prices>
+              <OtherOffer>
+                <Link>{more.company}</Link>
+                <Link>
+                  {" "}
+                  <FormattedNumber
+                    value={more.price}
+                    style={formatter.style}
+                    minimumFractionDigits={0}
+                    maximumFractionDigits={0}
+                  />{" "}
+                  ₽
+                </Link>
+              </OtherOffer>
+            </Prices>
+          ))}
           <Prices>
             <More>+ еще 3 предложения</More>
           </Prices>

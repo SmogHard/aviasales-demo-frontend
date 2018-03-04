@@ -86,22 +86,24 @@ const BagWrap = styled.div`
 `;
 
 export default function(props) {
-  const baggage = props.baggage;
-  if (baggage.length === 1) {
+  const info = props.info;
+  const baggage = props.info.baggage;
+  const baggageWithoutSuite = props.info.baggageWithoutSuite;
+  if (!baggageWithoutSuite) {
     return (
       <BagWrap>
         <Baggage>
           <IconWrap>
             <Icon src={handbag} />
-            <Weight>{baggage[0].handbag}</Weight>
+            <Weight>{baggage.handbag}</Weight>
           </IconWrap>
           <IconWrap>
-            <Icon src={baggage[0].suitcase ? suitcase : suitcase_none} />
-            <Weight>{baggage[0].suitcase}</Weight>
+            <Icon src={suitcase} />
+            <Weight>{baggage.suitcase}</Weight>
           </IconWrap>
         </Baggage>
         <TicketLeft>
-          {baggage[0].left ? "Осталось " + baggage[0].left + " билета" : null}
+          {info.ticketsLeft && "Осталось " + info.ticketsLeft + " билета"}
         </TicketLeft>
       </BagWrap>
     );
@@ -112,7 +114,7 @@ export default function(props) {
           <Baggage>
             <IconWrap>
               <Icon src={handbag} />
-              <Weight>{baggage[0].handbag}</Weight>
+              <Weight>{baggage.handbag}</Weight>
             </IconWrap>
             <IconWrap>
               <Icon src={suitcase_none} />
@@ -124,11 +126,11 @@ export default function(props) {
           <Baggage>
             <IconWrap>
               <Icon src={handbag} />
-              <Weight>{baggage[1].handbag}</Weight>
+              <Weight>{baggage.handbag}</Weight>
             </IconWrap>
             <IconWrap>
-              <Icon src={baggage[1].suitcase ? suitcase : suitcase_none} />
-              <Weight>{baggage[1].suitcase}</Weight>
+              <Icon src={suitcase} />
+              <Weight>{baggage.suitcase}</Weight>
             </IconWrap>
           </Baggage>
           <PriceForSuiteCase>- 267 ₽</PriceForSuiteCase>

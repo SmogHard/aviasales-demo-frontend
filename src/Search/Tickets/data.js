@@ -11,12 +11,10 @@ export const data = [
   {
     info: {
       price: 7712,
-      baggage: [
-        {
-          suitcase: 15,
-          handbag: 10
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
       proposal: "Clickavia",
       type: "lowcost"
     },
@@ -47,11 +45,10 @@ export const data = [
   {
     info: {
       price: 9269,
-      baggage: [
-        {
-          handbag: 10
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
       proposal: "Biletix",
       type: "faster"
     },
@@ -83,16 +80,14 @@ export const data = [
   {
     info: {
       price: 8029,
-      baggage: [
-        {
-          handbag: 10
-        },
-        {
-          handbag: 10,
-          suitcase: 10,
-          price: 127
-        }
-      ],
+      baggage: {
+        handbag: 10,
+        suitcase: 10,
+        price: 127
+      },
+      baggageWithoutSuite: {
+        handbag: 10
+      },
       proposal: "Билетик Аэро",
       type: "best"
     },
@@ -123,13 +118,11 @@ export const data = [
   {
     info: {
       price: 8164,
-      baggage: [
-        {
-          suitcase: 15,
-          handbag: 10,
-          left: 4
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
+      ticketsLeft: 4,
       proposal: "Clickavia",
       type: "common",
       more: [
@@ -174,12 +167,10 @@ export const data = [
   {
     info: {
       price: 8240,
-      baggage: [
-        {
-          suitcase: 15,
-          handbag: 10
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
       proposal: "Aviakassa",
       type: "common"
     },
@@ -211,12 +202,10 @@ export const data = [
   {
     info: {
       price: 9108,
-      baggage: [
-        {
-          suitcase: 15,
-          handbag: 10
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
       proposal: "Clickavia",
       type: "common"
     },
@@ -247,12 +236,10 @@ export const data = [
   {
     info: {
       price: 9485,
-      baggage: [
-        {
-          suitcase: 15,
-          handbag: 10
-        }
-      ],
+      baggage: {
+        suitcase: 15,
+        handbag: 10
+      },
       proposal: "Clickavia",
       type: "common"
     },

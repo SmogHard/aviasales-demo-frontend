@@ -113,16 +113,16 @@ export default function(props) {
     locale: ruLocale
   });
 
-  const takeOff = format(new Date(trip.dateFrom), "HH:MM");
+  const takeOffAt = format(new Date(trip.dateFrom), "HH:MM");
 
-  const landing = format(new Date(trip.dateTo), "HH:MM");
+  const landingAt = format(new Date(trip.dateTo), "HH:MM");
 
   return (
     <Wrapper>
       <From>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> {takeOff} </Time>
+          <Time> {takeOffAt} </Time>
         </Clock>
         <City>{localization["city"][trip.cityFrom]}</City>
         <Day>{dateFrom}</Day>
@@ -144,7 +144,7 @@ export default function(props) {
       <To>
         <Clock>
           <Pin src={pin} alt="Булавка" />
-          <Time> {landing} </Time>
+          <Time> {landingAt} </Time>
         </Clock>
         <City>{localization["city"][trip.cityTo]}</City>
         <Day>{dateTo}</Day>

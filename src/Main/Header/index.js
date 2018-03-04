@@ -13,6 +13,9 @@ const Header = styled.header`
     #196ebd 100%
   );
   padding-top: 12px;
+  @media (min-width: 1200px) {
+    height: 100vh;
+  }
 `;
 
 export default function() {
