@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 import styled from 'styled-components';
-import Title from './TitleFilter';
-import arrowOpen from './arrow-open.svg';
+import Filter from './Filter';
 import Checkbox from './../../Common/Checkbox';
 
 const Airlines = styled.div`
@@ -28,18 +28,12 @@ const Information = styled.p`
 const alliance = [
   {
     checked: true,
-    label: 'Все',
-    price: undefined,
-    id: 1,
-  },
-  {
-    checked: true,
     label: 'One World',
     price: 7712,
     id: 2,
   },
   {
-    checked: true,
+    checked: false,
     label: 'Star Alliance',
     price: 11712,
     id: 3,
@@ -55,17 +49,12 @@ const alliance = [
 const airlines = [
   {
     checked: true,
-    label: 'Все',
-    id: 1,
-  },
-  {
-    checked: true,
     label: 'Custom Company',
     price: 7712,
     id: 2,
   },
   {
-    checked: true,
+    checked: false,
     label: 'Air Algerie',
     price: 11712,
     id: 3,
@@ -77,7 +66,7 @@ const airlines = [
     id: 4,
   },
   {
-    checked: true,
+    checked: false,
     label: 'Bulgaria Air',
     price: 47712,
     id: 5,
@@ -89,7 +78,7 @@ const airlines = [
     id: 6,
   },
   {
-    checked: true,
+    checked: false,
     label: 'Air Moldova',
     price: 47712,
     id: 7,
@@ -102,26 +91,114 @@ const airlines = [
   },
 ];
 
-const several = { checked: true, label: 'Несколько авиакомпаний' };
+const isAllCheck = filter => filter.every(el => el.checked);
 
-export default function () {
-  return (
-    <Airlines>
-      <Title title="Авиакомпании" arrow={arrowOpen} amount="42" />
-      <Wrapper>
-        <Checkbox data={several} />
-      </Wrapper>
-      <Information>
-        Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями, включая выбранную
-      </Information>
-      <Wrapper>
-        <CheckboxTitle>Альянсы</CheckboxTitle>
-        {alliance.map(item => <Checkbox data={item} key={item.id} />)}
-      </Wrapper>
-      <Wrapper>
-        <CheckboxTitle>Авиакомпании</CheckboxTitle>
-        {airlines.map(item => <Checkbox data={item} key={item.id} />)}
-      </Wrapper>
-    </Airlines>
-  );
+const setCheck = (filter, checked) => ({ ...filter, checked });
+
+const getAllCheck = (filter, check) => filter.map(item => setCheck(item, check));
+
+const toggleChecked = o => ({ ...o, checked: !o.checked });
+
+const checkEl = (arr, idx) => [
+  ...arr.slice(0, idx),
+  toggleChecked(arr[idx]),
+  ...arr.slice(idx + 1),
+];
+
+const several = [{ checked: false }];
+
+class AirlinesFilter extends Component {
+  state = {
+    filterAirlines: cloneDeep(airlines),
+    filterAlliance: cloneDeep(alliance),
+    filterSeveral: cloneDeep(several),
+  };
+
+  handleAllAllianceCheck = () => {
+    this.setState(prevState => ({
+      filterAlliance: getAllCheck(prevState.filterAlliance, !isAllCheck(prevState.filterAlliance)),
+    }));
+  };
+
+  handleAllianceCheck = (idx) => {
+    this.setState(prevState => ({
+      filterAlliance: checkEl(prevState.filterAlliance, idx),
+    }));
+  };
+
+  handleAllAirlinesCheck = () => {
+    this.setState(prevState => ({
+      filterAirlines: getAllCheck(prevState.filterAirlines, !isAllCheck(prevState.filterAirlines)),
+    }));
+  };
+
+  handleAirlineCheck = (idx) => {
+    this.setState(prevState => ({
+      filterAirlines: checkEl(prevState.filterAirlines, idx),
+    }));
+  };
+
+  handleAllSeveralCheck = () => {
+    this.setState(prevState => ({
+      filterSeveral: getAllCheck(prevState.filterSeveral, !isAllCheck(prevState.filterSeveral)),
+    }));
+  };
+
+  render() {
+    return (
+      <Airlines>
+        <Filter isOpen title="Авиакомпании" amount={42}>
+          <Fragment>
+            <Wrapper>
+              <Checkbox
+                label="Несколько авиакомпаний"
+                check={isAllCheck(this.state.filterSeveral)}
+                onChange={() => this.handleAllSeveralCheck()}
+              />
+            </Wrapper>
+            <Information>
+              Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями, включая
+              выбранную
+            </Information>
+            <Wrapper>
+              <CheckboxTitle>Альянсы</CheckboxTitle>
+              <Checkbox
+                label="Все"
+                check={isAllCheck(this.state.filterAlliance)}
+                onChange={() => this.handleAllAllianceCheck()}
+              />
+              {this.state.filterAlliance.map((item, i) => (
+                <Checkbox
+                  price={item.price}
+                  check={item.checked}
+                  label={item.label}
+                  key={item.id}
+                  onChange={() => this.handleAllianceCheck(i)}
+                />
+              ))}
+            </Wrapper>
+            <Wrapper>
+              <CheckboxTitle>Авиакомпании</CheckboxTitle>
+              <Checkbox
+                label="Все"
+                check={isAllCheck(this.state.filterAirlines)}
+                onChange={() => this.handleAllAirlinesCheck()}
+              />
+              {this.state.filterAirlines.map((item, i) => (
+                <Checkbox
+                  price={item.price}
+                  check={item.checked}
+                  label={item.label}
+                  key={item.id}
+                  onChange={() => this.handleAirlineCheck(i)}
+                />
+              ))}
+            </Wrapper>
+          </Fragment>
+        </Filter>
+      </Airlines>
+    );
+  }
 }
+
+export default AirlinesFilter;

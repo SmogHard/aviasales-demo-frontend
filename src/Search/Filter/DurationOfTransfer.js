@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import arrowClose from './arrow-close.svg';
-import Title from './TitleFilter';
+import Filter from './Filter';
 
 const Wrapper = styled.div`
   padding: 16px 16px;
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
 export default function () {
   return (
     <Wrapper>
-      <Title title="Длительность пересадки" arrow={arrowClose} />
+      <Filter title="Длительность пересадки" />
     </Wrapper>
   );
 }

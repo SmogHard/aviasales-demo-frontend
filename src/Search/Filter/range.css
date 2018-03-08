@@ -1,0 +1,13 @@
+.rc-slider-handle {
+  border-color: #d6d9da;
+}
+
+.rc-slider-track {
+  background-color: #00acde;
+  height: 2px;
+}
+
+.rc-slider-rail {
+  background-color: #edf5f7;
+  height: 2px;
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import arrowСlose from './arrow-close.svg';
-import Title from './TitleFilter';
+import Filter from './Filter';
 
 const Wrapper = styled.div`
   padding: 16px 16px;
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
 export default function () {
   return (
     <Wrapper>
-      <Title title="Аэропорт пересадки" arrow={arrowСlose} amount="45" />
+      <Filter title="Аэропорт пересадки" amount={45} />
     </Wrapper>
   );
 }

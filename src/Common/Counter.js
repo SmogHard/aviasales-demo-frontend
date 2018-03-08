@@ -55,19 +55,21 @@ const WithoutSeat = styled.p`
 
 export default class DropDown extends Component {
   state = {
-    count: 0,
+    count: this.props.count,
   };
 
   deductCount = () => {
     this.setState(prevState => ({
       count: prevState.count - 1,
     }));
+    this.props.onChange(-1);
   };
 
   addCount = () => {
     this.setState(prevState => ({
       count: prevState.count + 1,
     }));
+    this.props.onChange(1);
   };
 
   render() {
@@ -91,7 +93,12 @@ export default class DropDown extends Component {
   }
 }
 
+DropDown.defaultProps = {
+  noSeat: undefined,
+};
 DropDown.propTypes = {
   text: PropTypes.string.isRequired,
-  noSeat: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  noSeat: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };

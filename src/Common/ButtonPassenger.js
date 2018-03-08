@@ -1,5 +1,6 @@
 import { withClickOutside } from 'react-clickoutside';
 import React, { Component } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
 import styled from 'styled-components';
 import Counter from './Counter';
 import Checkbox from './Checkbox';
@@ -79,11 +80,13 @@ const Bussines = styled.div`
 
 const SelectPassOutside = withClickOutside()(SelectPassenger);
 
-const category = { label: 'Бизнес класс' };
+const category = { label: 'Бизнес класс', checked: true };
 
 export default class DropDown extends Component {
   state = {
     isOpen: false,
+    category: cloneDeep(category),
+    passenger: 1,
   };
 
   onToogle = () => {
@@ -98,21 +101,53 @@ export default class DropDown extends Component {
     });
   };
 
+  handleCheck = () => {
+    this.setState(prevState => ({
+      category: { ...prevState.category, checked: !prevState.category.checked },
+    }));
+  };
+
+  countCheck = (count) => {
+    this.setState(prevState => ({
+      passenger: prevState.passenger + count,
+    }));
+  };
+
   render() {
     return (
       <SelectPassOutside onClickOutside={this.onClickOutside}>
         <ButtonPassenger type="button" onClick={this.onToogle}>
           <Text>
-            1 пассажир, <OpacityText>эконом</OpacityText>
+            {this.state.passenger} пассажир, <OpacityText>эконом</OpacityText>
           </Text>
         </ButtonPassenger>
         {this.state.isOpen && (
           <Options>
-            <Counter text="Взрослые" count={1} />
-            <Counter text="Дети до 12 лет" count={1} />
-            <Counter text="Дети до 2 лет" count={0} noSeat />
+            <Counter
+              text="Взрослые"
+              passenger={this.state.passenger}
+              count={1}
+              onChange={count => this.countCheck(count)}
+            />
+            <Counter
+              text="Дети до 12 лет"
+              passenger={this.state.passenger}
+              count={0}
+              onChange={count => this.countCheck(count)}
+            />
+            <Counter
+              passenger={this.state.passenger}
+              text="Дети до 2 лет"
+              count={0}
+              noSeat
+              onChange={count => this.countCheck(count)}
+            />
             <Bussines>
-              <Checkbox data={category} />
+              <Checkbox
+                check={this.state.category.checked}
+                label={this.state.category.label}
+                onChange={() => this.handleCheck()}
+              />
             </Bussines>
           </Options>
         )}
