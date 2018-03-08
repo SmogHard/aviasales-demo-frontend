@@ -150,7 +150,7 @@ export default function(props) {
       {props.info.more && (
         <Other>
           {props.info.more.map((more, index) => (
-            <Prices>
+            <Prices key={index}>
               <OtherOffer>
                 <Link>{more.company}</Link>
                 <Link>

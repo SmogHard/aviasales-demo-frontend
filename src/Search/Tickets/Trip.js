@@ -99,7 +99,7 @@ const RouteAirPorts = styled.div`
 `;
 
 export const formatTimeOfFlight = minutes => {
-  return ((minutes / 60) | 0) + " ч " + minutes % 60 + " м";
+  return `${(minutes / 60) | 0} ч ${minutes % 60}`;
 };
 
 export default function(props) {
