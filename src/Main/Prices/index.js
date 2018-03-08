@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import Title from "./Title";
-import Info from "./Info";
-import russian from "./flagru.png";
-import moldova from "./flagmd.png";
-import armenia from "./flagam.png";
+import React from 'react';
+import styled from 'styled-components';
+import Title from './Title';
+import Info from './Info';
+import russian from './flagru.png';
+import moldova from './flagmd.png';
+import armenia from './flagam.png';
 
 const Section = styled.section`
   background: linear-gradient(to bottom, #f8fcff 0%, #ffffff 100%);
@@ -71,7 +71,7 @@ const Offers = styled.div`
   justify-content: space-between;
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   color: #00bae8;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -100,7 +100,7 @@ const PopularDirections = styled.div`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <Section>
       <div className="container">
@@ -126,19 +126,19 @@ export default function() {
                   </CityFrom>
                   <Prices>
                     <Text>
-                      <Link href="#">от 4 813 ₽</Link>
+                      <LinkStyled href="#">от 4 813 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 7 857 ₽</Link>
+                      <LinkStyled href="#">от 7 857 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 15 127 ₽</Link>
+                      <LinkStyled href="#">от 15 127 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 275 ₽</Link>
+                      <LinkStyled href="#">от 9 275 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 148 ₽</Link>
+                      <LinkStyled href="#">от 9 148 ₽</LinkStyled>
                     </Text>
                   </Prices>
                 </Offers>
@@ -161,19 +161,19 @@ export default function() {
                   </CityFrom>
                   <Prices>
                     <Text>
-                      <Link href="#">от 4 813 ₽</Link>
+                      <LinkStyled href="#">от 4 813 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 7 857 ₽</Link>
+                      <LinkStyled href="#">от 7 857 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 15 127 ₽</Link>
+                      <LinkStyled href="#">от 15 127 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 275 ₽</Link>
+                      <LinkStyled href="#">от 9 275 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 148 ₽</Link>
+                      <LinkStyled href="#">от 9 148 ₽</LinkStyled>
                     </Text>
                   </Prices>
                 </Offers>
@@ -196,19 +196,19 @@ export default function() {
                   </CityFrom>
                   <Prices>
                     <Text>
-                      <Link href="#">от 4 813 ₽</Link>
+                      <LinkStyled href="#">от 4 813 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 7 857 ₽</Link>
+                      <LinkStyled href="#">от 7 857 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 15 127 ₽</Link>
+                      <LinkStyled href="#">от 15 127 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 275 ₽</Link>
+                      <LinkStyled href="#">от 9 275 ₽</LinkStyled>
                     </Text>
                     <Text>
-                      <Link href="#">от 9 148 ₽</Link>
+                      <LinkStyled href="#">от 9 148 ₽</LinkStyled>
                     </Text>
                   </Prices>
                 </Offers>

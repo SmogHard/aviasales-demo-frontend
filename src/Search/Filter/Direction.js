@@ -1,12 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import air from "./airplane.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import air from './airplane.svg';
 
 const Air = styled.img`
   margin: 0 8px;
 `;
 
-const Direction = styled.h3`
+const Title = styled.h3`
   display: flex;
   font-weight: bold;
   font-size: 14px;
@@ -15,12 +16,17 @@ const Direction = styled.h3`
   margin-top: 24px;
 `;
 
-export default function(props) {
-  return (
-    <Direction>
-      {props.cityFrom}
-      <Air src={air} alt="air" />
-      {props.cityTo}
-    </Direction>
-  );
-}
+const Direction = ({ cityFrom, cityTo }) => (
+  <Title>
+    {cityFrom}
+    <Air src={air} alt="air" />
+    {cityTo}
+  </Title>
+);
+
+Direction.propTypes = {
+  cityFrom: PropTypes.string.isRequired,
+  cityTo: PropTypes.string.isRequired,
+};
+
+export default Direction;

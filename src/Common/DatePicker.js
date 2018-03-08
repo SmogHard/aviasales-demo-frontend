@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import calendar from "./calendar.svg";
-import DayPicker from "react-day-picker";
-import { format } from "date-fns";
-import ruLocale from "date-fns/locale/ru";
-import { withClickOutside } from "react-clickoutside";
-import Checkbox from "./SpecialCheckbox";
-import "react-day-picker/lib/style.css";
-import "./datepicker.css";
+import React, { Component } from 'react';
+import DayPicker from 'react-day-picker';
+import styled from 'styled-components';
+import { format } from 'date-fns';
+import ruLocale from 'date-fns/locale/ru';
+import { withClickOutside } from 'react-clickoutside';
+import 'react-day-picker/lib/style.css';
+import './datepicker.css';
+import calendar from './calendar.svg';
+import Checkbox from './SpecialCheckbox';
 
 const DateSelect = styled.div`
   flex-basis: 50%;
@@ -73,8 +73,7 @@ const Picker = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0px 0px 8px rgba(74, 74, 74, 0.2),
-    0px 2px 4px rgba(74, 74, 74, 0.2);
+  box-shadow: 0px 0px 8px rgba(74, 74, 74, 0.2), 0px 2px 4px rgba(74, 74, 74, 0.2);
   border-radius: 2px;
   display: flex;
   flex-direction: column;
@@ -127,53 +126,54 @@ const Price = styled.p`
   color: #00c455;
 `;
 
-const WEEKDAYS_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+const WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 const PickerWithOutside = withClickOutside()(Picker);
 
 const MONTHS = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь"
+  'Январь',
+  'Февраль',
+  'Март',
+  'Апрель',
+  'Май',
+  'Июнь',
+  'Июль',
+  'Август',
+  'Сентябрь',
+  'Октябрь',
+  'Ноябрь',
+  'Декабрь',
 ];
 
 const WEEKDAYS_LONG = [
-  "Воскресенье",
-  "Понедельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Суббота"
+  'Воскресенье',
+  'Понедельник',
+  'Вторник',
+  'Среда',
+  'Четверг',
+  'Пятница',
+  'Суббота',
 ];
 
 const LABELS = {
-  nextMonth: "следующий месяц",
-  previousMonth: "предыдущий месяц"
+  nextMonth: 'следующий месяц',
+  previousMonth: 'предыдущий месяц',
 };
 
 const prices = {
-  25: ["43 606"],
-  26: ["43 606"],
-  27: ["42 606"],
-  28: ["41 387"]
+  25: ['43 606'],
+  26: ['43 606'],
+  27: ['42 606'],
+  28: ['41 387'],
 };
 
 function dateFormat(day) {
   if (day) {
-    return format(new Date(day), "DD MMMM, dd", {
-      locale: ruLocale
+    return format(new Date(day), 'DD MMMM, dd', {
+      locale: ruLocale,
     });
   }
+  return undefined;
 }
 
 export default class DatePicker extends Component {
@@ -181,55 +181,54 @@ export default class DatePicker extends Component {
     from: null,
     to: null,
     isOpenTo: false,
-    isOpenFrom: false
+    isOpenFrom: false,
   };
 
-  showDateTo = () => {
+  onClickOutside = () => {
     this.setState({
-      isOpenTo: true,
-      isOpenFrom: false
+      isOpenTo: false,
+      isOpenFrom: false,
+    });
+  };
+
+  setDayTo = (day) => {
+    this.setState({
+      to: day,
+      isOpenTo: false,
+    });
+  };
+
+  setDayFrom = (day) => {
+    this.setState({
+      from: day,
+      isOpenFrom: false,
     });
   };
 
   showDateFrom = () => {
     this.setState({
       isOpenTo: false,
-      isOpenFrom: true
+      isOpenFrom: true,
     });
   };
 
-  onClickOutside = () => {
+  showDateTo = () => {
     this.setState({
-      isOpenTo: false,
-      isOpenFrom: false
+      isOpenTo: true,
+      isOpenFrom: false,
     });
   };
 
-  setDayTo = day => {
-    this.setState({
-      to: day,
-      isOpenTo: false
-    });
-  };
-
-  setDayFrom = day => {
-    this.setState({
-      from: day,
-      isOpenFrom: false
-    });
-  };
-
-  renderDay(day) {
+  renderDay = (day) => {
     const date = day.getDate();
 
     return (
       <div>
         <Day>{date}</Day>
-        {prices[date] &&
-          prices[date].map((price, i) => <Price key={i}>{price}</Price>)}
+        {prices[date] && prices[date].map(price => <Price key>{price}</Price>)}
       </div>
     );
-  }
+  };
 
   render() {
     const { from, to } = this.state;
@@ -245,7 +244,7 @@ export default class DatePicker extends Component {
               type="text"
               name="ddto"
               placeholder="Туда"
-              value={from ? dateFormat(from) : ""}
+              value={from ? dateFormat(from) : ''}
               readOnly
             />
             <ButtonAction>
@@ -260,7 +259,7 @@ export default class DatePicker extends Component {
               type="text"
               name="ddfrom"
               placeholder="Обратно"
-              value={to ? dateFormat(to) : ""}
+              value={to ? dateFormat(to) : ''}
               readOnly
             />
             <ButtonAction>
@@ -275,7 +274,7 @@ export default class DatePicker extends Component {
               selectedDays={[to, from, { from, to }]}
               modifiers={modifiers}
               onDayClick={this.setDayFrom}
-              locale={"ru"}
+              locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
               weekdaysShort={WEEKDAYS_SHORT}
@@ -295,7 +294,7 @@ export default class DatePicker extends Component {
               selectedDays={[from, to, { from, to }]}
               modifiers={modifiers}
               onDayClick={this.setDayTo}
-              locale={"ru"}
+              locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
               weekdaysShort={WEEKDAYS_SHORT}

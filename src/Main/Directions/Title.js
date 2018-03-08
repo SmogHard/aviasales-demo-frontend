@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import compass from "./compass.svg";
-import pen from "./pen.png";
+import React from 'react';
+import styled from 'styled-components';
+import compass from './compass.svg';
+import pen from './pen.png';
 
 const TitleWrap = styled.div`
   display: flex;
@@ -38,7 +38,7 @@ const TitleLogo = Img.extend`
   margin: 40px 0 24px 0;
 `;
 
-export default function() {
+export default function () {
   return (
     <div>
       <TitleLogo alt="Лого" src={compass} />

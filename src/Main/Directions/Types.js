@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import world from "./world.svg";
-import coctail from "./coctail.svg";
-import children from "./children.svg";
-import holiday from "./holiday.svg";
-import history from "./history.svg";
-import shoping from "./shoping.svg";
+import React from 'react';
+import styled from 'styled-components';
+import world from './world.svg';
+import coctail from './coctail.svg';
+import children from './children.svg';
+import holiday from './holiday.svg';
+import history from './history.svg';
+import shoping from './shoping.svg';
 
 const Directions = styled.div`
   margin-top: 32px;
@@ -66,7 +66,7 @@ const Name = styled.p`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <div className="row center-xs">
       <div className="col-xl-9">

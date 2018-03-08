@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Counter from "./Counter";
-import { withClickOutside } from "react-clickoutside";
-import Checkbox from "./Checkbox";
+import { withClickOutside } from 'react-clickoutside';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Counter from './Counter';
+import Checkbox from './Checkbox';
 
 const InputWrapper = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const ButtonPassenger = styled.button`
   cursor: pointer;
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     line-height: 0;
     height: 0;
@@ -66,8 +66,7 @@ const Options = styled.div`
   top: 57px;
   left: 0;
   background: #ffffff;
-  box-shadow: -2px 1px 2px rgba(74, 74, 74, 0.2),
-    0px 1px 4px rgba(74, 74, 74, 0.2);
+  box-shadow: -2px 1px 2px rgba(74, 74, 74, 0.2), 0px 1px 4px rgba(74, 74, 74, 0.2);
 `;
 
 const Bussines = styled.div`
@@ -80,22 +79,22 @@ const Bussines = styled.div`
 
 const SelectPassOutside = withClickOutside()(SelectPassenger);
 
-const category = { label: "Бизнес класс" };
+const category = { label: 'Бизнес класс' };
 
 export default class DropDown extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   onToogle = () => {
     this.setState(prevState => ({
-      isOpen: !prevState.isOpen
+      isOpen: !prevState.isOpen,
     }));
   };
 
   onClickOutside = () => {
     this.setState({
-      isOpen: false
+      isOpen: false,
     });
   };
 
@@ -111,7 +110,7 @@ export default class DropDown extends Component {
           <Options>
             <Counter text="Взрослые" count={1} />
             <Counter text="Дети до 12 лет" count={1} />
-            <Counter text="Дети до 2 лет" count={0} noSeat={true} />
+            <Counter text="Дети до 2 лет" count={0} noSeat />
             <Bussines>
               <Checkbox data={category} />
             </Bussines>

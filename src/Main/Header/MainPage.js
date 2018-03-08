@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Inputs from "./Inputs";
-import ButtonSearch from "./../../Common/ButtonSearch";
-import Logo from "./../../Common/Logo";
+import React from 'react';
+import styled from 'styled-components';
+import Inputs from './Inputs';
+import ButtonSearch from './../../Common/ButtonSearch';
+import Logo from './../../Common/Logo';
 
 const Title = styled.h1`
   color: #ffffff;
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <div>
       <Logo />

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import MainPage from "./MainPage";
+import React from 'react';
+import styled from 'styled-components';
+import MainPage from './MainPage';
 
 const Header = styled.header`
   background: linear-gradient(
@@ -18,7 +18,7 @@ const Header = styled.header`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <Header>
       <div className="container">

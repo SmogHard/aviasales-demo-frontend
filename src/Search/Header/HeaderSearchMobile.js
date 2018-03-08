@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import back from "./back.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link as LinkStyled } from 'react-router-dom';
+import back from './back.svg';
 
 const HeaderSearchXs = styled.div`
   display: flex;
@@ -47,17 +47,15 @@ const Currency = styled.button`
   flex: 0 0 auto;
 `;
 
-export default () => {
-  return (
-    <HeaderSearchXs>
-      <Link to="/">
-        <Back />
-      </Link>
-      <TextWrap>
-        <Route>Москва - Барселона</Route>
-        <DatePax>24 фев - 3 март, 1 пассажир</DatePax>
-      </TextWrap>
-      <Currency>RUB </Currency>
-    </HeaderSearchXs>
-  );
-};
+export default () => (
+  <HeaderSearchXs>
+    <LinkStyled to="/">
+      <Back />
+    </LinkStyled>
+    <TextWrap>
+      <Route>Москва - Барселона</Route>
+      <DatePax>24 фев - 3 март, 1 пассажир</DatePax>
+    </TextWrap>
+    <Currency>RUB </Currency>
+  </HeaderSearchXs>
+);

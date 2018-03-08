@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import ButtonPassenger from "./../../Common/ButtonPassenger";
-import DatePicker from "./../../Common/DatePicker";
-import CityTo from "./../../Common/CityTo";
-import CityFrom from "./../../Common/CityFrom";
-import ButtonSearch from "./../../Common/ButtonSearch";
+import React from 'react';
+import styled from 'styled-components';
+import ButtonPassenger from './../../Common/ButtonPassenger';
+import DatePicker from './../../Common/DatePicker';
+import CityTo from './../../Common/CityTo';
+import CityFrom from './../../Common/CityFrom';
+import ButtonSearch from './../../Common/ButtonSearch';
 
 const Inputs = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const DateLayout = styled.div`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <Inputs>
       <Layout>

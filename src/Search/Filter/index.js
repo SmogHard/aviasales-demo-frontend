@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import Transfer from "./Transfer";
-import Flight from "./Flight";
-import Baggage from "./Baggage";
-import DurationOfTransfer from "./DurationOfTransfer";
-import Airports from "./Airports";
-import AirportOfTransfer from "./AirportOfTransfer";
-import Agents from "./Agents";
-import TravelTime from "./TravelTime";
-import Airlines from "./Airlines";
-import FilterOff from "./FilterOff";
+import React from 'react';
+import styled from 'styled-components';
+import Transfer from './Transfer';
+import Flight from './Flight';
+import Baggage from './Baggage';
+import DurationOfTransfer from './DurationOfTransfer';
+import Airports from './Airports';
+import AirportOfTransfer from './AirportOfTransfer';
+import Agents from './Agents';
+import TravelTime from './TravelTime';
+import Airlines from './Airlines';
+import FilterOff from './FilterOff';
 
 const Wrapper = styled.div`
   display: none;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <Wrapper>
       <Transfer />

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import aero from "./aero.svg";
-import { Link, Route } from "react-router-dom";
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import aero from './aero.svg';
 
 const Img = styled.img`
   margin-left: 23px;
@@ -49,23 +49,19 @@ const SubmitSearch = SubmitMain.extend`
   }
 `;
 
-const ButtonMain = () => {
-  return (
-    <SubmitMain to="/search">
-      Найти билеты <Img alt="Самолет" src={aero} />
-    </SubmitMain>
-  );
-};
+const ButtonMain = () => (
+  <SubmitMain to="/search">
+    Найти билеты <Img alt="Самолет" src={aero} />
+  </SubmitMain>
+);
 
-const ButtonSearch = () => {
-  return <SubmitSearch to="/search">Найти билеты</SubmitSearch>;
-};
+const ButtonSearch = () => <SubmitSearch to="/search">Найти билеты</SubmitSearch>;
 
 const Wrapper = styled.div`
   width: 100%;
 `;
 
-export default function() {
+export default function () {
   return (
     <Wrapper>
       <Route exact path="/" render={ButtonMain} />

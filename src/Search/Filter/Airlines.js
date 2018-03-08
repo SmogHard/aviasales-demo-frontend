@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Title from "./TitleFilter";
-import arrow_open from "./arrow-open.svg";
-import Checkbox from "./../../Common/Checkbox";
+import React from 'react';
+import styled from 'styled-components';
+import Title from './TitleFilter';
+import arrowOpen from './arrow-open.svg';
+import Checkbox from './../../Common/Checkbox';
 
 const Airlines = styled.div`
   padding: 16px 16px;
@@ -28,89 +28,99 @@ const Information = styled.p`
 const alliance = [
   {
     checked: true,
-    label: "Все",
-    price: ""
+    label: 'Все',
+    price: undefined,
+    id: 1,
   },
   {
     checked: true,
-    label: "One World",
-    price: "7 712 ₽"
+    label: 'One World',
+    price: 7712,
+    id: 2,
   },
   {
     checked: true,
-    label: "Star Alliance",
-    price: "11 712 ₽"
+    label: 'Star Alliance',
+    price: 11712,
+    id: 3,
   },
   {
     checked: true,
-    label: "Sky Dream",
-    price: "23 712 ₽"
-  }
+    label: 'Sky Dream',
+    price: 23712,
+    id: 4,
+  },
 ];
 
 const airlines = [
   {
     checked: true,
-    label: "Все",
-    price: ""
+    label: 'Все',
+    id: 1,
   },
   {
     checked: true,
-    label: "Custom Company",
-    price: "7 712 ₽"
+    label: 'Custom Company',
+    price: 7712,
+    id: 2,
   },
   {
     checked: true,
-    label: "Air Algerie",
-    price: "11 712 ₽"
+    label: 'Air Algerie',
+    price: 11712,
+    id: 3,
   },
   {
     checked: true,
-    label: "Alitalia",
-    price: "23 712 ₽"
+    label: 'Alitalia',
+    price: 23712,
+    id: 4,
   },
   {
     checked: true,
-    label: "Bulgaria Air",
-    price: "47 712 ₽"
+    label: 'Bulgaria Air',
+    price: 47712,
+    id: 5,
   },
   {
     checked: true,
-    label: "Belle Air",
-    price: "47 712 ₽"
+    label: 'Belle Air',
+    price: 47712,
+    id: 6,
   },
   {
     checked: true,
-    label: "Air Moldova",
-    price: "47 712 ₽"
+    label: 'Air Moldova',
+    price: 47712,
+    id: 7,
   },
   {
     checked: true,
-    label: "British",
-    price: "47 712 ₽"
-  }
+    label: 'British',
+    price: 47712,
+    id: 8,
+  },
 ];
 
-const several = { checked: true, label: "Несколько авиакомпаний" };
+const several = { checked: true, label: 'Несколько авиакомпаний' };
 
-export default function() {
+export default function () {
   return (
     <Airlines>
-      <Title title="Авиакомпании" arrow={arrow_open} amount="42" />
+      <Title title="Авиакомпании" arrow={arrowOpen} amount="42" />
       <Wrapper>
         <Checkbox data={several} />
       </Wrapper>
       <Information>
-        Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями,
-        включая выбранную
+        Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями, включая выбранную
       </Information>
       <Wrapper>
         <CheckboxTitle>Альянсы</CheckboxTitle>
-        {alliance.map((item, i) => <Checkbox data={item} key={i} />)}
+        {alliance.map(item => <Checkbox data={item} key={item.id} />)}
       </Wrapper>
       <Wrapper>
         <CheckboxTitle>Авиакомпании</CheckboxTitle>
-        {airlines.map((item, i) => <Checkbox data={item} key={i} />)}
+        {airlines.map(item => <Checkbox data={item} key={item.id} />)}
       </Wrapper>
     </Airlines>
   );

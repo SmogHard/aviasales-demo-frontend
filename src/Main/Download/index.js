@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import apple from "./apple.png";
-import windows from "./windows.png";
-import android from "./Android.png";
-import iphone_xs from "./iphone-xs.png";
-import iphone_md from "./iphone-md.png";
-import raiting from "./raiting.png";
+import React from 'react';
+import styled from 'styled-components';
+import apple from './apple.png';
+import windows from './windows.png';
+import android from './Android.png';
+import iphoneXs from './iphone-xs.png';
+import iphoneMd from './iphone-md.png';
+import raiting from './raiting.png';
 
 const Section = styled.section`
   background: linear-gradient(to bottom, #00b0de 0%, #196ebd 100%);
@@ -122,7 +122,7 @@ const MobileAppShow = styled.div`
   position: relative;
 `;
 
-export default function() {
+export default function () {
   return (
     <Section>
       <div className="container">
@@ -139,8 +139,8 @@ export default function() {
           <div className="col-xs-6 col-md-4 col-xl-3 col-xl-offset-1">
             <MobileAppShow>
               <picture>
-                <source srcSet={iphone_md} media="(min-width: 768px)" />
-                <Iphone src={iphone_xs} alt="Iphone" />
+                <source srcSet={iphoneMd} media="(min-width: 768px)" />
+                <Iphone src={iphoneXs} alt="Iphone" />
               </picture>
             </MobileAppShow>
           </div>

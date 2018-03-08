@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import plus from "./plus.svg";
-import minus from "./minus.svg";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import plus from './plus.svg';
+import minus from './minus.svg';
 
 const Counter = styled.div`
   display: flex;
@@ -54,18 +55,18 @@ const WithoutSeat = styled.p`
 
 export default class DropDown extends Component {
   state = {
-    count: this.props.count ? this.props.count : 0
+    count: 0,
   };
 
   deductCount = () => {
     this.setState(prevState => ({
-      count: prevState.count - 1
+      count: prevState.count - 1,
     }));
   };
 
   addCount = () => {
     this.setState(prevState => ({
-      count: prevState.count + 1
+      count: prevState.count + 1,
     }));
   };
 
@@ -89,3 +90,8 @@ export default class DropDown extends Component {
     );
   }
 }
+
+DropDown.propTypes = {
+  text: PropTypes.string.isRequired,
+  noSeat: PropTypes.string.isRequired,
+};

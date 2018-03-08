@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Range from "./Range";
-import Direction from "./Direction";
-import Title from "./TitleFilter";
-import arrow from "./arrow-open.svg";
+import React from 'react';
+import styled from 'styled-components';
+import Range from './Range';
+import Direction from './Direction';
+import Title from './TitleFilter';
+import arrow from './arrow-open.svg';
 
 const Wrapper = styled.div`
   padding: 24px 16px 32px 16px;
@@ -53,48 +53,46 @@ const To = styled.p`
   margin: 0;
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <Title title="Время вылета и прибытия" arrow={arrow} />
-      <Flight>
-        <Direction cityFrom="Москва" cityTo="Барселона" />
-        <Info>
-          <Text>Вылет из Москвы:</Text>
-          <Time>
-            <From>c 00:05, 24 фев</From>
-            <To>до 23:45, 24 фев</To>
-          </Time>
-          <Range />
-        </Info>
-        <Info>
-          <Come>Прибытие в Барселону:</Come>
-          <Time>
-            <From>c 00:05, 24 фев</From>
-            <To>до 23:45, 24 фев</To>
-          </Time>
-          <Range />
-        </Info>
-      </Flight>
-      <Flight>
-        <Direction cityFrom="Барселона" cityTo="Москва" />
-        <Info>
-          <Text>Вылет из Барселоны:</Text>
-          <Time>
-            <From>c 00:05, 24 фев</From>
-            <To>до 23:45, 24 фев</To>
-          </Time>
-          <Range />
-        </Info>
-        <Info>
-          <Come>Прибытие в Москву:</Come>
-          <Time>
-            <From>c 00:05, 24 фев</From>
-            <To>до 23:45, 24 фев</To>
-          </Time>
-          <Range />
-        </Info>
-      </Flight>
-    </Wrapper>
-  );
-};
+export default () => (
+  <Wrapper>
+    <Title title="Время вылета и прибытия" arrow={arrow} />
+    <Flight>
+      <Direction cityFrom="Москва" cityTo="Барселона" />
+      <Info>
+        <Text>Вылет из Москвы:</Text>
+        <Time>
+          <From>c 00:05, 24 фев</From>
+          <To>до 23:45, 24 фев</To>
+        </Time>
+        <Range />
+      </Info>
+      <Info>
+        <Come>Прибытие в Барселону:</Come>
+        <Time>
+          <From>c 00:05, 24 фев</From>
+          <To>до 23:45, 24 фев</To>
+        </Time>
+        <Range />
+      </Info>
+    </Flight>
+    <Flight>
+      <Direction cityFrom="Барселона" cityTo="Москва" />
+      <Info>
+        <Text>Вылет из Барселоны:</Text>
+        <Time>
+          <From>c 00:05, 24 фев</From>
+          <To>до 23:45, 24 фев</To>
+        </Time>
+        <Range />
+      </Info>
+      <Info>
+        <Come>Прибытие в Москву:</Come>
+        <Time>
+          <From>c 00:05, 24 фев</From>
+          <To>до 23:45, 24 фев</To>
+        </Time>
+        <Range />
+      </Info>
+    </Flight>
+  </Wrapper>
+);

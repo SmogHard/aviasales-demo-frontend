@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import vk from "./vk.png";
-import facebook from "./facebook.png";
-import insta from "./insta.png";
-import twitter from "./twitter.png";
-import viber from "./viber.png";
-import googleplay from "./googleplay.svg";
-import winstore from "./winstore.svg";
-import appstore from "./appstore.svg";
+import React from 'react';
+import styled from 'styled-components';
+import vk from './vk.png';
+import facebook from './facebook.png';
+import insta from './insta.png';
+import twitter from './twitter.png';
+import viber from './viber.png';
+import googleplay from './googleplay.svg';
+import winstore from './winstore.svg';
+import appstore from './appstore.svg';
 
 const Footer = styled.footer`
   background: #ffffff;
@@ -49,7 +49,7 @@ const Ul = styled.ul`
   padding: 0;
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   font-size: 12px;
   color: #5a5a5a;
   line-height: 16px;
@@ -122,7 +122,7 @@ const Li = styled.li`
   margin-top: 12px;
 `;
 
-export default function() {
+export default function () {
   return (
     <Footer>
       <div className="container">
@@ -133,25 +133,25 @@ export default function() {
                 <Title>Страны</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">Россия</Link>
+                    <LinkStyled href="#">Россия</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Таиланд</Link>
+                    <LinkStyled href="#">Таиланд</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Черногория</Link>
+                    <LinkStyled href="#">Черногория</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Кипр</Link>
+                    <LinkStyled href="#">Кипр</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Болгария</Link>
+                    <LinkStyled href="#">Болгария</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Грузия</Link>
+                    <LinkStyled href="#">Грузия</LinkStyled>
                   </Li>
                   <LiWithArrow>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
                   </LiWithArrow>
                 </Ul>
               </List>
@@ -161,25 +161,25 @@ export default function() {
                 <Title>Авиакомпании</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">Air Berlin</Link>
+                    <LinkStyled href="#">Air Berlin</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Air France</Link>
+                    <LinkStyled href="#">Air France</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Alitalia</Link>
+                    <LinkStyled href="#">Alitalia</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Emirates</Link>
+                    <LinkStyled href="#">Emirates</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">KLM</Link>
+                    <LinkStyled href="#">KLM</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Грузия</Link>
+                    <LinkStyled href="#">Грузия</LinkStyled>
                   </Li>
                   <LiWithArrow>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
                   </LiWithArrow>
                 </Ul>
               </List>
@@ -189,25 +189,25 @@ export default function() {
                 <Title>Аэропорты</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">Шереметьево</Link>
+                    <LinkStyled href="#">Шереметьево</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Курумоч</Link>
+                    <LinkStyled href="#">Курумоч</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Домодедово</Link>
+                    <LinkStyled href="#">Домодедово</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Толмачево</Link>
+                    <LinkStyled href="#">Толмачево</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Владивосток</Link>
+                    <LinkStyled href="#">Владивосток</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Гамбург</Link>
+                    <LinkStyled href="#">Гамбург</LinkStyled>
                   </Li>
                   <LiWithArrow>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
                   </LiWithArrow>
                 </Ul>
               </List>
@@ -217,25 +217,25 @@ export default function() {
                 <Title>Страны</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">Россия</Link>
+                    <LinkStyled href="#">Россия</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Таиланд</Link>
+                    <LinkStyled href="#">Таиланд</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Черногория</Link>
+                    <LinkStyled href="#">Черногория</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Кипр</Link>
+                    <LinkStyled href="#">Кипр</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Болгария</Link>
+                    <LinkStyled href="#">Болгария</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Грузия</Link>
+                    <LinkStyled href="#">Грузия</LinkStyled>
                   </Li>
                   <LiWithArrow>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
                   </LiWithArrow>
                 </Ul>
               </List>
@@ -245,22 +245,22 @@ export default function() {
                 <Title>Направления</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">MOW - SIP</Link>
+                    <LinkStyled href="#">MOW - SIP</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">MOW - AER</Link>
+                    <LinkStyled href="#">MOW - AER</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">MOW - TIV</Link>
+                    <LinkStyled href="#">MOW - TIV</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">MOW - MRV</Link>
+                    <LinkStyled href="#">MOW - MRV</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">LED -MOW</Link>
+                    <LinkStyled href="#">LED -MOW</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">MOW - BKK</Link>
+                    <LinkStyled href="#">MOW - BKK</LinkStyled>
                   </Li>
                 </Ul>
               </List>
@@ -270,25 +270,25 @@ export default function() {
                 <Title>Сервисы</Title>
                 <Ul>
                   <Li>
-                    <Link href="#">Горящие авиабилеты</Link>
+                    <LinkStyled href="#">Горящие авиабилеты</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Календарь низких цен</Link>
+                    <LinkStyled href="#">Календарь низких цен</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Карта низких цен</Link>
+                    <LinkStyled href="#">Карта низких цен</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Спецпредложения</Link>
+                    <LinkStyled href="#">Спецпредложения</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Таблица цен</Link>
+                    <LinkStyled href="#">Таблица цен</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Блог</Link>
+                    <LinkStyled href="#">Блог</LinkStyled>
                   </Li>
                   <Li>
-                    <Link href="#">Помощь</Link>
+                    <LinkStyled href="#">Помощь</LinkStyled>
                   </Li>
                 </Ul>
               </List>
@@ -300,25 +300,25 @@ export default function() {
             <Nav>
               <Ul>
                 <Name>
-                  <Link href="#">О компании</Link>
+                  <LinkStyled href="#">О компании</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Партнёрская программа</Link>
+                  <LinkStyled href="#">Партнёрская программа</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Реклама</Link>
+                  <LinkStyled href="#">Реклама</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Вакансии</Link>
+                  <LinkStyled href="#">Вакансии</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Помощь</Link>
+                  <LinkStyled href="#">Помощь</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Правила</Link>
+                  <LinkStyled href="#">Правила</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">White Label авиабилеты</Link>
+                  <LinkStyled href="#">White Label авиабилеты</LinkStyled>
                 </Name>
               </Ul>
             </Nav>
@@ -326,36 +326,36 @@ export default function() {
               <Icon>
                 <Img src={vk} />
                 <P>
-                  <Link href="#">Вконтакте</Link>
+                  <LinkStyled href="#">Вконтакте</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={facebook} />
                 <P>
-                  <Link href="#">Фейсбук</Link>
+                  <LinkStyled href="#">Фейсбук</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={insta} />
                 <P>
-                  <Link href="#">Инстаграмм</Link>
+                  <LinkStyled href="#">Инстаграмм</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={twitter} />
                 <P>
-                  <Link href="#">Твиттер</Link>
+                  <LinkStyled href="#">Твиттер</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={viber} />
                 <P>
-                  <Link href="#">Вайбер</Link>
+                  <LinkStyled href="#">Вайбер</LinkStyled>
                 </P>
               </Icon>
             </Socials>
             <P>
-              <Link href="#">Поиск и бронирование отелей</Link>
+              <LinkStyled href="#">Поиск и бронирование отелей</LinkStyled>
             </P>
           </Links>
           <Links>

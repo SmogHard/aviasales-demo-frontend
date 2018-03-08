@@ -1,13 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import pin from "./pin.svg";
-import air_up from "./air-up.svg";
-import air_down from "./air-down.svg";
-import dot from "./dot.svg";
-import line from "./line.png";
-import { format } from "date-fns";
-import ruLocale from "date-fns/locale/ru";
-import { localization } from "./../../Common/localization";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { format } from 'date-fns';
+import ruLocale from 'date-fns/locale/ru';
+import pin from './pin.svg';
+import airUp from './air-up.svg';
+import airDown from './air-down.svg';
+import dot from './dot.svg';
+import line from './line.png';
+import { localization } from './data';
+import Duration from './../../Common/Duration';
 
 const Wrapper = styled.div`
   display: flex;
@@ -98,24 +100,20 @@ const RouteAirPorts = styled.div`
   justify-content: space-between;
 `;
 
-export const formatTimeOfFlight = minutes => {
-  return `${(minutes / 60) | 0} ч ${minutes % 60}`;
-};
+const Trip = ({ data }) => {
+  const trip = data;
 
-export default function(props) {
-  const trip = props.data;
-
-  const dateFrom = format(new Date(trip.dateFrom), "DD MMM YYYY, dd", {
-    locale: ruLocale
+  const dateFrom = format(new Date(trip.dateFrom), 'DD MMM YYYY, dd', {
+    locale: ruLocale,
   });
 
-  const dateTo = format(new Date(trip.dateTo), "DD MMM YYYY, dd", {
-    locale: ruLocale
+  const dateTo = format(new Date(trip.dateTo), 'DD MMM YYYY, dd', {
+    locale: ruLocale,
   });
 
-  const takeOffAt = format(new Date(trip.dateFrom), "HH:MM");
+  const takeOffAt = format(new Date(trip.dateFrom), 'HH:MM');
 
-  const landingAt = format(new Date(trip.dateTo), "HH:MM");
+  const landingAt = format(new Date(trip.dateTo), 'HH:MM');
 
   return (
     <Wrapper>
@@ -124,14 +122,16 @@ export default function(props) {
           <Pin src={pin} alt="Булавка" />
           <Time> {takeOffAt} </Time>
         </Clock>
-        <City>{localization["city"][trip.cityFrom]}</City>
+        <City>{localization.city[trip.cityFrom]}</City>
         <Day>{dateFrom}</Day>
       </From>
       <RoutePath>
         <TotalWrap>
-          <AirIcon src={air_up} />
-          <Total> Всего: {formatTimeOfFlight(trip.timeOfFlight)}</Total>
-          <AirIcon src={air_down} />
+          <AirIcon src={airUp} />
+          <Total>
+            Всего: <Duration duration={trip.timeOfFlight} />
+          </Total>
+          <AirIcon src={airDown} />
         </TotalWrap>
         <Snippet>
           <Dot src={dot} /> <Line src={line} /> <Dot src={dot} />
@@ -146,9 +146,21 @@ export default function(props) {
           <Pin src={pin} alt="Булавка" />
           <Time> {landingAt} </Time>
         </Clock>
-        <City>{localization["city"][trip.cityTo]}</City>
+        <City>{localization.city[trip.cityTo]}</City>
         <Day>{dateTo}</Day>
       </To>
     </Wrapper>
   );
-}
+};
+
+Trip.propTypes = {
+  data: PropTypes.shape({
+    cityFrom: PropTypes.string.isRequired,
+    cityTo: PropTypes.string.isRequired,
+    airportFrom: PropTypes.string.isRequired,
+    airportTo: PropTypes.string.isRequired,
+    timeOfFlight: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+export default Trip;

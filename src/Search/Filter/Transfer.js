@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import arrow_open from "./arrow-open.svg";
-import clear from "./clear.svg";
-import Checkbox from "./../../Common/Checkbox";
-import Title from "./TitleFilter";
+import React from 'react';
+import styled from 'styled-components';
+import arrowOpen from './arrow-open.svg';
+import clear from './clear.svg';
+import Checkbox from './../../Common/Checkbox';
+import Title from './TitleFilter';
 
 const Transfer = styled.div`
   padding: 16px 16px;
@@ -23,39 +23,41 @@ const Header = styled.div`
 const data = [
   {
     checked: false,
-    label: "Все",
-    price: ""
+    label: 'Все',
+    id: 1,
   },
   {
     checked: true,
-    label: "Без пересадок",
-    price: "7 712 ₽"
+    label: 'Без пересадок',
+    price: 7712,
+    id: 2,
   },
   {
     checked: false,
-    label: "1 пересадка",
-    price: "11 712 ₽"
+    label: '1 пересадка',
+    price: 11712,
+    id: 3,
   },
   {
     checked: false,
-    label: "2 пересадки",
-    price: "23 712 ₽"
+    label: '2 пересадки',
+    price: 23712,
+    id: 4,
   },
   {
     checked: false,
-    label: "3 пересадки",
-    price: "47 712 ₽"
-  }
+    label: '3 пересадки',
+    price: 47712,
+    id: 5,
+  },
 ];
 
-export default () => {
-  return (
-    <Transfer>
-      <Header>
-        <Title arrow={arrow_open} title="Пересадки" />
-        <Clear src={clear} alt="Сбросить фильтр" />
-      </Header>
-      {data.map((item, i) => <Checkbox data={item} key={i} />)}
-    </Transfer>
-  );
-};
+export default () => (
+  <Transfer>
+    <Header>
+      <Title arrow={arrowOpen} title="Пересадки" />
+      <Clear src={clear} alt="Сбросить фильтр" />
+    </Header>
+    {data.map(item => <Checkbox data={item} key={item.id} />)}
+  </Transfer>
+);
