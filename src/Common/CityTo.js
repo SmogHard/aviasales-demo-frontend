@@ -175,11 +175,11 @@ export default class DropDown extends Component {
     });
   };
 
-  handleCityChange = (i) => {
+  handleCityChange = (idx) => {
     this.setState({
       isOpen: false,
-      city: localization.city[data[i].city],
-      abbr: data[i].abbr,
+      city: localization.city[data[idx].city],
+      abbr: data[idx].abbr,
     });
   };
 
@@ -198,8 +198,8 @@ export default class DropDown extends Component {
         </CityTo>
         {this.state.isOpen && (
           <Cities>
-            {data.map((item, i) => (
-              <City key={item.id} striped={i} onClick={() => this.handleCityChange(i)}>
+            {data.map((item, idx) => (
+              <City key={item.id} striped={idx} onClick={() => this.handleCityChange(idx)}>
                 <CityName>{localization.city[item.city]}, </CityName>{' '}
                 <Country> {localization.country[item.country]}</Country>
                 <Airport>{item.abbr}</Airport>

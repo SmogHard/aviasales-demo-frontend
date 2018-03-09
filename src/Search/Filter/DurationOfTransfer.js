@@ -9,10 +9,6 @@ const Wrapper = styled.div`
   border-top: 1px solid #dddddd;
 `;
 
-function step(min, max) {
-  return (max - min) / 1000;
-}
-
 export default class TravelTime extends Component {
   static defaultProps = {
     minTo: 184,
@@ -47,7 +43,6 @@ export default class TravelTime extends Component {
               max={this.props.maxTo}
               defaultValue={[this.state.to.min, this.state.to.max]}
               onChange={value => this.handleToChange(value)}
-              step={step(this.props.minTo, this.props.maxTo)}
             />
           </Fragment>
         </Filter>

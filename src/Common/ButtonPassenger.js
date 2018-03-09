@@ -82,15 +82,6 @@ const SelectPassOutside = withClickOutside()(SelectPassenger);
 
 const category = { label: 'Бизнес класс', checked: false };
 
-function addCount(passenger, count) {
-  if (passenger + count === -1) {
-    return 0;
-  }
-  if (passenger + count === 10) {
-    return 9;
-  }
-  return passenger + count;
-}
 export default class DropDown extends Component {
   state = {
     isOpen: false,
@@ -118,9 +109,9 @@ export default class DropDown extends Component {
     }));
   };
 
-  countCheck = (count) => {
+  handleCount = (count) => {
     this.setState(prevState => ({
-      passenger: addCount(prevState.passenger, count),
+      passenger: prevState.passenger + count,
     }));
   };
 
@@ -139,20 +130,20 @@ export default class DropDown extends Component {
               text="Взрослые"
               passenger={this.state.passenger}
               count={1}
-              onChange={count => this.countCheck(count)}
+              onChange={count => this.handleCount(count)}
             />
             <Counter
               text="Дети до 12 лет"
               passenger={this.state.passenger}
               count={0}
-              onChange={count => this.countCheck(count)}
+              onChange={count => this.handleCount(count)}
             />
             <Counter
               passenger={this.state.passenger}
               text="Дети до 2 лет"
               count={0}
               noSeat
-              onChange={count => this.countCheck(count)}
+              onChange={count => this.handleCount(count)}
             />
             <Bussines>
               <Checkbox

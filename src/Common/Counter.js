@@ -12,16 +12,20 @@ const Counter = styled.div`
   border-radius: 4px;
 `;
 
-const Minus = styled.div`
+const Minus = styled.button`
   display: flex;
   padding: 16px 8px;
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
 `;
 
-const Plus = styled.div`
+const Plus = styled.button`
   display: flex;
-  padding: 0px 8px;
+  padding: 12px 8px;
   cursor: pointer;
+  border: 0;
+  background-color: transparent;
 `;
 
 const Operator = styled.img``;
@@ -58,31 +62,18 @@ export default class DropDown extends Component {
     count: this.props.count,
   };
 
-  deduct = (count) => {
-    if (count === 0) {
-      return 0;
-    }
-    this.props.onChange(-1);
-    return count - 1;
-  };
-
-  add = (count, passenger) => {
-    if (passenger === 9) {
-      return count;
-    }
-    this.props.onChange(1);
-    return count + 1;
-  };
   deductCount = () => {
     this.setState(prevState => ({
-      count: this.deduct(prevState.count),
+      count: prevState.count - 1,
     }));
+    this.props.onChange(-1);
   };
 
   addCount = () => {
     this.setState(prevState => ({
-      count: this.add(prevState.count, this.props.passenger),
+      count: prevState.count + 1,
     }));
+    this.props.onChange(1);
   };
 
   render() {
@@ -93,11 +84,11 @@ export default class DropDown extends Component {
           {this.props.noSeat && <WithoutSeat>Без места</WithoutSeat>}
         </Text>
         <Counter>
-          <Minus onClick={this.deductCount}>
+          <Minus onClick={this.deductCount} disabled={this.state.count === 0}>
             <Operator src={minus} />
           </Minus>
           <Count>{this.state.count} </Count>
-          <Plus onClick={this.addCount}>
+          <Plus onClick={this.addCount} disabled={this.props.passenger === 9}>
             <Operator src={plus} />
           </Plus>
         </Counter>
