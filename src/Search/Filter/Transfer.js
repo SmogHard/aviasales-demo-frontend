@@ -45,10 +45,6 @@ const isAllCheck = filter => filter.every(el => el.checked);
 
 const getAllCheck = (filter, check) => filter.map(item => setCheck(item, check));
 
-const elChecked = object => ({ ...object, checked: !object.checked });
-
-const checkEl = (arr, idx) => [...arr.slice(0, idx), elChecked(arr[idx]), ...arr.slice(idx + 1)];
-
 class TransferFilter extends Component {
   state = {
     filters: cloneDeep(data),
@@ -61,9 +57,11 @@ class TransferFilter extends Component {
   };
 
   handleCheck = (idx) => {
-    this.setState(prevState => ({
-      filters: checkEl(prevState.filters, idx),
-    }));
+    const filter = this.state.filters;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filters: filter,
+    });
   };
 
   handleClear = () => {

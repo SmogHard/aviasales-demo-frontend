@@ -46,41 +46,23 @@ const setCheck = (filter, checked) => ({ ...filter, checked });
 
 const getAllCheck = (filter, check) => filter.map(item => setCheck(item, check));
 
-const toggleChecked = o => ({ ...o, checked: !o.checked });
-
-const checkEl = (arr, idx) => [
-  ...arr.slice(0, idx),
-  toggleChecked(arr[idx]),
-  ...arr.slice(idx + 1),
-];
-
 class Airports extends Component {
   state = {
-    filterFrom: cloneDeep(agents),
-  };
-
-  handleAllAllianceCheck = () => {
-    this.setState(prevState => ({
-      filterTo: getAllCheck(prevState.filterTo, !isAllCheck(prevState.filterTo)),
-    }));
-  };
-
-  handleAllianceCheck = (idx) => {
-    this.setState(prevState => ({
-      filterTo: checkEl(prevState.filterTo, idx),
-    }));
+    filterAgent: cloneDeep(agents),
   };
 
   handleAllAgentsCheck = () => {
     this.setState(prevState => ({
-      filterFrom: getAllCheck(prevState.filterFrom, !isAllCheck(prevState.filterFrom)),
+      filter: getAllCheck(prevState.filterFrom, !isAllCheck(prevState.filterFrom)),
     }));
   };
 
   handleAgentsCheck = (idx) => {
-    this.setState(prevState => ({
-      filterFrom: checkEl(prevState.filterFrom, idx),
-    }));
+    const filter = this.state.filterAgent;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filterAgent: filter,
+    });
   };
 
   render() {
@@ -91,10 +73,10 @@ class Airports extends Component {
             <Wrapper>
               <Checkbox
                 label="Все"
-                check={isAllCheck(this.state.filterFrom)}
+                check={isAllCheck(this.state.filterAgent)}
                 onChange={() => this.handleAllAgentsCheck()}
               />
-              {this.state.filterFrom.map((item, i) => (
+              {this.state.filterAgent.map((item, i) => (
                 <Checkbox
                   price={item.price}
                   check={item.checked}

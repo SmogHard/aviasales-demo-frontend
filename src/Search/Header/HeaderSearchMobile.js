@@ -56,6 +56,6 @@ export default () => (
       <Route>Москва - Барселона</Route>
       <DatePax>24 фев - 3 март, 1 пассажир</DatePax>
     </TextWrap>
-    <Currency>RUB </Currency>
+    <Currency> RUB </Currency>
   </HeaderSearchXs>
 );

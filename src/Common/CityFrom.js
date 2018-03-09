@@ -99,19 +99,21 @@ const CityName = styled.p`
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
-  width: 33%;
   text-overflow: ellipsis;
   color: #4a4a4a;
 
   ${City}:hover & {
     color: #ffffff;
   }
+
+  @media (min-width: 1200px) {
+    width: 33%;
+  }
 `;
 
 const Country = styled.span`
   color: #a0b0b9;
   font-size: 14px;
-  width: 40%;
   margin-left: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -119,6 +121,10 @@ const Country = styled.span`
 
   ${City}:hover & {
     color: #ffffff;
+  }
+
+  @media (min-width: 1200px) {
+    width: 33%;
   }
 `;
 

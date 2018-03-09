@@ -97,14 +97,6 @@ const setCheck = (filter, checked) => ({ ...filter, checked });
 
 const getAllCheck = (filter, check) => filter.map(item => setCheck(item, check));
 
-const toggleChecked = o => ({ ...o, checked: !o.checked });
-
-const checkEl = (arr, idx) => [
-  ...arr.slice(0, idx),
-  toggleChecked(arr[idx]),
-  ...arr.slice(idx + 1),
-];
-
 const several = [{ checked: false }];
 
 class AirlinesFilter extends Component {
@@ -121,9 +113,11 @@ class AirlinesFilter extends Component {
   };
 
   handleAllianceCheck = (idx) => {
-    this.setState(prevState => ({
-      filterAlliance: checkEl(prevState.filterAlliance, idx),
-    }));
+    const filter = this.state.filterAlliance;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filterAlliance: filter,
+    });
   };
 
   handleAllAirlinesCheck = () => {
@@ -133,9 +127,11 @@ class AirlinesFilter extends Component {
   };
 
   handleAirlineCheck = (idx) => {
-    this.setState(prevState => ({
-      filterAirlines: checkEl(prevState.filterAirlines, idx),
-    }));
+    const filter = this.state.filterAirlines;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filterAirlines: filter,
+    });
   };
 
   handleAllSeveralCheck = () => {

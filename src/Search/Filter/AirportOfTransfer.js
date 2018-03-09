@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   padding-top: 16px;
 `;
 
-const alliance = [
+const depart = [
   {
     checked: true,
     label: 'One World',
@@ -42,7 +42,7 @@ const alliance = [
   },
 ];
 
-const airlines = [
+const arrival = [
   {
     checked: true,
     label: 'Custom Company',
@@ -75,42 +75,38 @@ const setCheck = (filter, checked) => ({ ...filter, checked });
 
 const getAllCheck = (filter, check) => filter.map(item => setCheck(item, check));
 
-const toggleChecked = o => ({ ...o, checked: !o.checked });
-
-const checkEl = (arr, idx) => [
-  ...arr.slice(0, idx),
-  toggleChecked(arr[idx]),
-  ...arr.slice(idx + 1),
-];
-
 class Airports extends Component {
   state = {
-    filterFrom: cloneDeep(airlines),
-    filterTo: cloneDeep(alliance),
+    filterFrom: cloneDeep(depart),
+    filterTo: cloneDeep(arrival),
   };
 
-  handleAllAllianceCheck = () => {
+  handleAllDepartCheck = () => {
     this.setState(prevState => ({
       filterTo: getAllCheck(prevState.filterTo, !isAllCheck(prevState.filterTo)),
     }));
   };
 
-  handleAllianceCheck = (idx) => {
-    this.setState(prevState => ({
-      filterTo: checkEl(prevState.filterTo, idx),
-    }));
+  handleDepartCheck = (idx) => {
+    const filter = this.state.filterTo;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filterTo: filter,
+    });
   };
 
-  handleAllAirlinesCheck = () => {
+  handleAllArrivalCheck = () => {
     this.setState(prevState => ({
       filterFrom: getAllCheck(prevState.filterFrom, !isAllCheck(prevState.filterFrom)),
     }));
   };
 
-  handleAirlineCheck = (idx) => {
-    this.setState(prevState => ({
-      filterFrom: checkEl(prevState.filterFrom, idx),
-    }));
+  handleArrivalCheck = (idx) => {
+    const filter = this.state.filterFrom;
+    filter[idx].checked = !filter[idx].checked;
+    this.setState({
+      filterFrom: filter,
+    });
   };
 
   render() {
@@ -123,7 +119,7 @@ class Airports extends Component {
               <Checkbox
                 label="Все"
                 check={isAllCheck(this.state.filterTo)}
-                onChange={() => this.handleAllAllianceCheck()}
+                onChange={() => this.handleAllDepartCheck()}
               />
               {this.state.filterTo.map((item, i) => (
                 <Checkbox
@@ -131,7 +127,7 @@ class Airports extends Component {
                   check={item.checked}
                   label={item.label}
                   key={item.id}
-                  onChange={() => this.handleAllianceCheck(i)}
+                  onChange={() => this.handleDepartCheck(i)}
                 />
               ))}
             </Wrapper>
@@ -140,7 +136,7 @@ class Airports extends Component {
               <Checkbox
                 label="Все"
                 check={isAllCheck(this.state.filterFrom)}
-                onChange={() => this.handleAllAirlinesCheck()}
+                onChange={() => this.handleAllArrivalCheck()}
               />
               {this.state.filterFrom.map((item, i) => (
                 <Checkbox
@@ -148,7 +144,7 @@ class Airports extends Component {
                   check={item.checked}
                   label={item.label}
                   key={item.id}
-                  onChange={() => this.handleAirlineCheck(i)}
+                  onChange={() => this.handleArrivalCheck(i)}
                 />
               ))}
             </Wrapper>

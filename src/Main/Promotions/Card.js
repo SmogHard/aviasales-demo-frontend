@@ -123,7 +123,7 @@ const Card = ({
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
-  sign: PropTypes.element.isRequired,
+  sign: PropTypes.string.isRequired,
   aviaCompany: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   dayLeft: PropTypes.string.isRequired,
