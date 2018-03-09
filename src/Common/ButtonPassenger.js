@@ -80,13 +80,23 @@ const Bussines = styled.div`
 
 const SelectPassOutside = withClickOutside()(SelectPassenger);
 
-const category = { label: 'Бизнес класс', checked: true };
+const category = { label: 'Бизнес класс', checked: false };
 
+function addCount(passenger, count) {
+  if (passenger + count === -1) {
+    return 0;
+  }
+  if (passenger + count === 10) {
+    return 9;
+  }
+  return passenger + count;
+}
 export default class DropDown extends Component {
   state = {
     isOpen: false,
     category: cloneDeep(category),
     passenger: 1,
+    bussines: false,
   };
 
   onToogle = () => {
@@ -104,12 +114,13 @@ export default class DropDown extends Component {
   handleCheck = () => {
     this.setState(prevState => ({
       category: { ...prevState.category, checked: !prevState.category.checked },
+      bussines: !prevState.bussines,
     }));
   };
 
   countCheck = (count) => {
     this.setState(prevState => ({
-      passenger: prevState.passenger + count,
+      passenger: addCount(prevState.passenger, count),
     }));
   };
 
@@ -118,7 +129,8 @@ export default class DropDown extends Component {
       <SelectPassOutside onClickOutside={this.onClickOutside}>
         <ButtonPassenger type="button" onClick={this.onToogle}>
           <Text>
-            {this.state.passenger} пассажир, <OpacityText>эконом</OpacityText>
+            {this.state.passenger} пассажир,{' '}
+            <OpacityText>{this.state.bussines ? 'бизнес' : 'эконом'}</OpacityText>
           </Text>
         </ButtonPassenger>
         {this.state.isOpen && (

@@ -1,6 +1,7 @@
 import { withClickOutside } from 'react-clickoutside';
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { localization } from '../Search/Tickets/data';
 
 const Input = styled.input`
   background: none;
@@ -33,7 +34,7 @@ const Abbreviation = OpacityText.extend`
   top: 18px;
 `;
 
-const CityTo = styled.div`
+const CityFrom = styled.div`
   display: flex;
   align-items: center;
   background: #fff;
@@ -53,6 +54,7 @@ const Cities = styled.div`
   flex-direction: column;
   top: 57px;
   left: 0;
+  padding-bottom: 16px;
   z-index: 99999;
   background: #ffffff;
   box-shadow: -2px 1px 2px rgba(74, 74, 74, 0.2), 0px 1px 4px rgba(74, 74, 74, 0.2);
@@ -71,6 +73,7 @@ const City = styled.div`
   padding-top: 15px;
   padding-left: 16px;
   padding-bottom: 15px;
+  padding-bottom: 16px;
   cursor: pointer;
   background-color: ${props => (props.striped % 2 ? '#f4f4f4' : '#ffffff')};
   &:hover,
@@ -82,7 +85,12 @@ const City = styled.div`
 const CityName = styled.p`
   margin: 0px;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 33%;
+  text-overflow: ellipsis;
   color: #4a4a4a;
+
   ${City}:hover & {
     color: #ffffff;
   }
@@ -91,14 +99,26 @@ const CityName = styled.p`
 const Country = styled.span`
   color: #a0b0b9;
   font-size: 14px;
+  width: 40%;
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   ${City}:hover & {
     color: #ffffff;
   }
 `;
 
-const Airport = Country.extend`
+const Airport = styled.span`
+  color: #a0b0b9;
+  font-size: 14px;
   position: absolute;
   right: 18px;
+
+  ${City}:hover & {
+    color: #ffffff;
+  }
 `;
 
 const data = [
@@ -145,13 +165,14 @@ export default class DropDown extends Component {
     this.setState({
       isOpen: true,
       city: event.target.value,
+      abbr: '',
     });
   };
 
   handleCityChange = (i) => {
     this.setState({
       isOpen: false,
-      city: data[i].city,
+      city: localization.city[data[i].city],
       abbr: data[i].abbr,
     });
   };
@@ -159,7 +180,7 @@ export default class DropDown extends Component {
   render() {
     return (
       <CityFromsOutside onClickOutside={this.onClickOutside}>
-        <CityTo>
+        <CityFrom>
           <Input
             type="text"
             name="from"
@@ -168,12 +189,13 @@ export default class DropDown extends Component {
             onChange={this.handleChange}
           />
           <Abbreviation>{this.state.abbr}</Abbreviation>
-        </CityTo>
+        </CityFrom>
         {this.state.isOpen && (
           <Cities>
             {data.map((item, i) => (
               <City key={item.id} striped={i} onClick={() => this.handleCityChange(i)}>
-                <CityName>{item.city}, </CityName> <Country> {item.country}</Country>
+                <CityName>{localization.city[item.city]}, </CityName>{' '}
+                <Country> {localization.country[item.country]}</Country>
                 <Airport>{item.abbr}</Airport>
               </City>
             ))}

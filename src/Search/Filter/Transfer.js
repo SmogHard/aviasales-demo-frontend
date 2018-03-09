@@ -8,6 +8,10 @@ const Transfer = styled.div`
   padding: 16px 16px;
 `;
 
+const Checkboxes = styled.div`
+  padding-top: 16px;
+`;
+
 const data = [
   {
     checked: true,
@@ -78,20 +82,22 @@ class TransferFilter extends Component {
           onClearClick={this.handleClear}
         >
           <Fragment>
-            <Checkbox
-              label="Все"
-              check={isAllCheck(this.state.filters)}
-              onChange={() => this.handleAllCheck()}
-            />
-            {this.state.filters.map((item, i) => (
+            <Checkboxes>
               <Checkbox
-                check={item.checked}
-                price={item.price}
-                label={item.label}
-                key={item.id}
-                onChange={() => this.handleCheck(i)}
+                label="Все"
+                check={isAllCheck(this.state.filters)}
+                onChange={() => this.handleAllCheck()}
               />
-            ))}
+              {this.state.filters.map((item, i) => (
+                <Checkbox
+                  check={item.checked}
+                  price={item.price}
+                  label={item.label}
+                  key={item.id}
+                  onChange={() => this.handleCheck(i)}
+                />
+              ))}
+            </Checkboxes>
           </Fragment>
         </Filter>
       </Transfer>

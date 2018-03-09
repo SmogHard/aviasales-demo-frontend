@@ -58,18 +58,31 @@ export default class DropDown extends Component {
     count: this.props.count,
   };
 
+  deduct = (count) => {
+    if (count === 0) {
+      return 0;
+    }
+    this.props.onChange(-1);
+    return count - 1;
+  };
+
+  add = (count, passenger) => {
+    if (passenger === 9) {
+      return count;
+    }
+    this.props.onChange(1);
+    return count + 1;
+  };
   deductCount = () => {
     this.setState(prevState => ({
-      count: prevState.count - 1,
+      count: this.deduct(prevState.count),
     }));
-    this.props.onChange(-1);
   };
 
   addCount = () => {
     this.setState(prevState => ({
-      count: prevState.count + 1,
+      count: this.add(prevState.count, this.props.passenger),
     }));
-    this.props.onChange(1);
   };
 
   render() {
@@ -99,6 +112,7 @@ DropDown.defaultProps = {
 DropDown.propTypes = {
   text: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
+  passenger: PropTypes.number.isRequired,
   noSeat: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
