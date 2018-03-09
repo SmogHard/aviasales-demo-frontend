@@ -85,9 +85,7 @@ const BagWrap = styled.div`
   padding: 8px 0px;
 `;
 
-export default function(props) {
-  const { info } = props;
-
+export default function({ info }) {
   if (!info.baggageWithoutSuite) {
     return (
       <BagWrap>
