@@ -36,6 +36,14 @@ const setChecked = (filter, checked) => ({ ...filter, checked });
 
 const getAllChecked = (filter, check) => filter.map(item => setChecked(item, check));
 
+const getChecked = (filter, idx) =>
+  filter.map((item, index) => {
+    if (idx === index) {
+      return { ...item, checked: !item.checked };
+    }
+    return item;
+  });
+
 const isAllChecked = filter => filter.every(el => el.checked);
 
 class Accordion extends Component {
@@ -59,11 +67,9 @@ class Accordion extends Component {
   };
 
   handleCheck = (filter, idx) => {
-    const filtered = this.state[filter];
-    filtered[idx].checked = !filtered[idx].checked;
-    this.setState({
-      [filter]: filtered,
-    });
+    this.setState(prevState => ({
+      [filter]: getChecked(prevState[filter], idx),
+    }));
   };
 
   handleClear = (filter) => {
