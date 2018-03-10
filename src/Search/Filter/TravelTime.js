@@ -23,18 +23,18 @@ const Air = styled.img`
   margin: 0 8px;
 `;
 
-function step(min, max) {
-  return (max - min) / 1000;
-}
+const data = {
+  to: {
+    min: 180,
+    max: 2700,
+  },
+  from: {
+    min: 170,
+    max: 2800,
+  },
+};
 
 export default class TravelTime extends Component {
-  static defaultProps = {
-    minTo: 180,
-    maxTo: 2700,
-    minFrom: 170,
-    maxFrom: 2800,
-  };
-
   state = {
     to: {
       min: 180,
@@ -64,10 +64,22 @@ export default class TravelTime extends Component {
     });
   };
 
+  clearChange = () => {
+    this.setState({
+      to: data.to,
+      from: data.from,
+    });
+  };
+
   render() {
     return (
       <Wrapper>
-        <Filter isOpen title="Время в пути">
+        <Filter
+          isOpen
+          title="Время в пути"
+          isVisibleClear={this.props.isRangeChanged(this.state, data)}
+          onClearClick={() => this.clearChange()}
+        >
           <Fragment>
             <Title>
               Москва <Air src={air} alt="Самолет" /> Барселона
@@ -75,23 +87,23 @@ export default class TravelTime extends Component {
             <RangeDuration
               startDate={this.state.to.min}
               endDate={this.state.to.max}
-              min={this.props.minTo}
-              max={this.props.maxTo}
+              min={data.to.min}
+              max={data.to.max}
+              value={[this.state.to.min, this.state.to.max]}
               defaultValue={[this.state.to.min, this.state.to.max]}
               onChange={value => this.handleToChange(value)}
-              step={step(this.props.minTo, this.props.maxTo)}
             />
             <Title>
               Барселона <Air src={air} alt="Самолет" /> Москва
             </Title>
             <RangeDuration
-              min={this.props.minFrom}
-              max={this.props.maxFrom}
+              min={data.from.min}
+              max={data.from.max}
               startDate={this.state.from.min}
               endDate={this.state.from.max}
+              value={[this.state.from.min, this.state.from.max]}
               defaultValue={[this.state.from.min, this.state.from.max]}
               onChange={value => this.handleFromChange(value)}
-              step={step(this.props.minFrom, this.props.maxFrom)}
             />
           </Fragment>
         </Filter>
@@ -100,16 +112,6 @@ export default class TravelTime extends Component {
   }
 }
 
-TravelTime.defaultProps = {
-  minTo: 180,
-  maxTo: 2700,
-  minFrom: 170,
-  maxFrom: 2800,
-};
-
 TravelTime.propTypes = {
-  minTo: PropTypes.number,
-  maxTo: PropTypes.number,
-  minFrom: PropTypes.number,
-  maxFrom: PropTypes.number,
+  isRangeChanged: PropTypes.func.isRequired,
 };

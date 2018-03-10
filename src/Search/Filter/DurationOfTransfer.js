@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { RangeDuration } from './Range';
@@ -9,54 +9,43 @@ const Wrapper = styled.div`
   border-top: 1px solid #dddddd;
 `;
 
-export default class TravelTime extends Component {
-  static defaultProps = {
-    minTo: 184,
-    maxTo: 2755,
-  };
-
-  state = {
-    to: {
-      min: 184,
-      max: 2755,
-    },
-  };
-
-  handleToChange = (value) => {
-    this.setState({
-      to: {
-        min: value[0],
-        max: value[1],
-      },
-    });
-  };
-
-  render() {
-    return (
-      <Wrapper>
-        <Filter title="Длительность пересадки">
-          <Fragment>
-            <RangeDuration
-              startDate={this.state.to.min}
-              endDate={this.state.to.max}
-              min={this.props.minTo}
-              max={this.props.maxTo}
-              defaultValue={[this.state.to.min, this.state.to.max]}
-              onChange={value => this.handleToChange(value)}
-            />
-          </Fragment>
-        </Filter>
-      </Wrapper>
-    );
-  }
-}
-
-TravelTime.defaultProps = {
-  minTo: 180,
-  maxTo: 2700,
+const initial = {
+  min: 184,
+  max: 2755,
 };
 
-TravelTime.propTypes = {
-  minTo: PropTypes.number,
-  maxTo: PropTypes.number,
+const DurationOfTransfer = ({
+  duration, isRangeChanged, clearChangeRange, handleChangeRange,
+}) => (
+  <Wrapper>
+    <Filter
+      title="Длительность пересадки"
+      isVisibleClear={isRangeChanged(duration, initial)}
+      onClearClick={clearChangeRange}
+    >
+      <Fragment>
+        <RangeDuration
+          startDate={duration.min}
+          endDate={duration.max}
+          min={initial.min}
+          max={initial.max}
+          value={[duration.min, duration.max]}
+          defaultValue={[duration.min, duration.max]}
+          onChange={value => handleChangeRange(value)}
+        />
+      </Fragment>
+    </Filter>
+  </Wrapper>
+);
+
+DurationOfTransfer.propTypes = {
+  duration: PropTypes.shape({
+    min: PropTypes.number,
+    max: PropTypes.number,
+  }).isRequired,
+  isRangeChanged: PropTypes.func.isRequired,
+  clearChangeRange: PropTypes.func.isRequired,
+  handleChangeRange: PropTypes.func.isRequired,
 };
+
+export default DurationOfTransfer;

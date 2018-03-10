@@ -314,3 +314,8 @@ export const airportsTransferArrival = [
     id: 8,
   },
 ];
+
+export const durationOfTransfer = {
+  min: 184,
+  max: 2755,
+};

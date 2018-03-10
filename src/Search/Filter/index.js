@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import cloneDeep from 'lodash/cloneDeep';
+import isEqual from 'lodash/isEqual';
 import styled from 'styled-components';
 import Transfer from './Transfer';
 import Flight from './Flight';
@@ -22,6 +23,7 @@ import {
   airportsDepart,
   airportsTransferArrival,
   airportsTransferDepart,
+  durationOfTransfer,
 } from './data';
 
 const Wrapper = styled.div`
@@ -58,6 +60,7 @@ class Accordion extends Component {
     airportsDepart: cloneDeep(airportsDepart),
     airportsTransferArrival: cloneDeep(airportsTransferArrival),
     airportsTransferDepart: cloneDeep(airportsTransferDepart),
+    durationOfTransfer: cloneDeep(durationOfTransfer),
   };
 
   handleAllCheck = (filter) => {
@@ -78,6 +81,23 @@ class Accordion extends Component {
     }));
   };
 
+  isRangeChanged = (rangeChanged, defaultRange) => !isEqual(rangeChanged, defaultRange);
+
+  clearChangeRange = () => {
+    this.setState({
+      durationOfTransfer: cloneDeep(durationOfTransfer),
+    });
+  };
+
+  handleChangeRange = (value) => {
+    this.setState({
+      durationOfTransfer: {
+        min: value[0],
+        max: value[1],
+      },
+    });
+  };
+
   handleClearAll = () => {
     this.setState(prevState => ({
       transfer: getAllChecked(prevState.transfer, true),
@@ -90,6 +110,7 @@ class Accordion extends Component {
       airportsDepart: getAllChecked(prevState.airportsDepart, true),
       airportsTransferArrival: getAllChecked(prevState.airportsTransferArrival, true),
       airportsTransferDepart: getAllChecked(prevState.airportsTransferDepart, true),
+      durationOfTransfer: cloneDeep(durationOfTransfer),
     }));
   };
 
@@ -103,7 +124,7 @@ class Accordion extends Component {
           handleClear={filter => this.handleClear(filter)}
           handleAllCheck={this.handleAllCheck}
         />
-        <Flight />
+        <Flight isRangeChanged={this.isRangeChanged} />
         <Baggage
           data={this.state.baggage}
           isAllChecked={filter => isAllChecked(filter)}
@@ -111,8 +132,13 @@ class Accordion extends Component {
           handleClear={filter => this.handleClear(filter)}
           handleAllCheck={this.handleAllCheck}
         />
-        <DurationOfTransfer />
-        <TravelTime />
+        <DurationOfTransfer
+          isRangeChanged={this.isRangeChanged}
+          clearChangeRange={this.clearChangeRange}
+          duration={this.state.durationOfTransfer}
+          handleChangeRange={this.handleChangeRange}
+        />
+        <TravelTime isRangeChanged={this.isRangeChanged} />
         <Airlines
           airlines={this.state.airlines}
           alliance={this.state.alliance}

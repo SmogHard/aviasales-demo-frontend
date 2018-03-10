@@ -23,6 +23,21 @@ const Title = styled.h3`
   margin-top: 24px;
 `;
 
+const data = {
+  to: {
+    departureFrom: 1519412700000,
+    departureTo: 1519497900000,
+    arrivalFrom: 1519412700000,
+    arrivalTo: 1519497900000,
+  },
+  from: {
+    departureFrom: 1519412700000,
+    departureTo: 1519497900000,
+    arrivalFrom: 1519412700000,
+    arrivalTo: 1519497900000,
+  },
+};
+
 export default class Flight extends Component {
   state = {
     to: {
@@ -83,10 +98,22 @@ export default class Flight extends Component {
     }));
   };
 
+  clearChange = () => {
+    this.setState({
+      to: data.to,
+      from: data.from,
+    });
+  };
+
   render() {
     return (
       <Wrapper>
-        <Filter isOpen title="Время вылета и прибытия">
+        <Filter
+          isOpen
+          title="Время вылета и прибытия"
+          isVisibleClear={this.props.isRangeChanged(this.state, data)}
+          onClearClick={() => this.clearChange()}
+        >
           <Fragment>
             <Title>
               Москва <Air src={air} alt="Самолет" /> Барселона
@@ -95,18 +122,20 @@ export default class Flight extends Component {
               title="Вылет из Москвы:"
               startDate={this.state.to.departureFrom}
               endDate={this.state.to.departureTo}
-              min={this.props.departureFrom}
-              max={this.props.departureTo}
-              defaultValue={[this.props.departureFrom, this.props.departureTo]}
+              min={data.to.departureFrom}
+              max={data.to.departureTo}
+              value={[this.state.to.departureFrom, this.state.to.departureTo]}
+              defaultValue={[data.to.departureFrom, data.to.departureTo]}
               onChange={value => this.handleDepartureToChange(value)}
             />
             <RangeDate
               title="Прибытие в Барселону:"
               startDate={this.state.to.arrivalFrom}
               endDate={this.state.to.arrivalTo}
-              min={this.props.arrivalFrom}
-              max={this.props.arrivalTo}
-              defaultValue={[this.props.arrivalFrom, this.props.arrivalTo]}
+              min={data.to.arrivalFrom}
+              max={data.to.arrivalTo}
+              value={[this.state.to.arrivalFrom, this.state.to.arrivalTo]}
+              defaultValue={[data.to.arrivalFrom, data.to.arrivalTo]}
               onChange={value => this.handleArrivalToChange(value)}
             />
             <Title>
@@ -116,18 +145,20 @@ export default class Flight extends Component {
               title="Вылет из Барселоны:"
               startDate={this.state.from.departureFrom}
               endDate={this.state.from.departureTo}
-              min={this.props.departureFrom}
-              max={this.props.departureTo}
-              defaultValue={[this.props.departureFrom, this.props.departureTo]}
+              min={data.from.departureFrom}
+              max={data.from.departureTo}
+              value={[this.state.from.departureFrom, this.state.from.departureTo]}
+              defaultValue={[data.from.departureFrom, data.from.departureTo]}
               onChange={value => this.handleDepartureFromChange(value)}
             />
             <RangeDate
               title="Прибытие в Москву:"
               startDate={this.state.from.arrivalFrom}
               endDate={this.state.from.arrivalTo}
-              min={this.props.arrivalFrom}
-              max={this.props.arrivalTo}
-              defaultValue={[this.props.arrivalFrom, this.props.arrivalTo]}
+              min={data.from.arrivalFrom}
+              max={data.from.arrivalTo}
+              value={[this.state.from.arrivalFrom, this.state.from.arrivalTo]}
+              defaultValue={[data.from.arrivalFrom, data.from.arrivalTo]}
               onChange={value => this.handleArrivalFromChange(value)}
             />
           </Fragment>
@@ -137,15 +168,4 @@ export default class Flight extends Component {
   }
 }
 
-Flight.defaultProps = {
-  departureFrom: 1519412700000,
-  departureTo: 1519497900000,
-  arrivalFrom: 1519412700000,
-  arrivalTo: 1519497900000,
-};
-Flight.propTypes = {
-  departureFrom: PropTypes.number,
-  departureTo: PropTypes.number,
-  arrivalFrom: PropTypes.number,
-  arrivalTo: PropTypes.number,
-};
+Flight.propTypes = { isRangeChanged: PropTypes.func.isRequired };
