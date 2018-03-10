@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ButtonPassenger from './../../Common/ButtonPassenger';
 import DatePicker from './../../Common/DatePicker';
-import CityTo from './../../Common/CityTo';
-import CityFrom from './../../Common/CityFrom';
+import ChoiseCity from './../../Common/ChoiseCity';
 
 const Inputs = styled.div`
   display: flex;
@@ -27,6 +26,16 @@ const Layout = styled.div`
   }
 `;
 
+const Cities = styled.div`
+  flex-basis: 100%;
+  @media (min-width: 768px) {
+    flex-basis: 100%;
+  }
+  @media (min-width: 1200px) {
+    flex-basis: 41%;
+  }
+`;
+
 const DateLayout = styled.div`
   flex-basis: 100%;
   @media (min-width: 768px) {
@@ -40,12 +49,9 @@ const DateLayout = styled.div`
 export default function () {
   return (
     <Inputs>
-      <Layout>
-        <CityFrom />
-      </Layout>
-      <Layout>
-        <CityTo />
-      </Layout>
+      <Cities>
+        <ChoiseCity />
+      </Cities>
       <DateLayout>
         <DatePicker />
       </DateLayout>

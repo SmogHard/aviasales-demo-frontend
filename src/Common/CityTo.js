@@ -1,5 +1,5 @@
-import { withClickOutside } from 'react-clickoutside';
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { localization } from '../Search/Tickets/data';
 
@@ -34,7 +34,7 @@ const Abbreviation = OpacityText.extend`
   top: 18px;
 `;
 
-const CityTo = styled.div`
+const CityFrom = styled.div`
   display: flex;
   align-items: center;
   background: #fff;
@@ -62,9 +62,12 @@ const Cities = styled.div`
 
 const Wrapper = styled.div`
   position: relative;
-`;
+  flex-basis: 100%;
 
-const CityFromsOutside = withClickOutside()(Wrapper);
+  @media (min-width: 768px) {
+    flex-basis: 50%;
+  }
+`;
 
 const City = styled.div`
   display: flex;
@@ -73,7 +76,6 @@ const City = styled.div`
   padding-top: 15px;
   padding-left: 16px;
   padding-bottom: 15px;
-  padding-bottom: 16px;
   cursor: pointer;
   background-color: ${props => (props.striped % 2 ? '#f4f4f4' : '#ffffff')};
   &:hover,
@@ -127,87 +129,39 @@ const Airport = styled.span`
   }
 `;
 
-const data = [
-  {
-    city: 'Barselona',
-    country: 'Spain',
-    abbr: 'BAR',
-    id: 0,
-  },
-  {
-    city: 'Moscow',
-    country: 'Russia',
-    abbr: 'MOV',
-    id: 1,
-  },
-  {
-    city: 'Berlin',
-    country: 'Germany',
-    abbr: 'BER',
-    id: 2,
-  },
-  {
-    city: 'Pekin',
-    country: 'China',
-    abbr: 'PEK',
-    id: 3,
-  },
-];
+const DropDown = ({
+  cities, data, handleCityChange, handleChange,
+}) => (
+  <Wrapper>
+    <CityFrom>
+      <Input
+        type="text"
+        name="to"
+        placeholder="Город прибытия"
+        value={data.city}
+        onChange={event => handleChange(event, 'to')}
+      />
+      <Abbreviation>{data.abbr}</Abbreviation>
+    </CityFrom>
+    {data.isOpen && (
+      <Cities>
+        {cities.map((item, idx) => (
+          <City key={item.id} striped={idx} onClick={() => handleCityChange('to', idx)}>
+            <CityName>{localization.city[item.city]}, </CityName>
+            <Country> {localization.country[item.country]}</Country>
+            <Airport>{item.abbr}</Airport>
+          </City>
+        ))}
+      </Cities>
+    )}
+  </Wrapper>
+);
 
-export default class DropDown extends Component {
-  state = {
-    isOpen: false,
-    city: '',
-    abbr: '',
-  };
+DropDown.propTypes = {
+  cities: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  data: PropTypes.shape({}).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleCityChange: PropTypes.func.isRequired,
+};
 
-  onClickOutside = () => {
-    this.setState({
-      isOpen: false,
-    });
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      isOpen: true,
-      city: event.target.value,
-      abbr: '',
-    });
-  };
-
-  handleCityChange = (idx) => {
-    this.setState({
-      isOpen: false,
-      city: localization.city[data[idx].city],
-      abbr: data[idx].abbr,
-    });
-  };
-
-  render() {
-    return (
-      <CityFromsOutside onClickOutside={this.onClickOutside}>
-        <CityTo>
-          <Input
-            type="text"
-            name="from"
-            placeholder="Город прибытия"
-            value={this.state.city}
-            onChange={this.handleChange}
-          />
-          <Abbreviation>{this.state.abbr}</Abbreviation>
-        </CityTo>
-        {this.state.isOpen && (
-          <Cities>
-            {data.map((item, idx) => (
-              <City key={item.id} striped={idx} onClick={() => this.handleCityChange(idx)}>
-                <CityName>{localization.city[item.city]}, </CityName>{' '}
-                <Country> {localization.country[item.country]}</Country>
-                <Airport>{item.abbr}</Airport>
-              </City>
-            ))}
-          </Cities>
-        )}
-      </CityFromsOutside>
-    );
-  }
-}
+export default DropDown;

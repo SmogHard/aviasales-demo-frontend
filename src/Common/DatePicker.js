@@ -7,6 +7,7 @@ import { withClickOutside } from 'react-clickoutside';
 import 'react-day-picker/lib/style.css';
 import './datepicker.css';
 import calendar from './calendar.svg';
+import dateClear from './date-clear.svg';
 import Checkbox from './SpecialCheckbox';
 
 const DateSelect = styled.div`
@@ -16,6 +17,7 @@ const Img = styled.img``;
 
 const Input = styled.input`
   background: none;
+  width: 80%;
   color: #4a4a4a;
   font-size: 16px;
   line-height: 20px;
@@ -25,13 +27,12 @@ const Input = styled.input`
   padding-bottom: 18px;
   padding-right: 0px;
   padding-left: 16px;
-  width: 100%;
   ::placeholder {
     color: #a0b0b9;
   }
 
   @media (min-width: 768px) {
-    width: 70%;
+    width: 80%;
     text-overflow: ellipsis;
   }
   @media (min-width: 1200px) {
@@ -124,6 +125,10 @@ const Price = styled.p`
   padding-top: 2px;
   text-align: center;
   color: #00c455;
+`;
+
+const Clear = ButtonAction.extend`
+  top: 21px;
 `;
 
 const WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
@@ -219,6 +224,12 @@ export default class DatePicker extends Component {
     });
   };
 
+  clearDate = (direction) => {
+    this.setState({
+      [direction]: null,
+    });
+  };
+
   renderDay = (day) => {
     const date = day.getDate();
 
@@ -237,7 +248,7 @@ export default class DatePicker extends Component {
 
     return (
       <DateFields>
-        <DateSelect onClick={this.showDateFrom}>
+        <DateSelect>
           <Departures>
             <Input
               date
@@ -245,14 +256,22 @@ export default class DatePicker extends Component {
               name="ddto"
               placeholder="Туда"
               value={from ? dateFormat(from) : ''}
+              onClick={this.showDateFrom}
               readOnly
             />
-            <ButtonAction>
-              <Img alt="Календарь" src={calendar} />
-            </ButtonAction>
+            {!from && (
+              <ButtonAction onClick={this.showDateFrom}>
+                <Img alt="Календарь" src={calendar} />
+              </ButtonAction>
+            )}
+            {from && (
+              <Clear onClick={() => this.clearDate('from')}>
+                <Img alt="Крест" src={dateClear} />
+              </Clear>
+            )}
           </Departures>
         </DateSelect>
-        <DateSelect onClick={this.showDateTo}>
+        <DateSelect>
           <Arrival>
             <Input
               date
@@ -261,10 +280,18 @@ export default class DatePicker extends Component {
               placeholder="Обратно"
               value={to ? dateFormat(to) : ''}
               readOnly
+              onClick={this.showDateTo}
             />
-            <ButtonAction>
-              <Img alt="Календарь" src={calendar} />
-            </ButtonAction>
+            {!to && (
+              <ButtonAction onClick={this.showDateTo}>
+                <Img alt="Календарь" src={calendar} />
+              </ButtonAction>
+            )}
+            {to && (
+              <Clear onClick={() => this.clearDate('to')}>
+                <Img alt="Крест" src={dateClear} />
+              </Clear>
+            )}
           </Arrival>
         </DateSelect>
         {this.state.isOpenFrom && (
