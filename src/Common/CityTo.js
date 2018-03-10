@@ -145,11 +145,11 @@ const DropDown = ({
     </CityFrom>
     {data.isOpen && (
       <Cities>
-        {cities.map((item, idx) => (
-          <City key={item.id} striped={idx} onClick={() => handleCityChange('to', idx)}>
-            <CityName>{localization.city[item.city]}, </CityName>
-            <Country> {localization.country[item.country]}</Country>
-            <Airport>{item.abbr}</Airport>
+        {cities.map((direction, idx) => (
+          <City key={direction.id} striped={idx} onClick={() => handleCityChange('to', idx)}>
+            <CityName>{localization.city[direction.city]}, </CityName>
+            <Country> {localization.country[direction.country]}</Country>
+            <Airport>{direction.abbr}</Airport>
           </City>
         ))}
       </Cities>

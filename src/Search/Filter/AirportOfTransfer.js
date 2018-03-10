@@ -38,12 +38,12 @@ const AirportsOfTransfer = ({
             check={isAllChecked(airportsTransferDepart)}
             onChange={() => handleAllCheck('airportsTransferDepart')}
           />
-          {airportsTransferDepart.map((item, idx) => (
+          {airportsTransferDepart.map((checkbox, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
               onChange={() => handleCheck('airportsTransferDepart', idx)}
             />
           ))}
@@ -55,12 +55,12 @@ const AirportsOfTransfer = ({
             check={isAllChecked(airportsTransferArrival)}
             onChange={() => handleAllCheck('airportsTransferArrival')}
           />
-          {airportsTransferArrival.map((item, idx) => (
+          {airportsTransferArrival.map((checkbox, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
               onChange={() => handleCheck('airportsTransferArrival', idx)}
             />
           ))}

@@ -29,12 +29,12 @@ const BaggageFilter = ({
             check={isAllChecked(data)}
             onChange={() => handleAllCheck('baggage')}
           />
-          {data.map((item, idx) => (
+          {data.map((baggage, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={baggage.checked}
+              price={baggage.price}
+              label={baggage.label}
+              key={baggage.id}
               onChange={() => handleCheck('baggage', idx)}
             />
           ))}

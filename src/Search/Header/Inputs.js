@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ButtonPassenger from './../../Common/ButtonPassenger';
 import DatePicker from './../../Common/DatePicker';
-import ChoiseCity from './../../Common/ChoiseCity';
+import DepartAndArrival from './../../Common/DepartAndArrival';
 import ButtonSearch from './../../Common/ButtonSearch';
 
 const Inputs = styled.div`
@@ -56,7 +56,7 @@ export default function () {
   return (
     <Inputs>
       <Layout>
-        <ChoiseCity />
+        <DepartAndArrival />
       </Layout>
       <DateLayout>
         <DatePicker />

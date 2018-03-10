@@ -22,7 +22,7 @@ const data = [
   {
     city: 'Moscow',
     country: 'Russia',
-    abbr: 'MOV',
+    abbr: 'MOW',
     id: 1,
   },
   {
@@ -39,7 +39,7 @@ const data = [
   },
 ];
 
-class ChoiseCity extends Component {
+class DepartAndArrival extends Component {
   state = {
     from: {
       city: '',
@@ -88,12 +88,8 @@ class ChoiseCity extends Component {
 
   handleSwap = () => {
     this.setState(prevState => ({
-      from: {
-        ...prevState.to,
-      },
-      to: {
-        ...prevState.from,
-      },
+      from: prevState.to,
+      to: prevState.from,
     }));
   };
 
@@ -103,20 +99,20 @@ class ChoiseCity extends Component {
         <CityFrom
           data={this.state.from}
           cities={data}
-          handleChange={(event, direction) => this.handleChange(event, direction)}
-          handleCityChange={(direction, idx) => this.handleCityChange(direction, idx)}
-          handleSwap={() => this.handleSwap()}
+          handleChange={this.handleChange}
+          handleCityChange={this.handleCityChange}
+          handleSwap={this.handleSwap}
         />
         <CityTo
           onClickOutside={this.onClickOutside}
           data={this.state.to}
           cities={data}
-          handleChange={(event, direction) => this.handleChange(event, direction)}
-          handleCityChange={(direction, idx) => this.handleCityChange(direction, idx)}
+          handleChange={this.handleChange}
+          handleCityChange={this.handleCityChange}
         />
       </WrapperWithOutsie>
     );
   }
 }
 
-export default ChoiseCity;
+export default DepartAndArrival;

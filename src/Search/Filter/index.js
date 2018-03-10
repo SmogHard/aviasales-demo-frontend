@@ -36,14 +36,14 @@ const Wrapper = styled.div`
 
 const setChecked = (filter, checked) => ({ ...filter, checked });
 
-const getAllChecked = (filter, check) => filter.map(item => setChecked(item, check));
+const getAllChecked = (filter, check) => filter.map(data => setChecked(data, check));
 
 const getChecked = (filter, idx) =>
-  filter.map((item, index) => {
+  filter.map((data, index) => {
     if (idx === index) {
-      return { ...item, checked: !item.checked };
+      return { ...data, checked: !data.checked };
     }
-    return item;
+    return data;
   });
 
 const isAllChecked = filter => filter.every(el => el.checked);
@@ -119,17 +119,17 @@ class Accordion extends Component {
       <Wrapper>
         <Transfer
           data={this.state.transfer}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
         <Flight isRangeChanged={this.isRangeChanged} />
         <Baggage
           data={this.state.baggage}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
         <DurationOfTransfer
@@ -143,35 +143,35 @@ class Accordion extends Component {
           airlines={this.state.airlines}
           alliance={this.state.alliance}
           several={this.state.several}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
         <Airports
           airportsArrival={this.state.airportsArrival}
           airportsDepart={this.state.airportsDepart}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
         <AirportOfTransfer
           airportsTransferArrival={this.state.airportsTransferArrival}
           airportsTransferDepart={this.state.airportsTransferDepart}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
         <Agents
           data={this.state.agents}
-          isAllChecked={filter => isAllChecked(filter)}
-          handleCheck={(filter, idx) => this.handleCheck(filter, idx)}
-          handleClear={filter => this.handleClear(filter)}
+          isAllChecked={isAllChecked}
+          handleCheck={this.handleCheck}
+          handleClear={this.handleClear}
           handleAllCheck={this.handleAllCheck}
         />
-        <FilterOff handleClearAll={() => this.handleClearAll()} />
+        <FilterOff handleClearAll={this.handleClearAll} />
       </Wrapper>
     );
   }

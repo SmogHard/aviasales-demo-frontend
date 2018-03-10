@@ -29,12 +29,12 @@ const TransferFilter = ({
             check={isAllChecked(data)}
             onChange={() => handleAllCheck('transfer')}
           />
-          {data.map((item, idx) => (
+          {data.map((transfer, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={transfer.checked}
+              price={transfer.price}
+              label={transfer.label}
+              key={transfer.id}
               onChange={() => handleCheck('transfer', idx)}
             />
           ))}

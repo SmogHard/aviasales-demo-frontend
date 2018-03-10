@@ -53,12 +53,12 @@ const AirlinesFilter = ({
             check={isAllChecked(alliance)}
             onChange={() => handleAllCheck('alliance')}
           />
-          {alliance.map((item, idx) => (
+          {alliance.map((checkbox, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
               onChange={() => handleCheck('alliance', idx)}
             />
           ))}
@@ -70,12 +70,12 @@ const AirlinesFilter = ({
             check={isAllChecked(airlines)}
             onChange={() => handleAllCheck('airlines')}
           />
-          {airlines.map((item, idx) => (
+          {airlines.map((checkbox, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
               onChange={() => handleCheck('airlines', idx)}
             />
           ))}

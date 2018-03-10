@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ButtonPassenger from './../../Common/ButtonPassenger';
 import DatePicker from './../../Common/DatePicker';
-import ChoiseCity from './../../Common/ChoiseCity';
+import DepartAndArrival from './../../Common/DepartAndArrival';
 
 const Inputs = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ export default function () {
   return (
     <Inputs>
       <Cities>
-        <ChoiseCity />
+        <DepartAndArrival />
       </Cities>
       <DateLayout>
         <DatePicker />
