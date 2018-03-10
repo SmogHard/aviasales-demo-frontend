@@ -87,6 +87,9 @@ export default class DropDown extends Component {
     isOpen: false,
     category: cloneDeep(category),
     passenger: 1,
+    adults: 1,
+    children: 0,
+    baby: 0,
     bussines: false,
   };
 
@@ -109,9 +112,10 @@ export default class DropDown extends Component {
     }));
   };
 
-  handleCount = (count) => {
+  handleCount = (count, counter) => {
     this.setState(prevState => ({
       passenger: prevState.passenger + count,
+      [counter]: prevState[counter] + count,
     }));
   };
 
@@ -129,27 +133,30 @@ export default class DropDown extends Component {
             <Counter
               text="Взрослые"
               passenger={this.state.passenger}
-              count={1}
-              onChange={count => this.handleCount(count)}
+              count={this.state.adults}
+              counter="adults"
+              onChange={this.handleCount}
             />
             <Counter
               text="Дети до 12 лет"
               passenger={this.state.passenger}
-              count={0}
-              onChange={count => this.handleCount(count)}
+              count={this.state.children}
+              counter="children"
+              onChange={this.handleCount}
             />
             <Counter
               passenger={this.state.passenger}
               text="Дети до 2 лет"
-              count={0}
+              count={this.state.baby}
+              counter="baby"
               noSeat
-              onChange={count => this.handleCount(count)}
+              onChange={this.handleCount}
             />
             <Bussines>
               <Checkbox
                 check={this.state.category.checked}
                 label={this.state.category.label}
-                onChange={() => this.handleCheck()}
+                onChange={this.handleCheck}
               />
             </Bussines>
           </Options>

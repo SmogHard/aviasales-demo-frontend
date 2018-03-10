@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import plus from './plus.svg';
@@ -57,53 +57,37 @@ const WithoutSeat = styled.p`
   margin: 0;
 `;
 
-export default class DropDown extends Component {
-  state = {
-    count: this.props.count,
-  };
-
-  deductCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count - 1,
-    }));
-    this.props.onChange(-1);
-  };
-
-  addCount = () => {
-    this.setState(prevState => ({
-      count: prevState.count + 1,
-    }));
-    this.props.onChange(1);
-  };
-
-  render() {
-    return (
-      <Passenger>
-        <Text>
-          {this.props.text}
-          {this.props.noSeat && <WithoutSeat>Без места</WithoutSeat>}
-        </Text>
-        <Counter>
-          <Minus onClick={this.deductCount} disabled={this.state.count === 0}>
-            <Operator src={minus} />
-          </Minus>
-          <Count>{this.state.count} </Count>
-          <Plus onClick={this.addCount} disabled={this.props.passenger === 9}>
-            <Operator src={plus} />
-          </Plus>
-        </Counter>
-      </Passenger>
-    );
-  }
-}
+const DropDown = ({
+  counter, text, count, passenger, noSeat, onChange,
+}) => (
+  <Passenger>
+    <Text>
+      {text}
+      {noSeat && <WithoutSeat>Без места</WithoutSeat>}
+    </Text>
+    <Counter>
+      <Minus onClick={() => onChange(-1, counter)} disabled={count === 0}>
+        <Operator src={minus} />
+      </Minus>
+      <Count>{String(count)}</Count>
+      <Plus onClick={() => onChange(1, counter)} disabled={passenger === 9}>
+        <Operator src={plus} />
+      </Plus>
+    </Counter>
+  </Passenger>
+);
 
 DropDown.defaultProps = {
   noSeat: undefined,
 };
+
 DropDown.propTypes = {
+  counter: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
   passenger: PropTypes.number.isRequired,
   noSeat: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
+
+export default DropDown;
