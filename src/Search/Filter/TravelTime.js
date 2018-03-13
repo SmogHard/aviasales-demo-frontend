@@ -46,18 +46,9 @@ export default class TravelTime extends Component {
     },
   };
 
-  handleToChange = (value) => {
+  handleChange = (value, direction) => {
     this.setState({
-      to: {
-        min: value[0],
-        max: value[1],
-      },
-    });
-  };
-
-  handleFromChange = (value) => {
-    this.setState({
-      from: {
+      [direction]: {
         min: value[0],
         max: value[1],
       },
@@ -91,7 +82,7 @@ export default class TravelTime extends Component {
               max={data.to.max}
               value={[this.state.to.min, this.state.to.max]}
               defaultValue={[this.state.to.min, this.state.to.max]}
-              onChange={value => this.handleToChange(value)}
+              onChange={value => this.handleChange(value, 'to')}
             />
             <Title>
               Барселона <Air src={air} alt="Самолет" /> Москва
@@ -103,7 +94,7 @@ export default class TravelTime extends Component {
               endDate={this.state.from.max}
               value={[this.state.from.min, this.state.from.max]}
               defaultValue={[this.state.from.min, this.state.from.max]}
-              onChange={value => this.handleFromChange(value)}
+              onChange={value => this.handleChange(value, 'from')}
             />
           </Fragment>
         </Filter>

@@ -75,10 +75,12 @@ class Accordion extends Component {
     }));
   };
 
-  handleClear = (filter) => {
-    this.setState(prevState => ({
-      [filter]: getAllChecked(prevState[filter], true),
-    }));
+  handleClear = (...args) => {
+    this.setState(prevState =>
+      args.reduce(
+        (filter, name) => ({ ...filter, [name]: getAllChecked(prevState[name], true) }),
+        {},
+      ));
   };
 
   isRangeChanged = (rangeChanged, defaultRange) => !isEqual(rangeChanged, defaultRange);

@@ -32,9 +32,16 @@ const AirlinesFilter = ({
   isAllChecked,
   handleCheck,
   handleAllCheck,
+  handleClear,
 }) => (
   <Airlines>
-    <Filter title="Авиакомпании" isOpen amount={42}>
+    <Filter
+      title="Авиакомпании"
+      isOpen
+      amount={42}
+      isVisibleClear={!isAllChecked(alliance) || !isAllChecked(airlines)}
+      onClearClick={() => handleClear('alliance', 'airlines')}
+    >
       <Fragment>
         <Wrapper>
           <Checkbox
@@ -91,6 +98,7 @@ AirlinesFilter.propTypes = {
   several: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   isAllChecked: PropTypes.func.isRequired,
   handleCheck: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
   handleAllCheck: PropTypes.func.isRequired,
 };
 

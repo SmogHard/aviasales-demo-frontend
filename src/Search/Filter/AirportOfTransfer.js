@@ -27,9 +27,17 @@ const AirportsOfTransfer = ({
   isAllChecked,
   handleCheck,
   handleAllCheck,
+  handleClear,
 }) => (
   <Airpots>
-    <Filter title="Аэропорт пересадки" amount={42}>
+    <Filter
+      title="Аэропорт пересадки"
+      amount={42}
+      isVisibleClear={
+        !isAllChecked(airportsTransferDepart) || !isAllChecked(airportsTransferArrival)
+      }
+      onClearClick={() => handleClear('airportsTransferDepart', 'airportsTransferArrival')}
+    >
       <Fragment>
         <Wrapper>
           <CheckboxTitle>Вылет из Москвы</CheckboxTitle>
@@ -75,6 +83,7 @@ AirportsOfTransfer.propTypes = {
   airportsTransferDepart: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   isAllChecked: PropTypes.func.isRequired,
   handleCheck: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
   handleAllCheck: PropTypes.func.isRequired,
 };
 

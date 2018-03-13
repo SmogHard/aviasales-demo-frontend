@@ -29,12 +29,12 @@ const AgentsFilter = ({
             check={isAllChecked(data)}
             onChange={() => handleAllCheck('agents')}
           />
-          {data.map((item, idx) => (
+          {data.map((agent, idx) => (
             <Checkbox
-              check={item.checked}
-              price={item.price}
-              label={item.label}
-              key={item.id}
+              check={agent.checked}
+              price={agent.price}
+              label={agent.label}
+              key={agent.id}
               onChange={() => handleCheck('agents', idx)}
             />
           ))}

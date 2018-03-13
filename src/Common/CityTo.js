@@ -130,7 +130,7 @@ const Airport = styled.span`
 `;
 
 const DropDown = ({
-  cities, data, handleCityChange, handleChange,
+  cities, data, handleCityChange, handleChange, isOpen,
 }) => (
   <Wrapper>
     <CityFrom>
@@ -139,14 +139,18 @@ const DropDown = ({
         name="to"
         placeholder="Город прибытия"
         value={data.city}
-        onChange={event => handleChange(event, 'to')}
+        onChange={event => handleChange(event, 'to', 'arrivalIsOpen')}
       />
       <Abbreviation>{data.abbr}</Abbreviation>
     </CityFrom>
-    {data.isOpen && (
+    {isOpen && (
       <Cities>
         {cities.map((direction, idx) => (
-          <City key={direction.id} striped={idx} onClick={() => handleCityChange('to', idx)}>
+          <City
+            key={direction.id}
+            striped={idx}
+            onClick={() => handleCityChange('to', idx, 'arrivalIsOpen')}
+          >
             <CityName>{localization.city[direction.city]}, </CityName>
             <Country> {localization.country[direction.country]}</Country>
             <Airport>{direction.abbr}</Airport>
@@ -160,6 +164,7 @@ const DropDown = ({
 DropDown.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   data: PropTypes.shape({}).isRequired,
+  isOpen: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleCityChange: PropTypes.func.isRequired,
 };

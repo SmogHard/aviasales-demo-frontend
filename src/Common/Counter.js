@@ -52,6 +52,7 @@ const Count = styled.p`
 `;
 
 const WithoutSeat = styled.p`
+  padding-top: 4px;
   color: #a0b0b9;
   font-size: 12px;
   margin: 0;

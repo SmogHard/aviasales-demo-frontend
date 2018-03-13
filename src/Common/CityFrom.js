@@ -143,7 +143,7 @@ const Airport = styled.span`
 `;
 
 const DropDown = ({
-  cities, data, handleCityChange, handleChange, handleSwap,
+  cities, data, handleCityChange, handleChange, handleSwap, isOpen,
 }) => (
   <Wrapper>
     <CityFrom>
@@ -152,17 +152,21 @@ const DropDown = ({
         name="from"
         placeholder="Город вылета"
         value={data.city}
-        onChange={event => handleChange(event, 'from')}
+        onChange={event => handleChange(event, 'from', 'departIsOpen')}
       />
       <Abbreviation>{data.abbr}</Abbreviation>
       <ButtonAction onClick={handleSwap}>
         <img alt="Направление" src={arrow} />
       </ButtonAction>
     </CityFrom>
-    {data.isOpen && (
+    {isOpen && (
       <Cities>
         {cities.map((direction, idx) => (
-          <City key={direction.id} striped={idx} onClick={() => handleCityChange('from', idx)}>
+          <City
+            key={direction.id}
+            striped={idx}
+            onClick={() => handleCityChange('from', idx, 'departIsOpen')}
+          >
             <CityName>{localization.city[direction.city]}, </CityName>
             <Country> {localization.country[direction.country]}</Country>
             <Airport>{direction.abbr}</Airport>
@@ -176,6 +180,7 @@ const DropDown = ({
 DropDown.propTypes = {
   cities: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
   data: PropTypes.shape({}).isRequired,
+  isOpen: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleSwap: PropTypes.func.isRequired,
   handleCityChange: PropTypes.func.isRequired,

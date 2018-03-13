@@ -1,5 +1,6 @@
 import { withClickOutside } from 'react-clickoutside';
 import React, { Component } from 'react';
+import pluralize from 'pluralize-ru';
 import cloneDeep from 'lodash/cloneDeep';
 import styled from 'styled-components';
 import Counter from './Counter';
@@ -41,6 +42,10 @@ const ButtonPassenger = styled.button`
 
 const Text = styled.span`
   line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 85%;
 `;
 
 const OpacityText = Text.extend`
@@ -124,8 +129,13 @@ export default class DropDown extends Component {
       <SelectPassOutside onClickOutside={this.onClickOutside}>
         <ButtonPassenger type="button" onClick={this.onToogle}>
           <Text>
-            {this.state.passenger} пассажир,{' '}
-            <OpacityText>{this.state.bussines ? 'бизнес' : 'эконом'}</OpacityText>
+            {pluralize(
+              this.state.passenger,
+              'нет пассажиров',
+              '%d пассажир',
+              '%d пассажира',
+              '%d пассажиров',
+            )}, <OpacityText>{this.state.bussines ? 'бизнес' : 'эконом'}</OpacityText>
           </Text>
         </ButtonPassenger>
         {this.state.isOpen && (

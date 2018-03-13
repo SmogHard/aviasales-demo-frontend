@@ -54,44 +54,22 @@ export default class Flight extends Component {
     },
   };
 
-  handleDepartureToChange = (value) => {
+  handleDepartureChange = (value, direction) => {
     this.setState(prevState => ({
-      to: {
+      [direction]: {
         departureFrom: value[0],
         departureTo: value[1],
-        arrivalFrom: prevState.to.arrivalFrom,
-        arrivalTo: prevState.to.arrivalTo,
+        arrivalFrom: prevState[direction].arrivalFrom,
+        arrivalTo: prevState[direction].arrivalTo,
       },
     }));
   };
 
-  handleArrivalToChange = (value) => {
+  handleArrivalChange = (value, direction) => {
     this.setState(prevState => ({
-      to: {
-        departureFrom: prevState.to.departureFrom,
-        departureTo: prevState.to.departureTo,
-        arrivalFrom: value[0],
-        arrivalTo: value[1],
-      },
-    }));
-  };
-
-  handleDepartureFromChange = (value) => {
-    this.setState(prevState => ({
-      from: {
-        departureFrom: value[0],
-        departureTo: value[1],
-        arrivalFrom: prevState.from.arrivalFrom,
-        arrivalTo: prevState.from.arrivalTo,
-      },
-    }));
-  };
-
-  handleArrivalFromChange = (value) => {
-    this.setState(prevState => ({
-      from: {
-        departureFrom: prevState.from.departureFrom,
-        departureTo: prevState.from.departureTo,
+      [direction]: {
+        departureFrom: prevState[direction].departureFrom,
+        departureTo: prevState[direction].departureTo,
         arrivalFrom: value[0],
         arrivalTo: value[1],
       },
@@ -126,7 +104,7 @@ export default class Flight extends Component {
               max={data.to.departureTo}
               value={[this.state.to.departureFrom, this.state.to.departureTo]}
               defaultValue={[data.to.departureFrom, data.to.departureTo]}
-              onChange={value => this.handleDepartureToChange(value)}
+              onChange={value => this.handleDepartureChange(value, 'to')}
             />
             <RangeDate
               title="Прибытие в Барселону:"
@@ -136,7 +114,7 @@ export default class Flight extends Component {
               max={data.to.arrivalTo}
               value={[this.state.to.arrivalFrom, this.state.to.arrivalTo]}
               defaultValue={[data.to.arrivalFrom, data.to.arrivalTo]}
-              onChange={value => this.handleArrivalToChange(value)}
+              onChange={value => this.handleArrivalChange(value, 'to')}
             />
             <Title>
               Барселона <Air src={air} alt="Самолет" /> Москва
@@ -149,7 +127,7 @@ export default class Flight extends Component {
               max={data.from.departureTo}
               value={[this.state.from.departureFrom, this.state.from.departureTo]}
               defaultValue={[data.from.departureFrom, data.from.departureTo]}
-              onChange={value => this.handleDepartureFromChange(value)}
+              onChange={value => this.handleDepartureChange(value, 'from')}
             />
             <RangeDate
               title="Прибытие в Москву:"
@@ -159,7 +137,7 @@ export default class Flight extends Component {
               max={data.from.arrivalTo}
               value={[this.state.from.arrivalFrom, this.state.from.arrivalTo]}
               defaultValue={[data.from.arrivalFrom, data.from.arrivalTo]}
-              onChange={value => this.handleArrivalFromChange(value)}
+              onChange={value => this.handleArrivalChange(value, 'from')}
             />
           </Fragment>
         </Filter>

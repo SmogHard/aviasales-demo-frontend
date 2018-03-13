@@ -44,45 +44,39 @@ class DepartAndArrival extends Component {
     from: {
       city: '',
       abbr: '',
-      isOpen: false,
     },
     to: {
       city: '',
       abbr: '',
-      isOpen: false,
     },
+    departIsOpen: false,
+    arrivalIsOpen: false,
   };
 
   onClickOutside = () => {
-    this.setState(prevState => ({
-      from: {
-        ...prevState.from,
-        isOpen: false,
-      },
-      to: {
-        ...prevState.to,
-        isOpen: false,
-      },
-    }));
+    this.setState({
+      departIsOpen: false,
+      arrivalIsOpen: false,
+    });
   };
 
-  handleCityChange = (direction, idx) => {
+  handleCityChange = (direction, idx, isOpen) => {
     this.setState({
       [direction]: {
         city: localization.city[data[idx].city],
         abbr: data[idx].abbr,
-        isOpen: false,
       },
+      [isOpen]: false,
     });
   };
 
-  handleChange = (event, direction) => {
+  handleChange = (event, direction, isOpen) => {
     this.setState({
       [direction]: {
         city: event.target.value,
         abbr: '',
-        isOpen: true,
       },
+      [isOpen]: true,
     });
   };
 
@@ -97,6 +91,7 @@ class DepartAndArrival extends Component {
     return (
       <WrapperWithOutsie onClickOutside={this.onClickOutside}>
         <CityFrom
+          isOpen={this.state.departIsOpen}
           data={this.state.from}
           cities={data}
           handleChange={this.handleChange}
@@ -104,6 +99,7 @@ class DepartAndArrival extends Component {
           handleSwap={this.handleSwap}
         />
         <CityTo
+          isOpen={this.state.arrivalIsOpen}
           onClickOutside={this.onClickOutside}
           data={this.state.to}
           cities={data}
