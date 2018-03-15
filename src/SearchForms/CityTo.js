@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withClickOutside } from 'react-clickoutside';
 import styled from 'styled-components';
-import arrow from './arrow.svg';
 import { localization } from '../Search/Tickets/data';
 
 const Input = styled.input`
@@ -31,7 +31,7 @@ const OpacityText = Text.extend`
 
 const Abbreviation = OpacityText.extend`
   position: absolute;
-  right: 43px;
+  right: 18px;
   top: 18px;
 `;
 
@@ -46,18 +46,6 @@ const CityFrom = styled.div`
   @media (min-width: 768px) {
     border-top-right-radius: 0px;
   }
-`;
-
-const ButtonAction = styled.button`
-  background: transparent;
-  border: 0;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 18px;
-  right: 16px;
 `;
 
 const Cities = styled.div`
@@ -142,37 +130,36 @@ const Airport = styled.span`
   }
 `;
 
+const CitiesWithOutside = withClickOutside()(Cities);
+
 const DropDown = ({
-  cities, data, handleCityChange, handleChange, handleSwap, isOpen,
+  cities, data, handleCityChange, handleChange, isOpen, onClickOutside,
 }) => (
   <Wrapper>
     <CityFrom>
       <Input
         type="text"
-        name="from"
-        placeholder="Город вылета"
+        name="to"
+        placeholder="Город прибытия"
         value={data.city}
-        onChange={event => handleChange(event, 'from', 'departIsOpen')}
+        onChange={event => handleChange(event, 'arrival', 'arrivalIsOpen')}
       />
       <Abbreviation>{data.abbr}</Abbreviation>
-      <ButtonAction onClick={handleSwap}>
-        <img alt="Направление" src={arrow} />
-      </ButtonAction>
     </CityFrom>
     {isOpen && (
-      <Cities>
+      <CitiesWithOutside onClickOutside={() => onClickOutside('arrivalIsOpen')}>
         {cities.map((direction, idx) => (
           <City
             key={direction.id}
             striped={idx}
-            onClick={() => handleCityChange('from', idx, 'departIsOpen')}
+            onClick={() => handleCityChange('arrival', idx, 'arrivalIsOpen')}
           >
             <CityName>{localization.city[direction.city]}, </CityName>
             <Country> {localization.country[direction.country]}</Country>
             <Airport>{direction.abbr}</Airport>
           </City>
         ))}
-      </Cities>
+      </CitiesWithOutside>
     )}
   </Wrapper>
 );
@@ -182,8 +169,8 @@ DropDown.propTypes = {
   data: PropTypes.shape({}).isRequired,
   isOpen: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-  handleSwap: PropTypes.func.isRequired,
   handleCityChange: PropTypes.func.isRequired,
+  onClickOutside: PropTypes.func.isRequired,
 };
 
 export default DropDown;

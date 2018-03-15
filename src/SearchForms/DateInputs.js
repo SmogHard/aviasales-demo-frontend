@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -182,54 +183,6 @@ function dateFormat(day) {
 }
 
 export default class DatePicker extends Component {
-  state = {
-    from: null,
-    to: null,
-    isOpenTo: false,
-    isOpenFrom: false,
-  };
-
-  onClickOutside = () => {
-    this.setState({
-      isOpenTo: false,
-      isOpenFrom: false,
-    });
-  };
-
-  setDayTo = (day) => {
-    this.setState({
-      to: day,
-      isOpenTo: false,
-    });
-  };
-
-  setDayFrom = (day) => {
-    this.setState({
-      from: day,
-      isOpenFrom: false,
-    });
-  };
-
-  showDateFrom = () => {
-    this.setState({
-      isOpenTo: false,
-      isOpenFrom: true,
-    });
-  };
-
-  showDateTo = () => {
-    this.setState({
-      isOpenTo: true,
-      isOpenFrom: false,
-    });
-  };
-
-  clearDate = (direction) => {
-    this.setState({
-      [direction]: null,
-    });
-  };
-
   renderDay = (day) => {
     const date = day.getDate();
 
@@ -242,7 +195,7 @@ export default class DatePicker extends Component {
   };
 
   render() {
-    const { from, to } = this.state;
+    const { from, to } = this.props;
 
     const modifiers = { start: from, end: to };
 
@@ -256,16 +209,16 @@ export default class DatePicker extends Component {
               name="ddto"
               placeholder="Туда"
               value={from ? dateFormat(from) : ''}
-              onClick={this.showDateFrom}
+              onClick={() => this.props.showDate(false, true)}
               readOnly
             />
             {!from && (
-              <ButtonAction onClick={this.showDateFrom}>
+              <ButtonAction onClick={() => this.props.showDate(false, true)}>
                 <Img alt="Календарь" src={calendar} />
               </ButtonAction>
             )}
             {from && (
-              <Clear onClick={() => this.clearDate('from')}>
+              <Clear onClick={() => this.props.clearDate('from')}>
                 <Img alt="Крест" src={dateClear} />
               </Clear>
             )}
@@ -280,27 +233,29 @@ export default class DatePicker extends Component {
               placeholder="Обратно"
               value={to ? dateFormat(to) : ''}
               readOnly
-              onClick={this.showDateTo}
+              onClick={() => this.props.showDate(true, false)}
             />
             {!to && (
-              <ButtonAction onClick={this.showDateTo}>
+              <ButtonAction onClick={() => this.props.showDate(true, false)}>
                 <Img alt="Календарь" src={calendar} />
               </ButtonAction>
             )}
             {to && (
-              <Clear onClick={() => this.clearDate('to')}>
+              <Clear onClick={() => this.props.clearDate('to')}>
                 <Img alt="Крест" src={dateClear} />
               </Clear>
             )}
           </Arrival>
         </DateSelect>
-        {this.state.isOpenFrom && (
-          <PickerWithOutside onClickOutside={this.onClickOutside}>
+        {this.props.isOpenFrom && (
+          <PickerWithOutside
+            onClickOutside={() => this.props.onClickOutside('isOpenFrom', 'isOpenTo')}
+          >
             <DayPicker
               disabledDays={{ after: to }}
               selectedDays={[to, from, { from, to }]}
               modifiers={modifiers}
-              onDayClick={this.setDayFrom}
+              onDayClick={value => this.props.setDay('from', 'isOpenFrom', value)}
               locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -314,13 +269,15 @@ export default class DatePicker extends Component {
             </CheckOneDirection>
           </PickerWithOutside>
         )}
-        {this.state.isOpenTo && (
-          <PickerWithOutside onClickOutside={this.onClickOutside}>
+        {this.props.isOpenTo && (
+          <PickerWithOutside
+            onClickOutside={() => this.props.onClickOutside('isOpenFrom', 'isOpenTo')}
+          >
             <DayPicker
               disabledDays={{ before: from }}
               selectedDays={[from, to, { from, to }]}
               modifiers={modifiers}
-              onDayClick={this.setDayTo}
+              onDayClick={value => this.props.setDay('to', 'isOpenTo', value)}
               locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -338,3 +295,19 @@ export default class DatePicker extends Component {
     );
   }
 }
+
+DatePicker.defaultProps = {
+  from: null,
+  to: null,
+};
+
+DatePicker.propTypes = {
+  from: PropTypes.instanceOf(Date),
+  to: PropTypes.instanceOf(Date),
+  isOpenFrom: PropTypes.bool.isRequired,
+  isOpenTo: PropTypes.bool.isRequired,
+  setDay: PropTypes.func.isRequired,
+  onClickOutside: PropTypes.func.isRequired,
+  showDate: PropTypes.func.isRequired,
+  clearDate: PropTypes.func.isRequired,
+};

@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Filter from './Filter';
-import Checkbox from './../../Common/Checkbox';
+import Checkbox from './../../SearchForms/Checkbox';
 
 const Baggage = styled.div`
   padding: 16px 16px;

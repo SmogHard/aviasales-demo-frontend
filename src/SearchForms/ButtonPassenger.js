@@ -1,7 +1,7 @@
 import { withClickOutside } from 'react-clickoutside';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import pluralize from 'pluralize-ru';
-import cloneDeep from 'lodash/cloneDeep';
 import styled from 'styled-components';
 import Counter from './Counter';
 import Checkbox from './Checkbox';
@@ -46,6 +46,7 @@ const Text = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   width: 85%;
+  text-align: left;
 `;
 
 const OpacityText = Text.extend`
@@ -83,95 +84,78 @@ const Bussines = styled.div`
   border-top: 1px solid #dddddd;
 `;
 
-const SelectPassOutside = withClickOutside()(SelectPassenger);
-
-const category = { label: 'Бизнес класс', checked: false };
+const OptionsWithOutside = withClickOutside()(Options);
 
 export default class DropDown extends Component {
-  state = {
-    isOpen: false,
-    category: cloneDeep(category),
-    passenger: 1,
-    adults: 1,
-    children: 0,
-    baby: 0,
-    bussines: false,
-  };
-
-  onToogle = () => {
-    this.setState(prevState => ({
-      isOpen: !prevState.isOpen,
-    }));
-  };
-
-  onClickOutside = () => {
-    this.setState({
-      isOpen: false,
-    });
-  };
-
   handleCheck = () => {
-    this.setState(prevState => ({
-      category: { ...prevState.category, checked: !prevState.category.checked },
-      bussines: !prevState.bussines,
-    }));
-  };
-
-  handleCount = (count, counter) => {
-    this.setState(prevState => ({
-      passenger: prevState.passenger + count,
-      [counter]: prevState[counter] + count,
-    }));
+    this.props.handleChangeGrade();
   };
 
   render() {
     return (
-      <SelectPassOutside onClickOutside={this.onClickOutside}>
-        <ButtonPassenger type="button" onClick={this.onToogle}>
+      <SelectPassenger>
+        <ButtonPassenger type="button" onClick={this.props.onToogle}>
           <Text>
             {pluralize(
-              this.state.passenger,
+              this.props.passenger,
               'нет пассажиров',
               '%d пассажир',
               '%d пассажира',
               '%d пассажиров',
-            )}, <OpacityText>{this.state.bussines ? 'бизнес' : 'эконом'}</OpacityText>
+            )}, <OpacityText>{this.props.bussines ? 'бизнес' : 'эконом'}</OpacityText>
           </Text>
         </ButtonPassenger>
-        {this.state.isOpen && (
-          <Options>
+        {this.props.isOpen && (
+          <OptionsWithOutside onClickOutside={() => this.props.onClickOutside('isOpenPassenger')}>
             <Counter
               text="Взрослые"
-              passenger={this.state.passenger}
-              count={this.state.adults}
+              passenger={this.props.passenger}
+              count={this.props.adults}
               counter="adults"
-              onChange={this.handleCount}
+              onChange={this.props.handleCount}
             />
             <Counter
               text="Дети до 12 лет"
-              passenger={this.state.passenger}
-              count={this.state.children}
-              counter="children"
-              onChange={this.handleCount}
+              passenger={this.props.passenger}
+              count={this.props.kids}
+              counter="kids"
+              onChange={this.props.handleCount}
             />
             <Counter
-              passenger={this.state.passenger}
+              passenger={this.props.passenger}
               text="Дети до 2 лет"
-              count={this.state.baby}
+              count={this.props.baby}
               counter="baby"
               noSeat
-              onChange={this.handleCount}
+              onChange={this.props.handleCount}
             />
             <Bussines>
               <Checkbox
-                check={this.state.category.checked}
-                label={this.state.category.label}
+                check={this.props.category.checked}
+                label={this.props.category.label}
                 onChange={this.handleCheck}
               />
             </Bussines>
-          </Options>
+          </OptionsWithOutside>
         )}
-      </SelectPassOutside>
+      </SelectPassenger>
     );
   }
 }
+
+DropDown.propTypes = {
+  passenger: PropTypes.number.isRequired,
+  adults: PropTypes.number.isRequired,
+  kids: PropTypes.number.isRequired,
+  baby: PropTypes.number.isRequired,
+  bussines: PropTypes.bool.isRequired,
+  onToogle: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  handleChangeGrade: PropTypes.func.isRequired,
+  handleCount: PropTypes.func.isRequired,
+  onClickOutside: PropTypes.func.isRequired,
+  category: PropTypes.shape({
+    checked: PropTypes.bool.isRequired,
+    label: PropTypes.string.isRequired,
+  }).isRequired,
+};
