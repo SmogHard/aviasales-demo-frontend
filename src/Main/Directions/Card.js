@@ -111,33 +111,35 @@ const Place = styled.div`
 const Card = ({
   date, img, flag, city, country, price,
 }) => (
-  <Wrapper>
-    <CityImage src={img} alt="Город" />
-    <InfoAboutRoute>
-      <Direction>
-        <Flag src={flag} alt="Флаг" />
-        <Place>
-          <CityName>{city}</CityName>
-          <P>{country}</P>
-        </Place>
-      </Direction>
-      <PriceAndDate>
-        <LinkText>
-          <LinkStyled href="#">Найти от {price} ₽</LinkStyled>
-        </LinkText>
-        <P>{date}</P>
-      </PriceAndDate>
-    </InfoAboutRoute>
-  </Wrapper>
+  <div className="col-xs-12 col-md-12 col-xl-6">
+    <Wrapper>
+      <CityImage src={img} alt="Город" />
+      <InfoAboutRoute>
+        <Direction>
+          <Flag src={flag} alt="Флаг" />
+          <Place>
+            <CityName>{city}</CityName>
+            <P>{country}</P>
+          </Place>
+        </Direction>
+        <PriceAndDate>
+          <LinkText>
+            <LinkStyled href="#">Найти от {price} ₽</LinkStyled>
+          </LinkText>
+          <P>{date}</P>
+        </PriceAndDate>
+      </InfoAboutRoute>
+    </Wrapper>
+  </div>
 );
 
 Card.propTypes = {
   date: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   country: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  flag: PropTypes.element.isRequired,
-  img: PropTypes.element.isRequired,
+  flag: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
 };
 
 export default Card;

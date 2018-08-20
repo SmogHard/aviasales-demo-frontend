@@ -60,13 +60,15 @@ const Label = styled.label`
   }
 `;
 
-const Checkbox = ({ data }) => (
+const Checkbox = ({
+  price, label, check, onChange,
+}) => (
   <Label>
-    <Text>{data.label}</Text>
-    {data.price && (
+    <Text>{label}</Text>
+    {price && (
       <Price>
         <FormattedNumber
-          value={data.price}
+          value={price}
           style={String('currency')}
           currency="RUB"
           minimumFractionDigits={0}
@@ -74,16 +76,22 @@ const Checkbox = ({ data }) => (
         />
       </Price>
     )}
-    <CheckboxStyled type="checkbox" />
+    <CheckboxStyled type="checkbox" checked={check} onChange={onChange} />
     <Check />
   </Label>
 );
 
+Checkbox.defaultProps = {
+  price: undefined,
+  label: undefined,
+  check: false,
+};
+
 Checkbox.propTypes = {
-  data: PropTypes.shape({
-    label: PropTypes.string,
-    price: PropTypes.number,
-  }).isRequired,
+  label: PropTypes.string,
+  price: PropTypes.number,
+  check: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Checkbox;

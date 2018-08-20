@@ -83,17 +83,15 @@ export default function () {
             <Types />
             <div className="row">
               {tickets.map(ticket => (
-                <div className="col-xs-12 col-md-12 col-xl-6" key={ticket.id}>
-                  <Card
-                    img={ticket.img}
-                    city={ticket.city}
-                    country={ticket.country}
-                    flag={ticket.flag}
-                    price={ticket.price}
-                    date={ticket.date}
-                    key={ticket.id}
-                  />
-                </div>
+                <Card
+                  img={ticket.img}
+                  city={ticket.city}
+                  country={ticket.country}
+                  flag={ticket.flag}
+                  price={ticket.price}
+                  date={ticket.date}
+                  key={ticket.img}
+                />
               ))}
             </div>
           </div>

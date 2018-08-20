@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import Duration from './../../Common/Duration';
+import Duration from './../../SearchForms/Duration';
 import clock from './clock.svg';
 
 const Wrapper = styled.div`
