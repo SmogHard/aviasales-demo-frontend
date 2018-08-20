@@ -279,6 +279,14 @@ export const localization = {
   city: {
     Barselona: 'Барселона',
     Moscow: 'Москва',
+    Pekin: 'Пекин',
+    Berlin: 'Берлин',
+  },
+  country: {
+    Russia: 'Россия',
+    Germany: 'Германия',
+    China: 'Китай',
+    Spain: 'Испания',
   },
   common: {
     Charter: 'Чартер',

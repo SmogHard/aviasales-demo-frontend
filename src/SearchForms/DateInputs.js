@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import DayPicker from 'react-day-picker';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -7,6 +8,7 @@ import { withClickOutside } from 'react-clickoutside';
 import 'react-day-picker/lib/style.css';
 import './datepicker.css';
 import calendar from './calendar.svg';
+import dateClear from './date-clear.svg';
 import Checkbox from './SpecialCheckbox';
 
 const DateSelect = styled.div`
@@ -16,6 +18,7 @@ const Img = styled.img``;
 
 const Input = styled.input`
   background: none;
+  width: 80%;
   color: #4a4a4a;
   font-size: 16px;
   line-height: 20px;
@@ -25,13 +28,12 @@ const Input = styled.input`
   padding-bottom: 18px;
   padding-right: 0px;
   padding-left: 16px;
-  width: 100%;
   ::placeholder {
     color: #a0b0b9;
   }
 
   @media (min-width: 768px) {
-    width: 70%;
+    width: 80%;
     text-overflow: ellipsis;
   }
   @media (min-width: 1200px) {
@@ -126,6 +128,10 @@ const Price = styled.p`
   color: #00c455;
 `;
 
+const Clear = ButtonAction.extend`
+  top: 21px;
+`;
+
 const WEEKDAYS_SHORT = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 const PickerWithOutside = withClickOutside()(Picker);
@@ -177,48 +183,6 @@ function dateFormat(day) {
 }
 
 export default class DatePicker extends Component {
-  state = {
-    from: null,
-    to: null,
-    isOpenTo: false,
-    isOpenFrom: false,
-  };
-
-  onClickOutside = () => {
-    this.setState({
-      isOpenTo: false,
-      isOpenFrom: false,
-    });
-  };
-
-  setDayTo = (day) => {
-    this.setState({
-      to: day,
-      isOpenTo: false,
-    });
-  };
-
-  setDayFrom = (day) => {
-    this.setState({
-      from: day,
-      isOpenFrom: false,
-    });
-  };
-
-  showDateFrom = () => {
-    this.setState({
-      isOpenTo: false,
-      isOpenFrom: true,
-    });
-  };
-
-  showDateTo = () => {
-    this.setState({
-      isOpenTo: true,
-      isOpenFrom: false,
-    });
-  };
-
   renderDay = (day) => {
     const date = day.getDate();
 
@@ -231,13 +195,13 @@ export default class DatePicker extends Component {
   };
 
   render() {
-    const { from, to } = this.state;
+    const { from, to } = this.props;
 
     const modifiers = { start: from, end: to };
 
     return (
       <DateFields>
-        <DateSelect onClick={this.showDateFrom}>
+        <DateSelect>
           <Departures>
             <Input
               date
@@ -245,14 +209,22 @@ export default class DatePicker extends Component {
               name="ddto"
               placeholder="Туда"
               value={from ? dateFormat(from) : ''}
+              onClick={() => this.props.showDate(false, true)}
               readOnly
             />
-            <ButtonAction>
-              <Img alt="Календарь" src={calendar} />
-            </ButtonAction>
+            {!from && (
+              <ButtonAction onClick={() => this.props.showDate(false, true)}>
+                <Img alt="Календарь" src={calendar} />
+              </ButtonAction>
+            )}
+            {from && (
+              <Clear onClick={() => this.props.clearDate('from')}>
+                <Img alt="Крест" src={dateClear} />
+              </Clear>
+            )}
           </Departures>
         </DateSelect>
-        <DateSelect onClick={this.showDateTo}>
+        <DateSelect>
           <Arrival>
             <Input
               date
@@ -261,19 +233,29 @@ export default class DatePicker extends Component {
               placeholder="Обратно"
               value={to ? dateFormat(to) : ''}
               readOnly
+              onClick={() => this.props.showDate(true, false)}
             />
-            <ButtonAction>
-              <Img alt="Календарь" src={calendar} />
-            </ButtonAction>
+            {!to && (
+              <ButtonAction onClick={() => this.props.showDate(true, false)}>
+                <Img alt="Календарь" src={calendar} />
+              </ButtonAction>
+            )}
+            {to && (
+              <Clear onClick={() => this.props.clearDate('to')}>
+                <Img alt="Крест" src={dateClear} />
+              </Clear>
+            )}
           </Arrival>
         </DateSelect>
-        {this.state.isOpenFrom && (
-          <PickerWithOutside onClickOutside={this.onClickOutside}>
+        {this.props.isOpenFrom && (
+          <PickerWithOutside
+            onClickOutside={() => this.props.onClickOutside('isOpenFrom', 'isOpenTo')}
+          >
             <DayPicker
               disabledDays={{ after: to }}
               selectedDays={[to, from, { from, to }]}
               modifiers={modifiers}
-              onDayClick={this.setDayFrom}
+              onDayClick={value => this.props.setDay('from', 'isOpenFrom', value)}
               locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -287,13 +269,15 @@ export default class DatePicker extends Component {
             </CheckOneDirection>
           </PickerWithOutside>
         )}
-        {this.state.isOpenTo && (
-          <PickerWithOutside onClickOutside={this.onClickOutside}>
+        {this.props.isOpenTo && (
+          <PickerWithOutside
+            onClickOutside={() => this.props.onClickOutside('isOpenFrom', 'isOpenTo')}
+          >
             <DayPicker
               disabledDays={{ before: from }}
               selectedDays={[from, to, { from, to }]}
               modifiers={modifiers}
-              onDayClick={this.setDayTo}
+              onDayClick={value => this.props.setDay('to', 'isOpenTo', value)}
               locale="ru"
               months={MONTHS}
               weekdaysLong={WEEKDAYS_LONG}
@@ -311,3 +295,19 @@ export default class DatePicker extends Component {
     );
   }
 }
+
+DatePicker.defaultProps = {
+  from: null,
+  to: null,
+};
+
+DatePicker.propTypes = {
+  from: PropTypes.instanceOf(Date),
+  to: PropTypes.instanceOf(Date),
+  isOpenFrom: PropTypes.bool.isRequired,
+  isOpenTo: PropTypes.bool.isRequired,
+  setDay: PropTypes.func.isRequired,
+  onClickOutside: PropTypes.func.isRequired,
+  showDate: PropTypes.func.isRequired,
+  clearDate: PropTypes.func.isRequired,
+};

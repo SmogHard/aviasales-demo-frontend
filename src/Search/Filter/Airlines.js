@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Title from './TitleFilter';
-import arrowOpen from './arrow-open.svg';
-import Checkbox from './../../Common/Checkbox';
+import Filter from './Filter';
+import Checkbox from './../../SearchForms/Checkbox';
 
 const Airlines = styled.div`
   padding: 16px 16px;
@@ -25,103 +25,81 @@ const Information = styled.p`
   font-size: 12px;
 `;
 
-const alliance = [
-  {
-    checked: true,
-    label: 'Все',
-    price: undefined,
-    id: 1,
-  },
-  {
-    checked: true,
-    label: 'One World',
-    price: 7712,
-    id: 2,
-  },
-  {
-    checked: true,
-    label: 'Star Alliance',
-    price: 11712,
-    id: 3,
-  },
-  {
-    checked: true,
-    label: 'Sky Dream',
-    price: 23712,
-    id: 4,
-  },
-];
+const AirlinesFilter = ({
+  airlines,
+  alliance,
+  several,
+  isAllChecked,
+  handleCheck,
+  handleAllCheck,
+  handleClear,
+}) => (
+  <Airlines>
+    <Filter
+      title="Авиакомпании"
+      isOpen
+      amount={42}
+      isVisibleClear={!isAllChecked(alliance) || !isAllChecked(airlines)}
+      onClearClick={() => handleClear('alliance', 'airlines')}
+    >
+      <Fragment>
+        <Wrapper>
+          <Checkbox
+            label="Несколько авиакомпаний"
+            check={isAllChecked(several)}
+            onChange={() => handleAllCheck('several')}
+          />
+        </Wrapper>
+        <Information>
+          Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями, включая выбранную
+        </Information>
+        <Wrapper>
+          <CheckboxTitle>Альянсы</CheckboxTitle>
+          <Checkbox
+            label="Все"
+            check={isAllChecked(alliance)}
+            onChange={() => handleAllCheck('alliance')}
+          />
+          {alliance.map((checkbox, idx) => (
+            <Checkbox
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
+              onChange={() => handleCheck('alliance', idx)}
+            />
+          ))}
+        </Wrapper>
+        <Wrapper>
+          <CheckboxTitle>Авиакомпании</CheckboxTitle>
+          <Checkbox
+            label="Все"
+            check={isAllChecked(airlines)}
+            onChange={() => handleAllCheck('airlines')}
+          />
+          {airlines.map((checkbox, idx) => (
+            <Checkbox
+              check={checkbox.checked}
+              price={checkbox.price}
+              label={checkbox.label}
+              key={checkbox.id}
+              onChange={() => handleCheck('airlines', idx)}
+            />
+          ))}
+        </Wrapper>
+      </Fragment>
+    </Filter>
+  </Airlines>
+);
 
-const airlines = [
-  {
-    checked: true,
-    label: 'Все',
-    id: 1,
-  },
-  {
-    checked: true,
-    label: 'Custom Company',
-    price: 7712,
-    id: 2,
-  },
-  {
-    checked: true,
-    label: 'Air Algerie',
-    price: 11712,
-    id: 3,
-  },
-  {
-    checked: true,
-    label: 'Alitalia',
-    price: 23712,
-    id: 4,
-  },
-  {
-    checked: true,
-    label: 'Bulgaria Air',
-    price: 47712,
-    id: 5,
-  },
-  {
-    checked: true,
-    label: 'Belle Air',
-    price: 47712,
-    id: 6,
-  },
-  {
-    checked: true,
-    label: 'Air Moldova',
-    price: 47712,
-    id: 7,
-  },
-  {
-    checked: true,
-    label: 'British',
-    price: 47712,
-    id: 8,
-  },
-];
+AirlinesFilter.propTypes = {
+  airlines: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  alliance: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  several: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  isAllChecked: PropTypes.func.isRequired,
+  handleCheck: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
+  handleAllCheck: PropTypes.func.isRequired,
+};
 
-const several = { checked: true, label: 'Несколько авиакомпаний' };
-
-export default function () {
-  return (
-    <Airlines>
-      <Title title="Авиакомпании" arrow={arrowOpen} amount="42" />
-      <Wrapper>
-        <Checkbox data={several} />
-      </Wrapper>
-      <Information>
-        Показывать билеты с перелетами, выполняемыми несколькими авиакомпаниями, включая выбранную
-      </Information>
-      <Wrapper>
-        <CheckboxTitle>Альянсы</CheckboxTitle>
-        {alliance.map(item => <Checkbox data={item} key={item.id} />)}
-      </Wrapper>
-      <Wrapper>
-        <CheckboxTitle>Авиакомпании</CheckboxTitle>
-        {airlines.map(item => <Checkbox data={item} key={item.id} />)}
-      </Wrapper>
-    </Airlines>
-  );
-}
+export default AirlinesFilter;

@@ -9,7 +9,7 @@ import airDown from './air-down.svg';
 import dot from './dot.svg';
 import line from './line.png';
 import { localization } from './data';
-import Duration from './../../Common/Duration';
+import Duration from './../../SearchForms/Duration';
 
 const Wrapper = styled.div`
   display: flex;

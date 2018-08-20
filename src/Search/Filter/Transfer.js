@@ -1,63 +1,55 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import arrowOpen from './arrow-open.svg';
-import clear from './clear.svg';
-import Checkbox from './../../Common/Checkbox';
-import Title from './TitleFilter';
+import Filter from './Filter';
+import Checkbox from './../../SearchForms/Checkbox';
 
 const Transfer = styled.div`
   padding: 16px 16px;
 `;
 
-const Clear = styled.img`
-  position: absolute;
-  right: 0;
-  top: -5px;
+const Checkboxes = styled.div`
+  padding-top: 16px;
 `;
 
-const Header = styled.div`
-  position: relative;
-  margin-bottom: 16px;
-`;
-
-const data = [
-  {
-    checked: false,
-    label: 'Все',
-    id: 1,
-  },
-  {
-    checked: true,
-    label: 'Без пересадок',
-    price: 7712,
-    id: 2,
-  },
-  {
-    checked: false,
-    label: '1 пересадка',
-    price: 11712,
-    id: 3,
-  },
-  {
-    checked: false,
-    label: '2 пересадки',
-    price: 23712,
-    id: 4,
-  },
-  {
-    checked: false,
-    label: '3 пересадки',
-    price: 47712,
-    id: 5,
-  },
-];
-
-export default () => (
+const TransferFilter = ({
+  data, isAllChecked, handleCheck, handleClear, handleAllCheck,
+}) => (
   <Transfer>
-    <Header>
-      <Title arrow={arrowOpen} title="Пересадки" />
-      <Clear src={clear} alt="Сбросить фильтр" />
-    </Header>
-    {data.map(item => <Checkbox data={item} key={item.id} />)}
+    <Filter
+      title="Пересадки"
+      isOpen
+      isVisibleClear={!isAllChecked(data)}
+      onClearClick={() => handleClear('transfer')}
+    >
+      <Fragment>
+        <Checkboxes>
+          <Checkbox
+            label="Все"
+            check={isAllChecked(data)}
+            onChange={() => handleAllCheck('transfer')}
+          />
+          {data.map((transfer, idx) => (
+            <Checkbox
+              check={transfer.checked}
+              price={transfer.price}
+              label={transfer.label}
+              key={transfer.id}
+              onChange={() => handleCheck('transfer', idx)}
+            />
+          ))}
+        </Checkboxes>
+      </Fragment>
+    </Filter>
   </Transfer>
 );
+
+TransferFilter.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+  isAllChecked: PropTypes.func.isRequired,
+  handleCheck: PropTypes.func.isRequired,
+  handleClear: PropTypes.func.isRequired,
+  handleAllCheck: PropTypes.func.isRequired,
+};
+
+export default TransferFilter;
