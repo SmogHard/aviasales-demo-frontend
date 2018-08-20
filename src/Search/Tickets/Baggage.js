@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import suitcase_none from "./suitcase-none.svg";
-import suitcase from "./suitcase.svg";
-import handbag from "./handbag.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import suitcaseNone from './suitcase-none.svg';
+import suitcase from './suitcase.svg';
+import handbag from './handbag.svg';
 
 const Baggage = styled.div`
   display: none;
@@ -85,7 +86,7 @@ const BagWrap = styled.div`
   padding: 8px 0px;
 `;
 
-export default function({ info }) {
+const BaggageInfo = ({ info }) => {
   if (!info.baggageWithoutSuite) {
     return (
       <BagWrap>
@@ -99,40 +100,42 @@ export default function({ info }) {
             <Weight>{info.baggage.suitcase}</Weight>
           </IconWrap>
         </Baggage>
-        <TicketLeft>
-          {info.ticketsLeft && `Осталось ${info.ticketsLeft} билета`}
-        </TicketLeft>
+        <TicketLeft>{info.ticketsLeft && `Осталось ${info.ticketsLeft} билета`}</TicketLeft>
       </BagWrap>
     );
-  } else {
-    return (
-      <SelectBag>
-        <BaggageWithoutSuite>
-          <Baggage>
-            <IconWrap>
-              <Icon src={handbag} />
-              <Weight>{info.baggage.handbag}</Weight>
-            </IconWrap>
-            <IconWrap>
-              <Icon src={suitcase_none} />
-            </IconWrap>
-          </Baggage>
-          <WithoutSuiteCase>Нет багажа</WithoutSuiteCase>
-        </BaggageWithoutSuite>
-        <BaggageHighCost>
-          <Baggage>
-            <IconWrap>
-              <Icon src={handbag} />
-              <Weight>{info.baggage.handbag}</Weight>
-            </IconWrap>
-            <IconWrap>
-              <Icon src={suitcase} />
-              <Weight>{info.baggage.suitcase}</Weight>
-            </IconWrap>
-          </Baggage>
-          <PriceForSuiteCase>- 267 ₽</PriceForSuiteCase>
-        </BaggageHighCost>
-      </SelectBag>
-    );
   }
-}
+  return (
+    <SelectBag>
+      <BaggageWithoutSuite>
+        <Baggage>
+          <IconWrap>
+            <Icon src={handbag} />
+            <Weight>{info.baggage.handbag}</Weight>
+          </IconWrap>
+          <IconWrap>
+            <Icon src={suitcaseNone} />
+          </IconWrap>
+        </Baggage>
+        <WithoutSuiteCase>Нет багажа</WithoutSuiteCase>
+      </BaggageWithoutSuite>
+      <BaggageHighCost>
+        <Baggage>
+          <IconWrap>
+            <Icon src={handbag} />
+            <Weight>{info.baggage.handbag}</Weight>
+          </IconWrap>
+          <IconWrap>
+            <Icon src={suitcase} />
+            <Weight>{info.baggage.suitcase}</Weight>
+          </IconWrap>
+        </Baggage>
+        <PriceForSuiteCase>- 267 ₽</PriceForSuiteCase>
+      </BaggageHighCost>
+    </SelectBag>
+  );
+};
+
+BaggageInfo.propTypes = {
+  info: PropTypes.shape({}).isRequired,
+};
+export default BaggageInfo;

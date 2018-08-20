@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Flight from "./Flight";
-import PriceAndInfo from "./PriceAndInfo";
-import FlightXs from "./FlightXs";
-import air_to from "./air-to.svg";
-import air_from from "./air-from.svg";
-import Header from "./Header";
-import { data } from "./data";
-import arrow from "./arrow-open.svg";
+import React from 'react';
+import styled from 'styled-components';
+import Flight from './Flight';
+import PriceAndInfo from './PriceAndInfo';
+import FlightXs from './FlightXs';
+import airTo from './air-to.svg';
+import airFrom from './air-from.svg';
+import Header from './Header';
+import { data } from './data';
+import arrow from './arrow-open.svg';
 
 const Ticket = styled.div`
   background: #ffffff;
@@ -38,12 +38,12 @@ const More = styled.button`
   }
 `;
 
-export default function(props) {
+export default function () {
   return (
     <div>
-      {data.map((result, i) => (
-        <Ticket key={i}>
-          <Header info={result.info} />
+      {data.map(result => (
+        <Ticket key={result.id}>
+          {result.info.type && <Header type={result.info.type} />}
           <Wrapper>
             <PriceAndInfo info={result.info} />
             <Flight flight={result.flight} />
@@ -52,8 +52,8 @@ export default function(props) {
             </More>
           </Wrapper>
           <Path>
-            <FlightXs flight={result.flight.to} icon={air_to} />
-            <FlightXs flight={result.flight.from} icon={air_from} />
+            <FlightXs flight={result.flight.to} icon={airTo} />
+            <FlightXs flight={result.flight.from} icon={airFrom} />
           </Path>
         </Ticket>
       ))}

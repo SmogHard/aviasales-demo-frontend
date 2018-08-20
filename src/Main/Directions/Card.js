@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Card = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -83,13 +84,13 @@ const PriceAndDate = styled.div`
   text-align: right;
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   color: #00bae8;
   margin-top: 16px;
   margin-bottom: 16px;
   text-decoration: none;
   transition: color 0.3s ease;
-  ${Card}:hover & {
+  ${Wrapper}:hover & {
     color: #ff8c00;
   }
 `;
@@ -107,25 +108,36 @@ const Place = styled.div`
   flex-direction: column;
 `;
 
-export default props => {
-  return (
-    <Card>
-      <CityImage src={props.img} alt="Город" />
-      <InfoAboutRoute>
-        <Direction>
-          <Flag src={props.flag} alt="Флаг" />
-          <Place>
-            <CityName>{props.city}</CityName>
-            <P>{props.country}</P>
-          </Place>
-        </Direction>
-        <PriceAndDate>
-          <LinkText>
-            <Link href="#">Найти от {props.price} ₽</Link>
-          </LinkText>
-          <P>{props.date}</P>
-        </PriceAndDate>
-      </InfoAboutRoute>
-    </Card>
-  );
+const Card = ({
+  date, img, flag, city, country, price,
+}) => (
+  <Wrapper>
+    <CityImage src={img} alt="Город" />
+    <InfoAboutRoute>
+      <Direction>
+        <Flag src={flag} alt="Флаг" />
+        <Place>
+          <CityName>{city}</CityName>
+          <P>{country}</P>
+        </Place>
+      </Direction>
+      <PriceAndDate>
+        <LinkText>
+          <LinkStyled href="#">Найти от {price} ₽</LinkStyled>
+        </LinkText>
+        <P>{date}</P>
+      </PriceAndDate>
+    </InfoAboutRoute>
+  </Wrapper>
+);
+
+Card.propTypes = {
+  date: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  flag: PropTypes.element.isRequired,
+  img: PropTypes.element.isRequired,
 };
+
+export default Card;

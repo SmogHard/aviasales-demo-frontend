@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import clear from "./clear.svg";
+import React from 'react';
+import styled from 'styled-components';
+import clear from './clear.svg';
 
 const Wrapper = styled.div`
   padding: 16px 16px;
@@ -21,7 +21,7 @@ const Clear = styled.img`
   top: 14px;
 `;
 
-export default function() {
+export default function () {
   return (
     <Wrapper>
       <Text>Сбросить все фильтры</Text>

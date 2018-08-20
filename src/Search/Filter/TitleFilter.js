@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Title = styled.p`
   position: relative;
@@ -21,12 +22,22 @@ const Amount = styled.span`
   padding-left: 8px;
 `;
 
-export default function(props) {
-  return (
-    <Title>
-      <Arrow src={props.arrow} />
-      {props.title}
-      {props.amount && <Amount> {props.amount} </Amount>}
-    </Title>
-  );
-}
+const TitleFilter = ({ arrow, title, amount }) => (
+  <Title>
+    <Arrow src={arrow} />
+    {title}
+    {amount && <Amount> {amount} </Amount>}
+  </Title>
+);
+
+TitleFilter.defaultProps = {
+  amount: undefined,
+};
+
+TitleFilter.propTypes = {
+  arrow: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string,
+};
+
+export default TitleFilter;

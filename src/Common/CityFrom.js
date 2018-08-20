@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import arrow from "./arrow.svg";
+import React from 'react';
+import styled from 'styled-components';
+import arrow from './arrow.svg';
 
 const Input = styled.input`
   background: none;
@@ -58,15 +58,10 @@ const ButtonAction = styled.button`
   right: 16px;
 `;
 
-export default function() {
+export default function () {
   return (
     <CityFrom>
-      <Input
-        type="text"
-        name="from"
-        placeholder="Укажите город"
-        defaultValue="Москва"
-      />
+      <Input type="text" name="from" placeholder="Укажите город" defaultValue="Москва" />
       <Abbreviation>MOV</Abbreviation>
       <ButtonAction>
         <img alt="Направление" src={arrow} />

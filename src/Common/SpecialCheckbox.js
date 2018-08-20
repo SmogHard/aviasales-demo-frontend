@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Text = styled.p`
   font-size: 12px;
@@ -20,7 +21,7 @@ const Check = styled.span`
   left: 0px;
   transition: all 0.3s;
   :after {
-    content: "";
+    content: '';
     position: absolute;
     top: -2px;
     left: 2px;
@@ -32,7 +33,7 @@ const Check = styled.span`
     transition: 0.2s;
   }
   :before {
-    content: "";
+    content: '';
     position: absolute;
     top: -4px;
     left: 0;
@@ -50,7 +51,7 @@ const Label = styled.label`
   position: relative;
   padding-left: 60px;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   cursor: pointer;
   font-size: 22px;
   user-select: none;
@@ -59,17 +60,19 @@ const Label = styled.label`
   }
 
   & ${Checkbox}:checked ~ ${Check}:before {
-    background: #9FD468;
+    background: #9fd468;
   }
-
 `;
+const Toggle = ({ label }) => (
+  <Label>
+    <Text>{label}</Text>
+    <Checkbox type="checkbox" />
+    <Check />
+  </Label>
+);
 
-export default function(props) {
-  return (
-    <Label>
-      <Text>{props.label}</Text>
-      <Checkbox type="checkbox" />
-      <Check />
-    </Label>
-  );
-}
+Toggle.propTypes = {
+  label: PropTypes.string.isRequired,
+};
+
+export default Toggle;

@@ -1,10 +1,11 @@
-import React from "react";
-import styled from "styled-components";
-import clock from "./clock.svg";
-import { formatTimeOfFlight } from "./Trip";
-import { format } from "date-fns";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
+import styled from 'styled-components';
+import Duration from './../../Common/Duration';
+import clock from './clock.svg';
 
-const Flight = styled.div`
+const Wrapper = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 12px;
@@ -35,24 +36,28 @@ const Time = styled.div`
   flex-basis: 50%;
 `;
 
-export default function(props) {
-  const { flight, icon } = props;
+const Flight = ({ flight, icon }) => {
+  const takeOffAt = format(new Date(flight.dateFrom), 'HH:MM');
 
-  const takeOffAt = format(new Date(flight.dateFrom), "HH:MM");
-
-  const landingAt = format(new Date(flight.dateTo), "HH:MM");
+  const landingAt = format(new Date(flight.dateTo), 'HH:MM');
 
   return (
-    <Flight>
+    <Wrapper>
       <Time>
         <Icon src={icon} />
         {takeOffAt} - {landingAt}
       </Time>
       <Total>
         <Icon src={clock} />
-        {formatTimeOfFlight(flight.timeOfFlight)}
+        <Duration duration={flight.timeOfFlight} />
       </Total>
-      <Transfers>{flight.transfer ? flight.transfer : "Прямой"}</Transfers>
-    </Flight>
+      <Transfers>{flight.transfer ? flight.transfer : 'Прямой'}</Transfers>
+    </Wrapper>
   );
-}
+};
+
+Flight.propTypes = {
+  flight: PropTypes.shape({}).isRequired,
+  icon: PropTypes.string.isRequired,
+};
+export default Flight;

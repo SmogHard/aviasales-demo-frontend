@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { FormattedNumber } from "react-intl";
-import Baggage from "./Baggage";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { FormattedNumber } from 'react-intl';
+import Baggage from './Baggage';
 
 const Button = styled.button`
   border: 0;
@@ -93,14 +94,14 @@ const OtherOffer = styled.div`
   justify-content: space-between;
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   margin: 0px;
   font-size: 12px;
   color: #59bce5;
   cursor: pointer;
 `;
 
-const More = Link.extend`
+const More = LinkStyled.extend`
   padding-top: 8px;
   padding-bottom: 16px;
   text-align: center;
@@ -113,64 +114,68 @@ const Other = styled.div`
   }
 `;
 
-export default function(props) {
-  const formatter = [{ style: "currency" }];
-  return (
-    <Buy>
-      <Baggage info={props.info} />
-      <Button>
-        <TextWrapper>
-          <Offer>
-            Купить <br />
-            <Price>
-              за{" "}
-              <FormattedNumber
-                value={props.info.price}
-                style={formatter.style}
-                currency={"RUB"}
-                minimumFractionDigits={0}
-                maximumFractionDigits={0}
-              />{" "}
-              ₽
-            </Price>
-          </Offer>
-          <PriceXs>
+const PriceAndInfo = ({ info }) => (
+  <Buy>
+    <Baggage info={info} />
+    <Button>
+      <TextWrapper>
+        <Offer>
+          Купить <br />
+          <Price>
+            за{' '}
             <FormattedNumber
-              value={props.info.price}
-              style={formatter.style}
-              currency={"RUB"}
+              value={info.price}
+              style={String('currency')}
+              currency="RUB"
               minimumFractionDigits={0}
               maximumFractionDigits={0}
-            />{" "}
-            ₽
-          </PriceXs>
-        </TextWrapper>
-      </Button>
-      <Proposal>на {props.info.proposal}</Proposal>
-      {props.info.more && (
-        <Other>
-          {props.info.more.map((more, index) => (
-            <Prices key={index}>
-              <OtherOffer>
-                <Link>{more.company}</Link>
-                <Link>
-                  {" "}
-                  <FormattedNumber
-                    value={more.price}
-                    style={formatter.style}
-                    minimumFractionDigits={0}
-                    maximumFractionDigits={0}
-                  />{" "}
-                  ₽
-                </Link>
-              </OtherOffer>
-            </Prices>
-          ))}
-          <Prices>
-            <More>+ еще 3 предложения</More>
+            />{' '}
+          </Price>
+        </Offer>
+        <PriceXs>
+          <FormattedNumber
+            value={info.price}
+            style={String('currency')}
+            currency="RUB"
+            minimumFractionDigits={0}
+            maximumFractionDigits={0}
+          />{' '}
+        </PriceXs>
+      </TextWrapper>
+    </Button>
+    <Proposal>на {info.proposal}</Proposal>
+    {info.more && (
+      <Other>
+        {info.more.map(more => (
+          <Prices key={more.id}>
+            <OtherOffer>
+              <LinkStyled>{more.company}</LinkStyled>
+              <LinkStyled>
+                {' '}
+                <FormattedNumber
+                  value={more.price}
+                  style={String('currency')}
+                  currency="RUB"
+                  minimumFractionDigits={0}
+                  maximumFractionDigits={0}
+                />{' '}
+              </LinkStyled>
+            </OtherOffer>
           </Prices>
-        </Other>
-      )}
-    </Buy>
-  );
-}
+        ))}
+        <Prices>
+          <More>+ еще 3 предложения</More>
+        </Prices>
+      </Other>
+    )}
+  </Buy>
+);
+
+PriceAndInfo.propTypes = {
+  info: PropTypes.shape({
+    price: PropTypes.number.isRequired,
+    proposal: PropTypes.shape.isRequired,
+  }).isRequired,
+};
+
+export default PriceAndInfo;

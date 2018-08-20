@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const CityTo = styled.div`
   display: flex;
@@ -30,15 +30,10 @@ const Input = styled.input`
     color: #a0b0b9;
   }
 `;
-export default function() {
+export default function () {
   return (
     <CityTo>
-      <Input
-        type="text"
-        name="to"
-        placeholder="Город прибытия"
-        defaultValue=""
-      />
+      <Input type="text" name="to" placeholder="Город прибытия" defaultValue="" />
     </CityTo>
   );
 }

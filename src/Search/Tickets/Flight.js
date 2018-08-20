@@ -1,11 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import share from "./share.svg";
-import Trip from "./Trip";
-import AirlineLogo from "./AirlineLogo";
-import { localization } from "./../../Common/localization";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import share from './share.svg';
+import Trip from './Trip';
+import AirlineLogo from './AirlineLogo';
+import { localization } from './data';
 
-const Flight = styled.div`
+const Wrapper = styled.div`
   flex-basis: 66.6666%;
   padding-right: 6px;
   padding-top: 12px;
@@ -61,22 +62,25 @@ const Line = styled.div`
   border: 0.5px dotted #dddddd;
 `;
 
-export default function(props) {
-  const flight = props.flight;
-  return (
-    <Flight>
-      <Header>
-        <AirlineLogo airline={flight.airline} />
-        <InfoAndShare>
-          {flight.type && <Type> {localization["common"][flight.type]} </Type>}
-          <Share src={share} />
-        </InfoAndShare>
-      </Header>
-      <Trips>
-        <Trip data={flight.to} />
-        <Line />
-        <Trip data={flight.from} />
-      </Trips>
-    </Flight>
-  );
-}
+const Flight = ({ flight }) => (
+  <Wrapper>
+    <Header>
+      <AirlineLogo airline={flight.airline} />
+      <InfoAndShare>
+        {flight.type && <Type> {localization.common[flight.type]} </Type>}
+        <Share src={share} />
+      </InfoAndShare>
+    </Header>
+    <Trips>
+      <Trip data={flight.to} />
+      <Line />
+      <Trip data={flight.from} />
+    </Trips>
+  </Wrapper>
+);
+
+Flight.propTypes = {
+  flight: PropTypes.shape({}).isRequired,
+};
+
+export default Flight;

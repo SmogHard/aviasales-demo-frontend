@@ -1,7 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Card = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 12px;
@@ -95,29 +96,39 @@ const OfferText = styled.p`
 
 const OfferTextPrice = OfferText.extend``;
 
-export default props => {
-  return (
-    <Card>
-      <Header>
-        <Text> {props.title}</Text>
-        <Sign alt="" src={props.sign} />
-      </Header>
-      <CardSection>
-        <CardOffer>
-          <CompanyImg alt="pobeda" src={props.aviaCompany} />
-          <OfferLabel>
-            <Price>
-              <SmallText>от </SmallText> {props.price} ₽
-            </Price>
-            <DayLeft> Осталось {props.dayLeft} дней</DayLeft>
-          </OfferLabel>
-        </CardOffer>
-        <OfferTextPrice>{props.offerText}</OfferTextPrice>
-        <OfferText>
-          Специальное предложение от авиакомпании {props.companyName}
-        </OfferText>
-        <CardButton>Узнать подробности</CardButton>
-      </CardSection>
-    </Card>
-  );
+const Card = ({
+  title, sign, aviaCompany, price, dayLeft, offerText, companyName,
+}) => (
+  <Wrapper>
+    <Header>
+      <Text> {title}</Text>
+      <Sign alt="" src={sign} />
+    </Header>
+    <CardSection>
+      <CardOffer>
+        <CompanyImg alt="pobeda" src={aviaCompany} />
+        <OfferLabel>
+          <Price>
+            <SmallText>от </SmallText> {price} ₽
+          </Price>
+          <DayLeft> Осталось {dayLeft} дней</DayLeft>
+        </OfferLabel>
+      </CardOffer>
+      <OfferTextPrice>{offerText}</OfferTextPrice>
+      <OfferText>Специальное предложение от авиакомпании {companyName}</OfferText>
+      <CardButton>Узнать подробности</CardButton>
+    </CardSection>
+  </Wrapper>
+);
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  sign: PropTypes.element.isRequired,
+  aviaCompany: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  dayLeft: PropTypes.string.isRequired,
+  offerText: PropTypes.string.isRequired,
+  companyName: PropTypes.string.isRequired,
 };
+
+export default Card;

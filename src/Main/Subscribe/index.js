@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import facebook from "./facebook.png";
-import vk from "./vk.png";
-import rss from "./rss.png";
-import twitter from "./twitter.png";
-import candy from "./candy.png";
+import React from 'react';
+import styled from 'styled-components';
+import facebook from './facebook.png';
+import vk from './vk.png';
+import rss from './rss.png';
+import twitter from './twitter.png';
+import candy from './candy.png';
 
 const Section = styled.section`
   background: #ffffff;
@@ -18,7 +18,7 @@ const Section = styled.section`
 `;
 
 const Candy = styled.div`
-  content: "";
+  content: '';
   display: block;
   background: #fff repeat-x url(${candy}) 50% 0;
   height: 7px;
@@ -128,7 +128,7 @@ const SocialAndSubscribe = styled.div`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <Section>
       <div className="container">
@@ -139,8 +139,7 @@ export default function() {
               <Offer>
                 <Title>Хотите знать всё о скидках на авиабилеты?</Title>
                 <Info>
-                  Вы можете подписаться на нашу рассылку через соцсети или по
-                  электронной почте.
+                  Вы можете подписаться на нашу рассылку через соцсети или по электронной почте.
                 </Info>
               </Offer>
               <SocialAndSubscribe>

@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import Tickets from "./Tickets";
-import { Helmet } from "react-helmet";
-import settings from "./settings.png";
-import Header from "./Header";
-import Filter from "./Filter";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
+import Tickets from './Tickets';
+import settings from './settings.png';
+import Header from './Header';
+import Filter from './Filter';
 
 const Section = styled.section`
   background: #eaeaea;
@@ -88,7 +88,7 @@ const FilterButton = ShowMore.extend`
   }
 `;
 
-export default function() {
+export default function () {
   return (
     <div>
       <Header />

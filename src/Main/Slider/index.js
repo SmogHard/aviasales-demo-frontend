@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import arrowLeft from "./arrowleft.png";
-import arrowRight from "./arrowright.png";
-import aeroflot from "./aeroflot.png";
-import el from "./el.png";
-import korean from "./korean.png";
-import oneTrip from "./onetrip.png";
-import s7 from "./s7.png";
+import React from 'react';
+import styled from 'styled-components';
+import arrowLeft from './arrowleft.png';
+import arrowRight from './arrowright.png';
+import aeroflot from './aeroflot.png';
+import el from './el.png';
+import korean from './korean.png';
+import oneTrip from './onetrip.png';
+import s7 from './s7.png';
 
 const Section = styled.section`
   background: #ffffff;
@@ -77,16 +77,14 @@ const Company = styled.div`
 
 const Image = styled.img``;
 
-export default function() {
+export default function () {
   return (
     <Section>
       <div className="container">
         <div className="row">
           <div className="col-xl-offset-1 col-xl-10">
             <Slider>
-              <Title>
-                Дешевые авиабилеты от крупнейших авиакомпаний и агентств
-              </Title>
+              <Title>Дешевые авиабилеты от крупнейших авиакомпаний и агентств</Title>
               <Carousel>
                 <Arrow>
                   <Image src={arrowLeft} />

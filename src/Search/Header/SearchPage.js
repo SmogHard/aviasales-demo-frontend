@@ -1,8 +1,8 @@
-import React from "react";
-import Inputs from "./Inputs";
-import Logo from "./../../Common/Logo";
-import styled from "styled-components";
-import HeaderSearchMobile from "./HeaderSearchMobile";
+import React from 'react';
+import styled from 'styled-components';
+import Inputs from './Inputs';
+import Logo from './../../Common/Logo';
+import HeaderSearchMobile from './HeaderSearchMobile';
 
 const Header = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const Currency = styled.button`
   flex: 0 0 auto;
 `;
 
-export default function() {
+export default function () {
   return (
     <div>
       <SearchPage>

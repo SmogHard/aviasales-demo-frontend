@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const WrapperSmall = styled.div`
   border: 1px solid #dddddd;
@@ -25,18 +26,23 @@ const ImgSmall = styled.img`
   width: 28px;
 `;
 
-export default function(props) {
-  if (props.airline.length === 1) {
-    return <Img src={props.airline} />;
-  } else {
-    return (
-      <Airlines>
-        {props.airline.map((airline, i) => (
-          <WrapperSmall key={i}>
-            <ImgSmall src={airline} />
-          </WrapperSmall>
-        ))}
-      </Airlines>
-    );
+const AirlineLogo = ({ airline }) => {
+  if (airline.length === 1) {
+    return <Img src={airline} />;
   }
-}
+  return (
+    <Airlines>
+      {airline.map(airlineImg => (
+        <WrapperSmall key={airlineImg}>
+          <ImgSmall src={airlineImg} />
+        </WrapperSmall>
+      ))}
+    </Airlines>
+  );
+};
+
+AirlineLogo.propTypes = {
+  airline: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default AirlineLogo;

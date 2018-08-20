@@ -1,7 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import checked from "./checked.png";
-import unchecked from "./unchecked.png";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FormattedNumber } from 'react-intl';
+import styled from 'styled-components';
+import checked from './checked.png';
+import unchecked from './unchecked.png';
 
 const Price = styled.p`
   font-size: 12px;
@@ -13,7 +15,7 @@ const Text = styled.p`
   color: #4a4a4a;
 `;
 
-const Checkbox = styled.input`
+const CheckboxStyled = styled.input`
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -29,7 +31,7 @@ const Check = styled.span`
   background-repeat: no-repeat;
   background-image: url(${unchecked});
   :after {
-    content: "";
+    content: '';
     position: absolute;
     display: none;
   }
@@ -49,7 +51,7 @@ const Label = styled.label`
     top: 0;
   }
 
-  & ${Checkbox}:checked ~ ${Check}:after {
+  & ${CheckboxStyled}:checked ~ ${Check}:after {
     display: block;
     background-repeat: no-repeat;
     background-image: url(${checked});
@@ -58,13 +60,30 @@ const Label = styled.label`
   }
 `;
 
-export default function(props) {
-  return (
-    <Label>
-      <Text>{props.data.label}</Text>
-      <Price> {props.data.price}</Price>
-      <Checkbox type="checkbox" />
-      <Check />
-    </Label>
-  );
-}
+const Checkbox = ({ data }) => (
+  <Label>
+    <Text>{data.label}</Text>
+    {data.price && (
+      <Price>
+        <FormattedNumber
+          value={data.price}
+          style={String('currency')}
+          currency="RUB"
+          minimumFractionDigits={0}
+          maximumFractionDigits={0}
+        />
+      </Price>
+    )}
+    <CheckboxStyled type="checkbox" />
+    <Check />
+  </Label>
+);
+
+Checkbox.propTypes = {
+  data: PropTypes.shape({
+    label: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
+};
+
+export default Checkbox;

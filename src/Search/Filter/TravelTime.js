@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Range from "./Range";
-import Direction from "./Direction";
-import Title from "./TitleFilter";
-import arrow_open from "./arrow-open.svg";
+import React from 'react';
+import styled from 'styled-components';
+import Range from './Range';
+import Direction from './Direction';
+import Title from './TitleFilter';
+import arrowOpen from './arrow-open.svg';
 
 const Wrapper = styled.div`
   padding: 24px 16px 32px 16px;
@@ -35,10 +35,10 @@ const To = styled.p`
   margin: 0;
 `;
 
-export default function() {
+export default function () {
   return (
     <Wrapper>
-      <Title title="Время в пути" arrow={arrow_open} />
+      <Title title="Время в пути" arrow={arrowOpen} />
       <Flight>
         <Direction cityFrom="Москва" cityTo="Барселона" />
         <Info>

@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Card from "./Card";
-import pobeda from "./pobeda.png";
-import luft from "./luft.png";
-import sign from "./sign.png";
+import React from 'react';
+import styled from 'styled-components';
+import Card from './Card';
+import pobeda from './pobeda.png';
+import luft from './luft.png';
+import sign from './sign.png';
 
 const Title = styled.h1`
   color: #ffffff;
@@ -30,40 +30,43 @@ const Footer = styled.div`
   }
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   color: #ffffff;
 `;
 
 const offers = [
   {
-    title: "Билеты от 499 рублей!",
-    sign: "",
+    id: 1,
+    title: 'Билеты от 499 рублей!',
+    sign: '',
     aviaCompany: pobeda,
-    price: "499",
-    dayLeft: "45",
-    offerText: "Билеты от 499 рублей!",
-    companyName: "Победа"
+    price: '499',
+    dayLeft: '45',
+    offerText: 'Билеты от 499 рублей!',
+    companyName: 'Победа',
   },
   {
-    title: "В Нью-Йорк от 20 680 рублей!",
-    sign: sign,
+    id: 2,
+    title: 'В Нью-Йорк от 20 680 рублей!',
+    sign,
     aviaCompany: luft,
-    price: "20 680",
-    dayLeft: "19",
-    offerText: "Билеты от 499 рублей!",
-    companyName: "Lufthansa"
+    price: '20 680',
+    dayLeft: '19',
+    offerText: 'Билеты от 499 рублей!',
+    companyName: 'Lufthansa',
   },
   {
-    title: "В Лос-Анджелес от 20 360 рублей!",
-    sign: sign,
+    id: 3,
+    title: 'В Лос-Анджелес от 20 360 рублей!',
+    sign,
     aviaCompany: luft,
-    price: "20 360",
-    dayLeft: "19",
-    offerText: "Билеты от 499 рублей!",
-    companyName: "Lufthansa"
-  }
+    price: '20 360',
+    dayLeft: '19',
+    offerText: 'Билеты от 499 рублей!',
+    companyName: 'Lufthansa',
+  },
 ];
-export default function() {
+export default function () {
   return (
     <SpecialOffers>
       <div className="container">
@@ -71,8 +74,8 @@ export default function() {
           <div className="col-xl-offset-1 col-xl-10">
             <Title>Спецпредложения на авиабилеты</Title>
             <div className="row">
-              {offers.map((offer, i) => (
-                <div className="col-xs-12 col-md-4 col-xl-4" key={i}>
+              {offers.map(offer => (
+                <div className="col-xs-12 col-md-4 col-xl-4" key={offer.id}>
                   <Card
                     title={offer.title}
                     sign={offer.sign}
@@ -81,14 +84,14 @@ export default function() {
                     dayLeft={offer.dayLeft}
                     offerText={offer.offerText}
                     companyName={offer.companyName}
-                    key={i}
+                    key={offer.id}
                   />
                 </div>
               ))}
             </div>
             <Footer>
               <Text>
-                <Link href="#">Смотреть все спецпредложения</Link>
+                <LinkStyled href="#">Смотреть все спецпредложения</LinkStyled>
               </Text>
               <Text>* средняя цена по направлению</Text>
             </Footer>

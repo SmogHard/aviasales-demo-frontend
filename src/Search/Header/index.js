@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import SearchPage from "./SearchPage";
+import React from 'react';
+import styled from 'styled-components';
+import SearchPage from './SearchPage';
 
 const Header = styled.header`
   background: linear-gradient(
@@ -15,7 +15,7 @@ const Header = styled.header`
   padding-top: 12px;
 `;
 
-export default function() {
+export default function () {
   return (
     <Header>
       <div className="container">

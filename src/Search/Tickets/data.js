@@ -1,270 +1,286 @@
-import russia_air from "./russia-air.png";
-import nord_wg from "./nord-wg.png";
-import nord_air from "./nord-air.png";
-import red_wings from "./red-wings.png";
-import fly from "./fly.png";
-import russia_air_sqr from "./russia-air-sqr.png";
-import red_wings_sqr from "./red-wings-sqr.png";
-import blue_air_sqr from "./blue-air-sqr.png";
+import russiaAir from './russia-air.png';
+import nordWg from './nord-wg.png';
+import nordAir from './nord-air.png';
+import redWings from './red-wings.png';
+import fly from './fly.png';
+import russiaAirSqr from './russia-air-sqr.png';
+import redWingsSqr from './red-wings-sqr.png';
+import blueAirSqr from './blue-air-sqr.png';
 
 export const data = [
   {
+    id: 1,
     info: {
       price: 7712,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Clickavia",
-      type: "lowcost"
+      proposal: 'Clickavia',
+      type: 'lowcost',
     },
     flight: {
-      airline: [russia_air],
+      airline: [russiaAir],
       to: {
         timeOfFlight: 240,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
-      }
-    }
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
+      },
+    },
   },
   {
+    id: 2,
     info: {
       price: 9269,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Biletix",
-      type: "faster"
+      proposal: 'Biletix',
+      type: 'faster',
     },
     flight: {
       airline: [fly],
-      type: "Charter",
+      type: 'Charter',
       to: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 275,
-        transfer: "CDG",
+        transfer: 'CDG',
         dateFrom: 1519754902000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
-      }
-    }
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
+      },
+    },
   },
   {
+    id: 3,
     info: {
       price: 8029,
       baggage: {
         handbag: 10,
         suitcase: 10,
-        price: 127
+        price: 127,
       },
       baggageWithoutSuite: {
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Билетик Аэро",
-      type: "best"
+      proposal: 'Билетик Аэро',
+      type: 'best',
     },
     flight: {
-      airline: [nord_wg],
+      airline: [nordWg],
       to: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
-      }
-    }
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
+      },
+    },
   },
   {
+    id: 4,
     info: {
       price: 8164,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
       ticketsLeft: 4,
-      proposal: "Clickavia",
-      type: "common",
+      proposal: 'Clickavia',
       more: [
         {
-          company: "Aviabilet",
-          price: 8432
+          id: 1,
+          company: 'Aviabilet',
+          price: 8432,
         },
         {
-          company: "Poleteli",
-          price: 8339
+          id: 2,
+          company: 'Poleteli',
+          price: 8339,
         },
         {
-          company: "Clickavia",
-          price: 8738
-        }
-      ]
+          id: 3,
+          company: 'Clickavia',
+          price: 8738,
+        },
+      ],
     },
     flight: {
-      airline: [nord_air],
+      airline: [nordAir],
       to: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Barselona",
-        airportFrom: "LND",
+        cityFrom: 'Barselona',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Moscow",
-        airportTo: "MOW"
-      }
-    }
+        cityTo: 'Moscow',
+        airportTo: 'MOW',
+      },
+    },
   },
   {
+    id: 5,
     info: {
       price: 8240,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Aviakassa",
-      type: "common"
+      proposal: 'Aviakassa',
     },
     flight: {
-      airline: [red_wings],
-      type: "Чартер",
+      airline: [redWings],
+      type: 'Чартер',
       to: {
         timeOfFlight: 275,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 280,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Barselona",
-        airportFrom: "LND",
+        cityFrom: 'Barselona',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Moscow",
-        airportTo: "MOW"
-      }
-    }
+        cityTo: 'Moscow',
+        airportTo: 'MOW',
+      },
+    },
   },
   {
+    id: 6,
     info: {
       price: 9108,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Clickavia",
-      type: "common"
+      proposal: 'Clickavia',
     },
     flight: {
-      airline: [red_wings_sqr, russia_air_sqr],
+      airline: [redWingsSqr, russiaAirSqr],
       to: {
         timeOfFlight: 265,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 255,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Barselona",
-        airportFrom: "LND",
+        cityFrom: 'Barselona',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Moscow",
-        airportTo: "MOW"
-      }
-    }
+        cityTo: 'Moscow',
+        airportTo: 'MOW',
+      },
+    },
   },
   {
+    id: 7,
     info: {
       price: 9485,
       baggage: {
         suitcase: 15,
-        handbag: 10
+        handbag: 10,
       },
-      proposal: "Clickavia",
-      type: "common"
+      proposal: 'Clickavia',
     },
     flight: {
-      airline: [russia_air_sqr, blue_air_sqr],
+      airline: [russiaAirSqr, blueAirSqr],
       to: {
         timeOfFlight: 277,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519430700000,
-        cityFrom: "Moscow",
-        airportFrom: "LND",
+        cityFrom: 'Moscow',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Barselona",
-        airportTo: "PJ"
+        cityTo: 'Barselona',
+        airportTo: 'PJ',
       },
       from: {
         timeOfFlight: 340,
-        transfer: "",
+        transfer: '',
         dateFrom: 1519754902000,
-        cityFrom: "Barselona",
-        airportFrom: "LND",
+        cityFrom: 'Barselona',
+        airportFrom: 'LND',
         dateTo: 1519754902000,
-        cityTo: "Moscow",
-        airportTo: "MOW"
-      }
-    }
-  }
+        cityTo: 'Moscow',
+        airportTo: 'MOW',
+      },
+    },
+  },
 ];
+
+export const localization = {
+  city: {
+    Barselona: 'Барселона',
+    Moscow: 'Москва',
+  },
+  common: {
+    Charter: 'Чартер',
+  },
+};
