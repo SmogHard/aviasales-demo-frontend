@@ -1,17 +1,16 @@
-import React from "react";
-import styled from "styled-components";
-import vk from "./vk.png";
-import facebook from "./facebook.png";
-import insta from "./insta.png";
-import twitter from "./twitter.png";
-import viber from "./viber.png";
-import googleplay from "./googleplay.png";
-import winstore from "./winstore.png";
-import appstore from "./appstore.png";
+import React from 'react';
+import styled from 'styled-components';
+import vk from './vk.png';
+import facebook from './facebook.png';
+import insta from './insta.png';
+import twitter from './twitter.png';
+import viber from './viber.png';
+import googleplay from './googleplay.svg';
+import winstore from './winstore.svg';
+import appstore from './appstore.svg';
 
 const Footer = styled.footer`
   background: #ffffff;
-  margin-top: 24px;
   text-align: center;
 `;
 
@@ -21,7 +20,11 @@ const Title = styled.h4`
   color: #5a5a5a;
   line-height: 16px;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 16px;
+  margin-top: 32px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const P = styled.p``;
@@ -34,9 +37,9 @@ const Navigation = styled.nav`
 
 const List = styled.div``;
 
-const Li = styled.li`
+const LiWithArrow = styled.li`
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 15px;
   white-space: nowrap;
 `;
 
@@ -46,7 +49,7 @@ const Ul = styled.ul`
   padding: 0;
 `;
 
-const Link = styled.a`
+const LinkStyled = styled.a`
   font-size: 12px;
   color: #5a5a5a;
   line-height: 16px;
@@ -56,7 +59,7 @@ const Link = styled.a`
 const Icon = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 12px;
+  margin-right: 28px;
 `;
 
 const Socials = styled.div`
@@ -88,7 +91,7 @@ const Nav = styled.div`
 
 const Name = styled.li`
   display: inline-block;
-  margin-right: 6px;
+  margin-right: 10px;
 `;
 
 const AboutUs = styled.div`
@@ -115,7 +118,11 @@ const Button = styled.button`
   background: transparent;
 `;
 
-export default function() {
+const Li = styled.li`
+  margin-top: 12px;
+`;
+
+export default function () {
   return (
     <Footer>
       <div className="container">
@@ -125,27 +132,27 @@ export default function() {
               <List>
                 <Title>Страны</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Россия</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Таиланд</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Черногория</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Кипр</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Болгария</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Россия</LinkStyled>
                   </Li>
+                  <Li>
+                    <LinkStyled href="#">Таиланд</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Черногория</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Кипр</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Болгария</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Грузия</LinkStyled>
+                  </Li>
+                  <LiWithArrow>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -153,27 +160,27 @@ export default function() {
               <List>
                 <Title>Авиакомпании</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Air Berlin</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Air France</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Alitalia</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Emirates</Link>
-                  </li>
-                  <li>
-                    <Link href="#">KLM</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Air Berlin</LinkStyled>
                   </Li>
+                  <Li>
+                    <LinkStyled href="#">Air France</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Alitalia</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Emirates</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">KLM</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Грузия</LinkStyled>
+                  </Li>
+                  <LiWithArrow>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -181,27 +188,27 @@ export default function() {
               <List>
                 <Title>Аэропорты</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Шереметьево</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Курумоч</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Домодедово</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Толмачево</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Владивосток</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Гамбург</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Шереметьево</LinkStyled>
                   </Li>
+                  <Li>
+                    <LinkStyled href="#">Курумоч</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Домодедово</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Толмачево</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Владивосток</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Гамбург</LinkStyled>
+                  </Li>
+                  <LiWithArrow>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -209,27 +216,27 @@ export default function() {
               <List>
                 <Title>Страны</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Россия</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Таиланд</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Черногория</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Кипр</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Болгария</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Грузия</Link>
-                  </li>
                   <Li>
-                    <Link href="#">Все страны →</Link>
+                    <LinkStyled href="#">Россия</LinkStyled>
                   </Li>
+                  <Li>
+                    <LinkStyled href="#">Таиланд</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Черногория</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Кипр</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Болгария</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Грузия</LinkStyled>
+                  </Li>
+                  <LiWithArrow>
+                    <LinkStyled href="#">Все страны →</LinkStyled>
+                  </LiWithArrow>
                 </Ul>
               </List>
             </div>
@@ -237,24 +244,24 @@ export default function() {
               <List>
                 <Title>Направления</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">MOW - SIP</Link>
-                  </li>
-                  <li>
-                    <Link href="#">MOW - AER</Link>
-                  </li>
-                  <li>
-                    <Link href="#">MOW - TIV</Link>
-                  </li>
-                  <li>
-                    <Link href="#">MOW - MRV</Link>
-                  </li>
-                  <li>
-                    <Link href="#">LED -MOW</Link>
-                  </li>
-                  <li>
-                    <Link href="#">MOW - BKK</Link>
-                  </li>
+                  <Li>
+                    <LinkStyled href="#">MOW - SIP</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">MOW - AER</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">MOW - TIV</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">MOW - MRV</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">LED -MOW</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">MOW - BKK</LinkStyled>
+                  </Li>
                 </Ul>
               </List>
             </div>
@@ -262,27 +269,27 @@ export default function() {
               <List>
                 <Title>Сервисы</Title>
                 <Ul>
-                  <li>
-                    <Link href="#">Горящие авиабилеты</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Календарь низких цен</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Карта низких цен</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Спецпредложения</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Таблица цен</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Блог</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Помощь</Link>
-                  </li>
+                  <Li>
+                    <LinkStyled href="#">Горящие авиабилеты</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Календарь низких цен</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Карта низких цен</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Спецпредложения</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Таблица цен</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Блог</LinkStyled>
+                  </Li>
+                  <Li>
+                    <LinkStyled href="#">Помощь</LinkStyled>
+                  </Li>
                 </Ul>
               </List>
             </div>
@@ -293,25 +300,25 @@ export default function() {
             <Nav>
               <Ul>
                 <Name>
-                  <Link href="#">О компании</Link>
+                  <LinkStyled href="#">О компании</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Партнёрская программа</Link>
+                  <LinkStyled href="#">Партнёрская программа</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Реклама</Link>
+                  <LinkStyled href="#">Реклама</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Вакансии</Link>
+                  <LinkStyled href="#">Вакансии</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Помощь</Link>
+                  <LinkStyled href="#">Помощь</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">Правила</Link>
+                  <LinkStyled href="#">Правила</LinkStyled>
                 </Name>
                 <Name>
-                  <Link href="#">White Label авиабилеты</Link>
+                  <LinkStyled href="#">White Label авиабилеты</LinkStyled>
                 </Name>
               </Ul>
             </Nav>
@@ -319,36 +326,36 @@ export default function() {
               <Icon>
                 <Img src={vk} />
                 <P>
-                  <Link href="#">Вконтакте</Link>
+                  <LinkStyled href="#">Вконтакте</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={facebook} />
                 <P>
-                  <Link href="#">Фейсбук</Link>
+                  <LinkStyled href="#">Фейсбук</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={insta} />
                 <P>
-                  <Link href="#">Инстаграмм</Link>
+                  <LinkStyled href="#">Инстаграмм</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={twitter} />
                 <P>
-                  <Link href="#">Твиттер</Link>
+                  <LinkStyled href="#">Твиттер</LinkStyled>
                 </P>
               </Icon>
               <Icon>
                 <Img src={viber} />
                 <P>
-                  <Link href="#">Вайбер</Link>
+                  <LinkStyled href="#">Вайбер</LinkStyled>
                 </P>
               </Icon>
             </Socials>
             <P>
-              <Link href="#">Поиск и бронирование отелей</Link>
+              <LinkStyled href="#">Поиск и бронирование отелей</LinkStyled>
             </P>
           </Links>
           <Links>
